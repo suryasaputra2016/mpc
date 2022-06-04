@@ -371,12 +371,29 @@
   The properties that multiplication distributes to addition is called
   distributive properties.\ 
 
-  Multipliclation also distributes to subtraction, as you can check in the
-  equation below
+  We have three notes about the distributive property. The first is that it
+  also applies for subtraction.
 
   <\equation*>
     2\<cdot\> <around*|(|3+4-2|)>=2\<cdot\> 3+2\<cdot\> 4-2\<cdot\> 2
   </equation*>
+
+  The second is that it also applies if the additions is multiplied from the
+  right.
+
+  <\eqnarray*>
+    <tformat|<table|<row|<cell|<around*|(|6+2+4|)>\<cdot\>
+    3>|<cell|=>|<cell|6\<cdot\> 3+2\<cdot\> 3+4\<cdot\> 3>>>>
+  </eqnarray*>
+
+  The last one is that negative sign on the parentheses also distributes to
+  addition and flip all the signs of the terms inside parenthesis. This is
+  the case because minnus sign is basically a multiplication of <math|-1>.
+
+  <\eqnarray*>
+    <tformat|<table|<row|<cell|-<around*|(|3+4-2|)>>|<cell|=>|<cell|<around*|(|-1|)>\<cdot\>*<around*|(|3+4-2|)>>>|<row|<cell|>|<cell|=>|<cell|<around*|(|-1|)>\<cdot\>
+    3+<around*|(|-1|)>\<cdot\> 4-<around*|(|-1|)><around*|(|2|)>>>|<row|<cell|>|<cell|=>|<cell|-3-4+2>>>>
+  </eqnarray*>
 
   <subsection|Example 5>
 
@@ -452,7 +469,7 @@
   </eqnarray*>
 
   Third, we can also factorize the mutual factor to the right of
-  multiplication. This actually also applies for distribution.
+  multiplication.
 
   <\eqnarray*>
     <tformat|<table|<row|<cell|6\<cdot\> 3+2\<cdot\> 3+4\<cdot\>
@@ -569,17 +586,17 @@
   <\collection>
     <associate|auto-1|<tuple|1|1>>
     <associate|auto-10|<tuple|3.1|4>>
-    <associate|auto-11|<tuple|3.2|?>>
-    <associate|auto-12|<tuple|3.3|?>>
-    <associate|auto-13|<tuple|4|?>>
-    <associate|auto-14|<tuple|4.1|?>>
-    <associate|auto-15|<tuple|4.2|?>>
-    <associate|auto-16|<tuple|4.3|?>>
-    <associate|auto-17|<tuple|4.4|?>>
-    <associate|auto-18|<tuple|4.5|?>>
-    <associate|auto-19|<tuple|4.6|?>>
+    <associate|auto-11|<tuple|3.2|4>>
+    <associate|auto-12|<tuple|3.3|5>>
+    <associate|auto-13|<tuple|4|5>>
+    <associate|auto-14|<tuple|4.1|6>>
+    <associate|auto-15|<tuple|4.2|6>>
+    <associate|auto-16|<tuple|4.3|7>>
+    <associate|auto-17|<tuple|4.4|7>>
+    <associate|auto-18|<tuple|4.5|8>>
+    <associate|auto-19|<tuple|4.6|8>>
     <associate|auto-2|<tuple|1.1|1>>
-    <associate|auto-20|<tuple|5|?>>
+    <associate|auto-20|<tuple|5|9>>
     <associate|auto-3|<tuple|1.2|1>>
     <associate|auto-4|<tuple|2|2>>
     <associate|auto-5|<tuple|2.1|2>>
@@ -606,7 +623,7 @@
       <no-break><pageref|auto-3>>
 
       <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|2<space|2spc>The
-      Structure of Math Equations> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      Structure of Math Expressions> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-4><vspace|0.5fn>
 
       <with|par-left|<quote|1tab>|2.1<space|2spc>Terms and Factors
@@ -617,21 +634,61 @@
       <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-6>>
 
-      <with|par-left|<quote|1tab>|2.3<space|2spc>A more general equation
+      <with|par-left|<quote|1tab>|2.3<space|2spc>Mathematical equation
       <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-7>>
 
-      <with|par-left|<quote|1tab>|2.4<space|2spc>Variables
-      <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <with|par-left|<quote|1tab>|2.4<space|2spc>Variable, coefficient, and
+      constant term <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-8>>
 
       <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|3<space|2spc>Solving
-      a simple linear equation> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      simple linear equation> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-9><vspace|0.5fn>
 
       <with|par-left|<quote|1tab>|3.1<space|2spc>Example 1
       <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-10>>
+
+      <with|par-left|<quote|1tab>|3.2<space|2spc>Example 2
+      <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-11>>
+
+      <with|par-left|<quote|1tab>|3.3<space|2spc>Example 3
+      <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-12>>
+
+      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|4<space|2spc>A
+      more complex equation> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-13><vspace|0.5fn>
+
+      <with|par-left|<quote|1tab>|4.1<space|2spc>Example 4
+      <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-14>>
+
+      <with|par-left|<quote|1tab>|4.2<space|2spc>Distributive property
+      <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-15>>
+
+      <with|par-left|<quote|1tab>|4.3<space|2spc>Example 5
+      <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-16>>
+
+      <with|par-left|<quote|1tab>|4.4<space|2spc>Factorization
+      <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-17>>
+
+      <with|par-left|<quote|1tab>|4.5<space|2spc>Example 6
+      <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-18>>
+
+      <with|par-left|<quote|1tab>|4.6<space|2spc>Example 7
+      <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-19>>
+
+      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|5<space|2spc>Linear
+      equation with one variable> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-20><vspace|0.5fn>
     </associate>
   </collection>
 </auxiliary>
