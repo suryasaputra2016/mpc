@@ -76,7 +76,7 @@
   numbers from above and below the bar by taking their comon divisor.
 
   <\eqnarray*>
-    <tformat|<table|<row|<cell|9\<div\>4\<cdot\>8\<div\>3\<cdot\>5>|<cell|=>|<cell|9\<cdot\><dfrac|1|4>\<cdot\>8\<cdot\><cfrac|1|3>\<cdot\>5>>|<row|<cell|>|<cell|=>|<cell|<dfrac|9\<cdot\>8\<cdot\>5|4\<cdot\>3>>>|<row|<cell|>|<cell|=>|<cell|<dfrac|9<rsup|3>\<cdot\>8<rsup|2>\<cdot\>5|4\<cdot\>3>>>|<row|<cell|>|<cell|=>|<cell|3\<cdot\>2\<cdot\>5>>|<row|<cell|>|<cell|=>|<cell|3\<cdot\><around*|(|2\<cdot\>5|)>>>|<row|<cell|>|<cell|=>|<cell|3\<cdot\>10>>|<row|<cell|>|<cell|=>|<cell|30>>>>
+    <tformat|<table|<row|<cell|9\<div\>4\<cdot\>8\<div\>3\<cdot\>5>|<cell|=>|<cell|9\<cdot\><dfrac|1|4>\<cdot\>8\<cdot\><cfrac|1|3>\<cdot\>5>>|<row|<cell|>|<cell|=>|<cell|<dfrac|9\<cdot\>8\<cdot\>5|4\<cdot\>3>>>|<row|<cell|>|<cell|=>|<cell|<dfrac|<neg|9><rsup|3>\<cdot\><neg|8><rsup|2>\<cdot\>5|<neg|4>\<cdot\><neg|3>>>>|<row|<cell|>|<cell|=>|<cell|3\<cdot\>2\<cdot\>5>>|<row|<cell|>|<cell|=>|<cell|3\<cdot\><around*|(|2\<cdot\>5|)>>>|<row|<cell|>|<cell|=>|<cell|3\<cdot\>10>>|<row|<cell|>|<cell|=>|<cell|30>>>>
   </eqnarray*>
 
   <section|The Structure of Math Expressions>
@@ -148,7 +148,7 @@
   subtraction.
 
   <\eqnarray*>
-    <tformat|<table|<row|<cell|3+4\<cdot\>2-<cfrac|6|2>-<cfrac|10\<cdot\>2|4>>|<cell|=>|<cell|3+8-3-<cfrac|10<rsup|5>\<cdot\>2|4<rsup|2>>>>|<row|<cell|>|<cell|=>|<cell|3+8-3-5>>|<row|<cell|>|<cell|=>|<cell|3>>>>
+    <tformat|<table|<row|<cell|3+4\<cdot\>2-<cfrac|6|2>-<cfrac|10\<cdot\>2|4>>|<cell|=>|<cell|3+8-3-<cfrac|<neg|10><rsup|5>\<cdot\>2|<neg|4><rsup|2>>>>|<row|<cell|>|<cell|=>|<cell|3+8-3-5>>|<row|<cell|>|<cell|=>|<cell|3>>>>
   </eqnarray*>
 
   <subsection|Mathematical equation>
