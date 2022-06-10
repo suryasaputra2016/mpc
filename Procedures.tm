@@ -664,13 +664,862 @@
 
   <subsection|Order of Growth>
 
+  Say <math|R <around*|(|n|)>> is the resource needed for a process as a
+  function of parameters, can be input, digit accuracies, etc. Resource can
+  be internal storage, lementary operatios, etc.
+
+  We say <math|R<around*|(|n|)>> has order of growth <math|\<Theta\>
+  <around*|(|f <around*|(|n|)>|)>> if there are positive numbers <math|a> and
+  <math|b>, such that <math|a*f <around*|(|n|)>\<leqslant\>R
+  <around*|(|n|)>\<leqslant\>b*f <around*|(|n|)>> for suffciently large value
+  of <math|n>.
+
+  Some orger of growth is iterative factorial which is linear in number of
+  steps <math|\<Theta\> <around*|(|n|)>> and constant in space
+  <math|\<Theta\> <around*|(|1|)>>. Fiobnacci computation which is
+  <math|\<Theta\> <around*|(|\<phi\> <rsup|n>|)>> in steps and
+  <math|\<Theta\> <around*|(|n|)>> in space.
+
+  Hera are a logarithmic growth for steps in finding sine using the following
+  and for small angle <math|sin x\<approx\>x.>
+
+  <\equation*>
+    sin x=3 sin <cfrac| x|3>-4*sin <rsup|3> <cfrac|x|3>
+  </equation*>
+
+  <\session|scheme|default>
+    <\input|Scheme] >
+      (define (cube x) (* x x x))
+    </input>
+
+    <\input|Scheme] >
+      (define (p x) (-(* 3 x) (* 4 (cube x))))
+    </input>
+
+    <\input|Scheme] >
+      (define (sine angle)
+
+      \ \ (if (\<less\> (abs angle) 0.1)
+
+      \ \ \ \ \ \ angle
+
+      \ \ \ \ \ \ (p (sine (/ angle 3.0)))))
+    </input>
+
+    <\unfolded-io|Scheme] >
+      (sine 0.1)
+    <|unfolded-io>
+      0.0998518518518519
+    </unfolded-io>
+  </session>
+
   \;
+
+  <subsection|Exponentiation>
+
+  We can find exponents usinng recursive as follows that is linear
+  <math|\<Theta\> <around*|(|n|)>>in steps and space.
+
+  <\session|scheme|default>
+    <\input|Scheme] >
+      (define (expt b n)
+
+      \ \ (if (= n 0)
+
+      \ \ \ \ \ \ 1
+
+      \ \ \ \ \ \ (* b (expt b (n-1)))))
+    </input>
+  </session>
+
+  Below is iterative version which linear in steps and constant in space.
+
+  <\session|scheme|default>
+    <\input|Scheme] >
+      (define (expt-iter b counter product)\ 
+
+      \ \ (if (= counter 0)
+
+      \ \ \ \ \ \ product
+
+      \ \ \ \ \ \ (expt-iter b
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (- counter 1)
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (* b product))))
+    </input>
+
+    <\input|Scheme] >
+      (define (expt b n)
+
+      \ \ (expt-iter b n 1))
+    </input>
+
+    <\unfolded-io|Scheme] >
+      (expt 3 4)
+    <|unfolded-io>
+      81
+    </unfolded-io>
+  </session>
+
+  We can compute exponentiation with fewer steps using successive squaring.
+  Its steps and spaces grows logarithmically with input <math|\<Theta\>
+  <around*|(|log n|)>>.
+
+  <\session|scheme|default>
+    <\input|Scheme] >
+      (define (even? n) (= (remainder n 2) 0))
+    </input>
+
+    <\input|Scheme] >
+      (define (square x) (* x x))
+    </input>
+
+    <\input|Scheme] >
+      (define (fast-expt b n)
+
+      \ \ (cond ((= n 0) 1)
+
+      \ \ \ \ \ \ \ \ ((even? n) (square (fast-expt b\ 
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (/
+      n 2))))
+
+      \ \ \ \ \ \ \ \ (else (* b (fast-expt b\ 
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (- n
+      1))))))
+    </input>
+
+    <\unfolded-io|Scheme] >
+      (fast-expt 2 7)
+    <|unfolded-io>
+      128
+    </unfolded-io>
+  </session>
+
+  <subsection|Greatest common divisor>
+
+  we can find GCD of two numbes using Euclid algorithm. It uses the property
+  that if <math|r> is the remainder of <math|a> divided by <math|b>, then
+  <math|gcd <around*|(|a,b|)>=gcd <around*|(|b,r|)>.>
+
+  <\session|scheme|default>
+    <\input|Scheme] >
+      (define (gcd a b)
+
+      \ \ (if (= b 0)
+
+      \ \ \ \ \ \ a
+
+      \ \ \ \ \ \ (gcd b (remainder a b))))
+    </input>
+
+    <\unfolded-io|Scheme] >
+      (gcd 12 8)
+    <|unfolded-io>
+      4
+    </unfolded-io>
+  </session>
+
+  Number of steps in Euclid algorithm grows logarithmically.
+
+  <\theorem>
+    Lamé's theorem: if Euclid algorithm needs k steps to get GCD, then the
+    smaller number must be at least equal to the <math|k<rsup|th>>Fibonacci
+    number.
+  </theorem>
+
+  From the theorem we can see that <math|n\<geqslant\>Fib
+  <around*|(|k|)>\<approx\> <frac*|\<phi\> <rsup|k>|<sqrt| 5>> >. Therefore
+  the order of growth is <math|\<Theta\> <around*|(|log n|)>>.
+
+  <subsection|Testing Prime>
+
+  Here the method of testing prime with order of growth <math|\<Theta\>
+  <around*|(|<sqrt|n>|)>>.
+
+  <\session|scheme|default>
+    <\input|Scheme] >
+      (define (divides? a b) (= (remainder b a) 0))
+    </input>
+
+    <\input|Scheme] >
+      (define (find-divisor n test-divisor)
+
+      \ \ (cond ((\<gtr\> (square test-divisor) n) n)
+
+      \ \ \ \ \ \ \ \ ((divides? test-divisor n) test-divisor)
+
+      \ \ \ \ \ \ \ \ (else (find-divisor n (+ test-divisor 1)))))
+    </input>
+
+    <\input|Scheme] >
+      (define (smallest-divisor n) (find-divisor n 2))
+    </input>
+
+    <\input|Scheme] >
+      (define (prime? n) (= n (smallest-divisor n)))
+    </input>
+
+    <\unfolded-io|Scheme] >
+      (prime? 4)
+    <|unfolded-io>
+      #f
+    </unfolded-io>
+  </session>
+
+  There is another method of testing prime with order of growth
+  <math|\<Theta\> <around*|(|<sqrt|n>|)>>using Fermat test.
+
+  <\theorem>
+    Fermat's Little Theorem: if <math|n> is prime and
+    <math|a\<in\>\<bbb-Z\><rsup|+>>, <math|a\<less\>n> then
+    <math|a<rsup|n>\<equiv\>a mod <around*|(|n|)>>.\ 
+  </theorem>
+
+  Fermat test checks if the remainder of <math|a<rsup|n>>divided by <math|n>
+  equals to <math|a>. If it's then the number <math|n> is probably prime.
+
+  <\session|scheme|default>
+    <\input|Scheme] >
+      (define (expmod base exp m)
+
+      \ \ \ \ \ \ \ \ (cond ((= exp 0) 1)
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ ((even? exp) (remainder (square (expmod
+      base
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (/
+      exp 2)
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m))
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m))
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ (else (remainder (* base (expmod base
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (-
+      exp 1)
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m))
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m))))
+    </input>
+
+    <\input|Scheme] >
+      (define (fermat-test n)
+
+      \ \ (define (try-it a)
+
+      \ \ \ \ (= (expmod a n n)
+
+      \ \ \ \ \ \ \ a))
+
+      \ \ (try-it (+ 1 (random (- n 1)))))
+    </input>
+
+    <\input|Scheme] >
+      (define (fast-prime? n times)
+
+      \ \ (cond ((= times 0) #t)
+
+      \ \ \ \ \ \ \ \ ((fermat-test n) (fast-prime? n (- times 1)))
+
+      \ \ \ \ \ \ \ \ (else #f)))
+    </input>
+
+    <\folded-io|Scheme] >
+      (fast-prime? 561 30)
+    <|folded-io>
+      #t
+    </folded-io>
+  </session>
+
+  Fermat test is a probabilistic algorithm, it is probably true, but the odds
+  is quite good.
+
+  <section|Higher-order Procedures>
+
+  With procedure we not only can do the cubing, but we can talk about the
+  concept of cubing. And there is a higher-order procedure that ca n
+  manipulate other procedure.
+
+  <subsection|Procedures as Arguments>
+
+  \ Consider different summation from <math|a> to <math|b>.
+
+  <\session|scheme|default>
+    <\input|Scheme] >
+      (define (sum-integers a b)
+
+      \ \ (if (\<gtr\> a b)
+
+      \ \ \ \ \ \ 0
+
+      \ \ \ \ \ \ (+ a\ 
+
+      \ \ \ \ \ \ \ \ \ (sum-integers (+ a 1) b))))
+    </input>
+
+    <\input|Scheme] >
+      (define (sum-cubes a b)
+
+      \ \ (if (\<gtr\> a b)
+
+      \ \ \ \ \ \ 0
+
+      \ \ \ \ \ \ (+ (cube a)\ 
+
+      \ \ \ \ \ \ \ \ \ (sum-cubes (+ a 1) b))))
+    </input>
+
+    <\input|Scheme] >
+      (define (pi-sum a b)
+
+      \ \ (if (\<gtr\> a b)
+
+      \ \ \ \ \ \ 0
+
+      \ \ \ \ \ \ (+ (/ 1.0 (* a (+ a 2)))\ 
+
+      \ \ \ \ \ \ \ \ \ (pi-sum (+ a 4) b))))
+    </input>
+
+    <\unfolded-io|Scheme] >
+      (sum-cubes 1 3)
+    <|unfolded-io>
+      36
+    </unfolded-io>
+  </session>
+
+  The procedures shares common pattern
+
+  <\scm-code>
+    (define (\<less\>name\<gtr\> a b)
+
+    \ \ (if (\<gtr\> a b)
+
+    \ \ \ \ \ \ 0
+
+    \ \ \ \ \ \ (+ (\<less\>term\<gtr\> a)
+
+    \ \ \ \ \ \ \ \ \ (\<less\>name\<gtr\> (\<less\>next a\<gtr\>) b))))
+  </scm-code>
+
+  This abstraction is similar with sigma notation that lets mathematician
+  deals with the concept of summation itself. We can also do that in Scheme.
+
+  <\session|scheme|default>
+    <\input|Scheme] >
+      (define (sum term a next b)
+
+      \ \ (if (\<gtr\> a b)
+
+      \ \ \ \ \ \ 0
+
+      \ \ \ \ \ \ (+ (term a)
+
+      \ \ \ \ \ \ \ \ \ (sum term (next a) next b))))
+    </input>
+
+    <\input|Scheme] >
+      \;
+    </input>
+  </session>
+
+  Notice that the procedure above accept procedures term and next as
+  arguments. Let's see, when we apply the functions to it.
+
+  <\session|scheme|default>
+    <\input|Scheme] >
+      (define (inc n) (+ n 1))
+    </input>
+
+    <\input|Scheme] >
+      (define (sum-cubes a b) (sum cube a inc b))
+    </input>
+
+    <\input|Scheme] >
+      (define (identity x) x)
+    </input>
+
+    <\input|Scheme] >
+      (define (sum-integers a b) (sum identity a inc b))
+    </input>
+
+    <\input|Scheme] >
+      (define (pi-sum a b)
+
+      \ \ (define (pi-term x) (/ 1.0 (* x (+ x 2))))
+
+      \ \ (define (pi-next x) (+ x 4))
+
+      \ \ (sum pi-term a pi-next b))
+    </input>
+
+    <\unfolded-io|Scheme] >
+      (sum-cubes 1 3)
+    <|unfolded-io>
+      36
+    </unfolded-io>
+
+    <\unfolded-io|Scheme] >
+      (* 8 (pi-sum 1 1000))
+    <|unfolded-io>
+      3.13959265558978
+    </unfolded-io>
+
+    <\input|Scheme] >
+      \;
+    </input>
+  </session>
+
+  We can also define integral using the same higher-procedur above.
+
+  <\session|scheme|default>
+    <\input|Scheme] >
+      (define (integral f a b dx)\ 
+
+      \ \ (define \ (add-dx x)\ 
+
+      \ \ \ \ (+ x dx))
+
+      \ \ (* (sum f (+ a (/ dx 2.0)) add-dx b)
+
+      \ \ \ \ \ dx))
+    </input>
+
+    <\unfolded-io|Scheme] >
+      (integral cube 0 1 0.01)
+    <|unfolded-io>
+      0.2499875
+    </unfolded-io>
+
+    <\input|Scheme] >
+      \;
+    </input>
+  </session>
+
+  <subsection|Lambda>
+
+  We can define a procedure without naming it using lambda. <scm|(lambda
+  (\<less\>parameters\<gtr\>) \<less\>body\<gtr\>)>
+
+  For example, here we redefine the pi series summation using lambda.
+
+  <\session|scheme|default>
+    <\input|Scheme] >
+      (define (pi-sum a b)
+
+      \ \ (sum (lambda(x) (/ 1.0 (* x (+ x 2))))
+
+      \ \ \ \ \ \ \ a
+
+      \ \ \ \ \ \ \ (lambda(x) (+ x 4))
+
+      \ \ \ \ \ \ \ b))
+    </input>
+
+    <\input|Scheme] >
+      * 8 (pi-sum 1 1000))
+    </input>
+  </session>
+
+  These two expressions are equivalent
+
+  <\scm-code>
+    (define (plus4 x) (+ x 4))
+
+    (define plus4 (lambda (x) (+ x 4)))
+  </scm-code>
+
+  Say we wan to construct the following function.
+
+  <\equation*>
+    a=1+x*y
+  </equation*>
+
+  <\equation*>
+    b=1-y
+  </equation*>
+
+  <\equation*>
+    f<around*|(|x,y|)>=x*a<rsup|2>+y*b+a*b
+  </equation*>
+
+  There are three ways to construct this in scheme. The first one is using
+  helper function, the second one using lambda (defining and directly
+  applying it), and the third one, the new one, using <scm|let>.
+
+  <\session|scheme|default>
+    <\input|Scheme] >
+      (define (f x y)
+
+      \ \ (define (f-helper a b)
+
+      \ \ \ \ (+ (* x (square a))
+
+      \ \ \ \ \ \ \ (* y b)
+
+      \ \ \ \ \ \ \ (* a b)))
+
+      \ \ (f-helper (+ 1 (* x y))
+
+      \ \ \ \ \ \ \ \ \ \ \ \ (- 1 y)))
+    </input>
+
+    <\input|Scheme] >
+      (define (f x y)
+
+      \ \ ((lambda (a, b)\ 
+
+      \ \ \ \ \ (+ (* x (square a))
+
+      \ \ \ \ \ \ \ \ (* y b)
+
+      \ \ \ \ \ \ \ \ (* a b)))\ 
+
+      \ \ \ (+ 1 (* x y))\ 
+
+      \ \ \ (- 1 y)))
+    </input>
+
+    <\input|Scheme] >
+      (define (f x y)
+
+      \ \ (let ((a (+ 1 (* x y)))
+
+      \ \ \ \ \ \ \ \ (b (- 1 y)))
+
+      \ \ (+ (* x (square a))
+
+      \ \ \ \ \ (* y b)
+
+      \ \ \ \ \ (* a b))))
+    </input>
+
+    <\input|Scheme] >
+      \;
+    </input>
+  </session>
+
+  The general form of let expressio is as follows.
+
+  <\scm-code>
+    (let ((\<less\>var1\<gtr\> \<less\>exp1\<gtr\>)
+
+    \ \ \ \ \ \ (\<less\>var2\<gtr\> \<less\>exp2\<gtr\>)
+
+    \ \ \ \ \ \ ...
+
+    \ \ \ \ \ \ (\<less\>varn\<gtr\> \<less\>exp2\<gtr\>))
+
+    \ \ \<less\>body\<gtr\>)
+  </scm-code>
+
+  The form above is interpreted to the expression below.
+
+  <\scm-code>
+    ((lambda (\<less\>var1\<gtr\> ... \<less\>var2\<gtr\>)
+
+    \ \ \ \<less\>\<gtr\>body)
+
+    \ \<less\>exp1\<gtr\>
+
+    \ ...
+
+    \ \<less\>exp2\<gtr\>)
+  </scm-code>
+
+  In let, the variable is bound only to the body. Not in the expression of
+  other variable, because it is computerd outside the let.
+
+  <subsection|Procedures as General Methods>
+
+  Finding roots with half-interval method. Finding <math|f
+  <around*|(|x|)>=0>, first we find <math|a> and <math|b> such that <math|f
+  <around*|(|a|)>> and <math|f <around*|(|b|)>> have different signs. Then
+  there must be a root between <math|a> and <math|b>. Then we halve the
+  interval by finding <math|f <around*|(|c|)>> where <math|c> is the average
+  of <math|a> and <math|b>. We repeat the procedure until we have small
+  enough interval. The number of steps grow as <math|\<Theta\> <around*|(|log
+  <around*|(|L/T|)>|)> >where <math|L> is the length of original interval and
+  <math|T> is the error tolerant.
+
+  <\session|scheme|default>
+    <\input|Scheme] >
+      (define (search f neg-point pos-point)
+
+      \ \ (let ((midpoint (/ (+ neg-point pos-point) 2)))
+
+      \ \ \ \ (if (close-enough? neg-point pos-point)
+
+      \ \ \ \ \ \ \ \ midpoint
+
+      \ \ \ \ \ \ \ \ (let ((test-value (f midpoint)))
+
+      \ \ \ \ \ \ \ \ \ \ (cond ((positive? test-value)
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (search f neg-point midpoint))
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ((negative? test-value)
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (search \ f midpoint pos-point))
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (else midpoint))))))
+    </input>
+
+    <\input|Scheme] >
+      (define (close-enough? x y) (\<less\> (abs (- x y)) 0.001))
+    </input>
+
+    <\input|Scheme] >
+      (define (half-interval-method f a b)
+
+      \ \ (let ((a-value (f a))
+
+      \ \ \ \ \ \ \ \ (b-value (f b)))
+
+      \ \ \ \ (cond ((and (negative? a-value) (positive? b-value))
+
+      \ \ \ \ \ \ \ \ \ \ \ (search f a b))
+
+      \ \ \ \ \ \ \ \ \ \ ((and (negative? b-value) (positive? a-value))
+
+      \ \ \ \ \ \ \ \ \ \ \ (search f b a))
+
+      \ \ \ \ \ \ \ \ \ \ (else\ 
+
+      \ \ \ \ \ \ \ \ \ \ \ \ (error "Values are not of opposite sign" a
+      b)))))
+    </input>
+
+    <\unfolded-io|Scheme] >
+      (half-interval-method sin 2.0 4.0)
+    <|unfolded-io>
+      3.14111328125
+    </unfolded-io>
+  </session>
+
+  A number <math|x> is a fixed point of <math|f> if <math|f
+  <around*|(|x|)>=x>. We can find the fixed point of a function by first
+  guessing and then calculate the application of application of <math|x>
+  repeatedly until the value doesn't change much.
+
+  <\session|scheme|default>
+    <\input|Scheme] >
+      (define tolerance 0.00001)
+    </input>
+
+    <\input|Scheme] >
+      (define (fixed-point f first-guess)
+
+      \ \ (define (close-enough? v1 v2)
+
+      \ \ \ \ (\<less\> (abs (- v1 v2))
+
+      \ \ \ \ \ \ \ tolerance))
+
+      \ \ (define (try guess)
+
+      \ \ \ \ (let ((next (f guess)))
+
+      \ \ \ \ \ \ (if (close-enough? guess next)
+
+      \ \ \ \ \ \ \ \ \ \ next
+
+      \ \ \ \ \ \ \ \ \ \ (try next))))
+
+      \ \ (try first-guess))
+    </input>
+
+    <\unfolded-io|Scheme] >
+      (fixed-point cos 1.0)
+    <|unfolded-io>
+      0.739082298522402
+    </unfolded-io>
+
+    <\unfolded-io|Scheme] >
+      (fixed-point (lambda (y) (+ (sin y) (cos y))) 1.0)
+    <|unfolded-io>
+      1.25873159629712
+    </unfolded-io>
+
+    <\input|Scheme] >
+      xy
+    </input>
+  </session>
+
+  Below, we redefine Newton method of finding roots to fixed-point process.
+  To find <math|<sqrt|x>> we could first guess <math|y> and use function
+  <math|y\<rightarrow\><frac*|x|y>>. But that doesn't converge, they just
+  oscilate over and over. So instead we map <math|y> to the average of
+  <math|y> and <math|<frac*|x|y>.> It's actually just the same equation.
+
+  <\session|scheme|default>
+    <\input|Scheme] >
+      (define (average x y) (/ (+ x y) 2))
+    </input>
+
+    <\input|Scheme] >
+      (define (sqrt x)
+
+      \ \ (fixed-point (lambda (y) (average y (/ x y)))
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 1.0))
+    </input>
+
+    <\unfolded-io|Scheme] >
+      (sqrt 4)
+    <|unfolded-io>
+      2.0
+    </unfolded-io>
+
+    <\input|Scheme] >
+      \;
+    </input>
+  </session>
+
+  <subsection|Procedure as Returned Value>
+
+  Previously we use average dampinng in finding square root using
+  fixed-point. We can define a higher-order procedure that takes a procedure
+  and return the average damping of the prodecure.
+
+  <\session|scheme|default>
+    <\input|Scheme] >
+      (define (average-damp f)\ 
+
+      \ \ \ \ \ \ \ (lambda (x) (average x (f x))))
+    </input>
+
+    <\input|Scheme] >
+      (define (sqrt x)
+
+      \ \ (fixed-point \ (average-damp (lambda (y) (/ x y)))
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 1.0))
+    </input>
+  </session>
+
+  \;
+
+  See that in the last procedure we make explicit the fixed-point,
+  average-damping and <math|y\<rightarrow\><frac*|x|y>.>
+
+  To find zero of a differentiable function <math|g <around*|(|x|)>> we can
+  use the general Newton's method. It says that the zero is the fixed-point
+  of <math|g> the following function <math|f>.
+
+  <\equation*>
+    f <around*|(|x|)>=x-<cfrac|g <around*|(|x|)>|D g<around*|(|x|)>>
+  </equation*>
+
+  Where <math|D> is the differential operator.
+
+  To implement Newton's method we first implement the derrivative. Say we
+  choose <math|d x=0.0001>.
+
+  <\session|scheme|default>
+    <\input|Scheme] >
+      (define dx 0.0001)
+    </input>
+
+    <\input|Scheme] >
+      (define (deriv g)
+
+      \ \ (lambda (x) (/ (- (g (+ x dx)) (g x)) dx)))
+    </input>
+
+    <\input|Scheme] >
+      (define (newton-transform g)
+
+      \ \ (lambda (x) (- x (/ (g x) ((deriv g) x)))))
+    </input>
+
+    <\input|Scheme] >
+      (define (newton-method g guess)
+
+      \ \ (fixed-point (newton-transform g) guess))
+    </input>
+
+    <\input|Scheme] >
+      (define (sqrt x)
+
+      \ \ (newton-method (lambda (y) (- (square y) x)) 1.0))
+    </input>
+
+    <\unfolded-io|Scheme] >
+      (sqrt 9)
+    <|unfolded-io>
+      3.00000000000005
+    </unfolded-io>
+
+    <\input|Scheme] >
+      \;
+    </input>
+  </session>
+
+  We can redefine in two ways fixed point with transformation as follows. The
+  first one is using average damping, the second one is using netwon
+  tarnsform as general
+
+  <\session|scheme|default>
+    <\input|Scheme] >
+      (define (fixed-point-of-transform g transform guess)
+
+      \ \ (fixed-point (transform g) guess))
+    </input>
+
+    <\input|Scheme] >
+      (define (sqrt x)
+
+      \ \ (fixed-point-of-transform\ 
+
+      \ \ \ (lambda (y) (/ x y))\ 
+
+      \ \ \ average-damp\ 
+
+      \ \ \ 1.0))
+    </input>
+
+    <\input|Scheme] >
+      (define (sqrt x)
+
+      \ \ (fixed-point-of-transform
+
+      \ \ \ (lambda (y) (- (square y) x))
+
+      \ \ \ newton-transform
+
+      \ \ \ 1.0))
+    </input>
+
+    <\input|Scheme] >
+      \;
+    </input>
+  </session>
+
+  Element of a programming language with the fewest restriction is said to
+  have first-class stauts.
+
+  The privileges includes: named by variables, passed as arguments, returned
+  from procedure, and included in data structure.
+
+  \;
+
+  \ 
+
+  \ 
 
   \;
 
   \;
 
-  \;
+  <\session|scheme|default>
+    \;
+  </session>
 </body>
 
 <\initial>
@@ -686,7 +1535,15 @@
     <associate|auto-11|<tuple|2.1|5>>
     <associate|auto-12|<tuple|2.2|6>>
     <associate|auto-13|<tuple|2.3|7>>
+    <associate|auto-14|<tuple|2.4|?>>
+    <associate|auto-15|<tuple|2.5|?>>
+    <associate|auto-16|<tuple|2.6|?>>
+    <associate|auto-17|<tuple|3|?>>
+    <associate|auto-18|<tuple|3.1|?>>
+    <associate|auto-19|<tuple|3.2|?>>
     <associate|auto-2|<tuple|1.1|1>>
+    <associate|auto-20|<tuple|3.3|?>>
+    <associate|auto-21|<tuple|3.4|?>>
     <associate|auto-3|<tuple|1.2|1>>
     <associate|auto-4|<tuple|1.3|2>>
     <associate|auto-5|<tuple|1.4|2>>
