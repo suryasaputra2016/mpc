@@ -32,7 +32,11 @@
     <item><math|a<rsup|3>+b<rsup|3>+c<rsup|3>-3*a*b*c=<around*|(|a+b+c|)>*<around*|(|a<rsup|2>+b<rsup|2>+c<rsup|2>-a*b-b*c-a*c|)>>
 
     <item><math|<around*|(|a+b|)><rsup|n>=<big|sum><rsub|i=0><rsup|n><around*|(|<tabular|<tformat|<table|<row|<cell|n>>|<row|<cell|i>>>>>|)>a<rsup|n-i>*b<rsup|i>>
+
+    <item><math|a<rsup|n>-b<rsup|n>=<around*|(|a-b|)>*<around*|(|<big|sum><rsub|i=0><rsup|n-1>a<rsup|n-1-i>*b<rsup|i>|)>>
   </itemize-dot>
+
+  \;
 </body>
 
 <\initial>
@@ -43,8 +47,7 @@
 
 <\references>
   <\collection>
-    <associate|auto-1|<tuple|1|1|..\\..\\Users\\Surya
-    Saputra\\AppData\\Roaming\\TeXmacs\\texts\\scratch\\no_name_7.tm>>
+    <associate|auto-1|<tuple|1|1>>
   </collection>
 </references>
 
@@ -52,7 +55,7 @@
   <\collection>
     <\associate|toc>
       <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|1<space|2spc>Some
-      Identities> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      Useful Identities> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-1><vspace|0.5fn>
     </associate>
   </collection>
