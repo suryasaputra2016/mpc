@@ -13,7 +13,7 @@
 
   <subsection|Definition>
 
-  In quadratiac equation, the terms are either constant term, linear term, or
+  In quadratic equation, the terms are either constant term, linear term, or
   another term containing <math|x<rsup|2>> with possible coefficient. In
   general the form of quadratic equations is as follows.
 
@@ -59,7 +59,7 @@
   </equation*>
 
   Then, we use a little observation. See that if we have two factors, say
-  <math|p> and <math|q>. And then we multiply them and get zero,
+  <math|p> and <math|q>. And then we multiply v my them and get zero,
   <math|p*q=0>. Then at least one of them must be zero. The same thing also
   applies for the equation above. It's either <math|x=0>, or <math|a*x+b=0>.
   The first alternative is clear, it's done. For the second one, we can solve
@@ -216,6 +216,56 @@
   solution, but if we have real solution it comes in pair, if you also count
   twin solutions as a pair.
 
+  <subsection|Factorization Method>
+
+  This is another method to solve the general case of quadratic equation. It
+  uses the following identities.
+
+  <\equation*>
+    <around*|(|x-p|)>*<around*|(|x-q|)>=x<rsup|2>-<around*|(|p+q|)>x+p*q
+  </equation*>
+
+  If we see the right hand side it's almost the same with general quadratic
+  equation, except that the quadratic coefficient is one. But that's not a
+  problem since we can always change any quadratic equation into that form.\ 
+
+  Moreover see that in the equation above <math|p> and <math|q> is the two
+  solutions we are going to solve. Just substitute one of them to <math|x>,
+  you will get zero.
+
+  Let's see, we first start with general form and then divide both sides by
+  <math|a>.
+
+  <\eqnarray*>
+    <tformat|<table|<row|<cell|a*x<rsup|2>+b*x+c>|<cell|=>|<cell|0>>|<row|<cell|<cfrac|a*x<rsup|2>+b*x+c|a>>|<cell|=>|<cell|<cfrac|0|a>>>|<row|<cell|<cfrac|a|a>*x<rsup|2>+<cfrac|b|a>*x+<cfrac|c|a>>|<cell|=>|<cell|0>>|<row|<cell|x<rsup|2>+<cfrac|b|a>x+<cfrac|c|a>>|<cell|=>|<cell|0>>>>
+  </eqnarray*>
+
+  Now, see that <math|p+q=-<cfrac|b|a>> and <math|p*q=<cfrac|c|a>>. To find
+  <math|p> and <math|q>, we write them as <math|p=-<cfrac|b|2a>+D> and
+  <math|q=-<cfrac|b|2a>-D> which we can do, since <math|>their sum is
+  <math|-<cfrac|b|a>>. Now we can find <math|D> and from it we can find the
+  solutions.
+
+  To find D, we multiply the solutions.
+
+  <\eqnarray*>
+    <tformat|<table|<row|<cell|p*q>|<cell|=>|<cell|<cfrac|c|a>>>|<row|<cell|<around*|(|-<cfrac|b|2*a>+D|)><around*|(|-<cfrac|b|2*a>-D|)>*<rsub|>>|<cell|=>|<cell|<cfrac|c|a>>>|<row|<cell|<around*|(|-<cfrac|b|2*a>|)><rsup|2>-D<rsup|2>*<rsub|>>|<cell|=>|<cell|<cfrac|c|a>>>|<row|<cell|<cfrac|b<rsup|2>|4*a>-D<rsup|2>>|<cell|=>|<cell|<cfrac|c|a>>>|<row|<cell|-D<rsup|2>>|<cell|=>|<cell|<cfrac|c|a>-<cfrac|b<rsup|2>|4*a>>>|<row|<cell|D<rsup|2>>|<cell|=>|<cell|<cfrac|b<rsup|2>|4
+    a>-<cfrac|c|a>>>|<row|<cell|D<rsup|2>>|<cell|=>|<cell|<cfrac|b<rsup|2>-4*a*c|4*a<rsup|<rsup|2>>>>>|<row|<cell|D>|<cell|=>|<cell|\<pm\><sqrt|<cfrac|b<rsup|2>-4*a*c|4*a<rsup|<rsup|2>>>>>>>>
+  </eqnarray*>
+
+  Then our two solutions. <math|p> and <math|q>, has the following form.
+
+  \;
+
+  <\equation*>
+    <tabular*|<tformat|<table|<row|<cell|x>|<cell|=>|<cell|<cfrac|-b\<pm\>
+    <sqrt|b<rsup|2>-4*a*c>|2*a>>>>>>
+  </equation*>
+
+  \ It's the same with the previous form.
+
+  \;
+
   \;
 
   \;
@@ -229,20 +279,14 @@
 
 <\references>
   <\collection>
-    <associate|auto-1|<tuple|1|1|..\\..\\Users\\Surya
-    Saputra\\AppData\\Roaming\\TeXmacs\\texts\\scratch\\no_name_7.tm>>
-    <associate|auto-2|<tuple|1.1|1|..\\..\\Users\\Surya
-    Saputra\\AppData\\Roaming\\TeXmacs\\texts\\scratch\\no_name_7.tm>>
-    <associate|auto-3|<tuple|1.2|1|..\\..\\Users\\Surya
-    Saputra\\AppData\\Roaming\\TeXmacs\\texts\\scratch\\no_name_7.tm>>
-    <associate|auto-4|<tuple|1.3|2|..\\..\\Users\\Surya
-    Saputra\\AppData\\Roaming\\TeXmacs\\texts\\scratch\\no_name_7.tm>>
-    <associate|auto-5|<tuple|1.4|2|..\\..\\Users\\Surya
-    Saputra\\AppData\\Roaming\\TeXmacs\\texts\\scratch\\no_name_7.tm>>
-    <associate|auto-6|<tuple|1.5|3|..\\..\\Users\\Surya
-    Saputra\\AppData\\Roaming\\TeXmacs\\texts\\scratch\\no_name_7.tm>>
-    <associate|auto-7|<tuple|1.6|4|..\\..\\Users\\Surya
-    Saputra\\AppData\\Roaming\\TeXmacs\\texts\\scratch\\no_name_7.tm>>
+    <associate|auto-1|<tuple|1|1>>
+    <associate|auto-2|<tuple|1.1|1>>
+    <associate|auto-3|<tuple|1.2|1>>
+    <associate|auto-4|<tuple|1.3|2>>
+    <associate|auto-5|<tuple|1.4|2>>
+    <associate|auto-6|<tuple|1.5|3>>
+    <associate|auto-7|<tuple|1.6|4>>
+    <associate|auto-8|<tuple|1.7|4>>
   </collection>
 </references>
 
@@ -276,6 +320,10 @@
       <with|par-left|<quote|1tab>|1.6<space|2spc>The ABC Formula
       <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-7>>
+
+      <with|par-left|<quote|1tab>|1.7<space|2spc>Factorization Method
+      <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-8>>
     </associate>
   </collection>
 </auxiliary>
