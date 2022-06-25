@@ -169,6 +169,370 @@
   We can also define the intersection of all sets in \<frak-F\>,
   <math|<big|cap><rsub|A\<in\> \<frak-F\>>A>.
 
+  <section|Axiom of Real Number>
+
+  <subsection|The field axioms>
+
+  Along with the set of real number <math|\<bbb-R\>> we have two operations,
+  addition <math|+> and multiplication <math|\<cdot\>> that form the sum and
+  product of two real numbers which are also real numbers.
+
+  <\enumerate>
+    <item>Commutativity for addition and multiplication
+
+    <\wide-tabular>
+      <tformat|<cwith|1|1|1|-1|cell-halign|c>|<table|<row|<\cell>
+        <math|a+b=b+a>
+      </cell>|<\cell>
+        <math|a\<cdot\>b=b\<cdot\>a>
+      </cell>>>>
+    </wide-tabular>
+
+    <item>Associativity for addition and multiplication
+
+    <\wide-tabular>
+      <tformat|<cwith|1|1|1|-1|cell-halign|c>|<table|<row|<\cell>
+        <math|a+<around*|(|b+c|)>=<around*|(|a+b|)>+c>
+      </cell>|<\cell>
+        <math|a\<cdot\><around*|(|b\<cdot\>c|)>=<around*|(|a\<cdot\>b|)>\<cdot\>c>
+      </cell>>>>
+    </wide-tabular>
+
+    <item>Distributivity
+
+    <\equation*>
+      a\<cdot\><around*|(|b+c|)>=a\<cdot\>b+a\<cdot\>c
+    </equation*>
+
+    <item>Additional and Multiplicative identity 0 and 1.
+
+    <\wide-tabular>
+      <tformat|<cwith|1|1|1|-1|cell-halign|c>|<table|<row|<\cell>
+        <math|a+0=0+a=a>
+      </cell>|<\cell>
+        <math|a\<cdot\>1=1\<cdot\>a=a>
+      </cell>>>>
+    </wide-tabular>
+
+    <item>Existence of negative and reciprocal for all numbers and nonzero
+    numbers
+
+    <\wide-tabular>
+      <tformat|<cwith|1|1|1|-1|cell-halign|c>|<table|<row|<\cell>
+        <math|a+<around*|(|-a|)>=0>
+      </cell>|<\cell>
+        <math|a\<cdot\>a<rsup|-1>=1>
+      </cell>>>>
+    </wide-tabular>
+  </enumerate>
+
+  From the axiom above, we can derive many properties including the
+  following.
+
+  <\enumerate>
+    <item>cancellation law for addition
+
+    <item>subtraction: <math|a-b=a+<around*|(|-b|)>>
+
+    <item><math|-<around*|(|-a|)>=a>
+
+    <item><math|a*<around*|(|b+c|)>=a*b+a*c>
+
+    <item><math|0\<cdot\>a=a\<cdot\>0=0>
+
+    <item>cancellation law for multiplicati^on
+
+    <item>division <math|a/b=a\<cdot\>b<rsup|-1> > for <math|b\<neq\>0>
+
+    <item><math|<around*|(|a<rsup|-1>|)><rsup|-1>=a>
+
+    <item><math|a\<cdot\>b=0\<Rightarrow\>a=0\<vee\>b=0>
+
+    <item><math|<around*|(|-a|)>\<cdot\>b=-<around*|(|a\<cdot\>b|)>>,
+    <math|<around*|(|-a|)>\<cdot\><around*|(|-b|)>=a\<cdot\>b>
+
+    <item><math|<around*|(|a/b|)>+<around*|(|c/d|)>=<around*|(|a*d+b*c|)>/<around*|(|b*d|)>>
+    for <math|b\<neq\>0>, <math|d\<neq\>0>
+
+    <item><math|<around*|(|a/b|)>*<around*|(|c/d|)>=<around*|(|a*d|)>/<around*|(|b*c|)>>
+
+    <item><math|-0=0>
+
+    <item><math|1<rsup|-1>=1>
+
+    <item><math|-<around*|(|a+b|)>=-a-b>
+
+    <item><math|-<around*|(|a-b|)>=-a+b>
+
+    <item><math|<around*|(|a*b|)><rsup|-1>=a<rsup|-1>*b<rsup|-1>>
+  </enumerate>
+
+  <subsection|The order axioms>
+
+  There exists a set of positive numbers <math|P\<subset\>\<bbb-R\>> such
+  that\ 
+
+  <\enumerate>
+    <item>Trichotomy: for all real numbers <math|x> exactly one of the
+    following applies
+
+    <\enumerate>
+      <item><math|x\<in\> P>
+
+      <item><math|x=0>
+
+      <item><math|-x\<in\> P>
+    </enumerate>
+
+    <item>Closure under<nbsp>addition and multiplication
+
+    For <math|a,b\<in\> P> then <math|a+b\<in\> P> and <math|a\<cdot\>b\<in\>
+    P>
+  </enumerate>
+
+  Some definition.
+
+  <\enumerate>
+    <item><math|x\<less\>y> means <math|y-x\<in\> P>
+
+    <item><math|x\<gtr\>y> means <math|y\<less\>x>
+
+    <item><math|x\<leqslant\>y> means <math|x\<less\>y> or <math|x=y>
+
+    <item><math|x\<geqslant\>y> means <math|x\<gtr\>y> or <math|x=y>
+  </enumerate>
+
+  Using the additional axioms we can prove the following properties.
+
+  <\enumerate>
+    <item>For two number <math|a,b> one of the following applies,
+    <math|a\<gtr\>b>, <math|a=b>, <math|a\<less\>b>
+
+    <item><math|a\<less\>b>, <math|b\<less\>c> then <math|a\<less\>c>
+
+    <item><math|a\<less\>b> then <math|a+c\<less\>b+c>
+
+    <item><math|a\<less\>b> and <math|c\<gtr\>0> then <math|a*c\<less\>b*c>
+
+    <item><math|a\<less\>b> and <math|c\<less\>0> then <math|a*c\<gtr\>b*c>
+
+    <item><math|a\<neq\>0> then <math|a<rsup|2>\<gtr\>0> in particular
+    <math|1\<gtr\>0>
+
+    <item><math|a\<less\>b> then <math|-a\<less\>-b> in particular
+    <math|0\<less\>a> then <math|-a\<less\>0>
+
+    <item><math|a*b\<gtr\>0> then both positive or both negative
+
+    <item><math|a\<less\>c> and <math|b\<less\>d> then <math|a+b\<less\>c+d>
+
+    <item>No real number <math|x> such that <math|x<rsup|2>+1=0>
+
+    <item>sum of two negatives is negative
+
+    <item><math|a\<gtr\>0> then <math|a<rsup|-1>\<gtr\>0> and if
+    <math|a\<less\>0> then <math|a<rsup|-1>\<less\>0>
+
+    <item><math|0\<less\>a\<less\>b> then
+    <math|0\<less\>b<rsup|-1>\<less\>a<rsup|-1>>
+
+    <item><math|a\<leqslant\>b>, <math|b\<leqslant\>c> and <math|a=c> then
+    <math|b=a=c>
+
+    <item>There is no maximum real number
+
+    <item><math|0\<leqslant\>x\<less\>h> for all real number <math|h> then
+    <math|x=0>
+  </enumerate>
+
+  <subsection|Integer, rational numbers, etc>
+
+  A subset of real number called natural numbers <math|\<bbb-N\>> starts from
+  <math|1>, which is guaranted by axiom, and then <math|1+1=2>, then
+  <math|1+2 =3>, etc. <math|\<bbb-N\>=<around*|{|1,2,3\<ldots\>|}>>. The
+  precise definition is as follows.
+
+  First, we call a set inductive if it contains 1 and if it contains <math|x>
+  it also contains <math|x+1>. Now natural numbers are intersections of all
+  inductive sets in the real numbers.
+
+  Integer, the negative of integers and zero form a set of numbers called
+  integers <math|\<bbb-Z\>>, <math|\<bbb-Z\>=<around*|{|\<ldots\>,-2,-1,0,1,2,\<ldots\>|}>>.
+  It's closed under addition, subtraction, and multiplication, but not
+  division. Closed means the result of operation of two numbers in the set is
+  also includes in the set
+
+  The quetient of integers are called rational numbers <math|\<bbb-Q\>>.
+  <math|\<bbb-Q\>=<around*|{|<dfrac|a|b>\|a,b\<in\> \<bbb-Z\>,b\<neq\>0|}>>.
+  Rational numbers is closed under four mathematics operations. Because it
+  satisfies all field and order axioms, it is called ordered field. Also, it
+  includes integers in it. Real numbers not in <math|\<bbb-Q\>> is called
+  irrational.
+
+  Real numers can be represented in the real line.
+
+  <with|gr-mode|<tuple|group-edit|move>|gr-frame|<tuple|scale|1cm|<tuple|0.5gw|0.5gh>>|gr-geometry|<tuple|geometry|1par|0.6par>|gr-grid|<tuple|cartesian|<point|0|0>|1>|gr-grid-old|<tuple|cartesian|<point|0|0>|1>|gr-edit-grid-aspect|<tuple|<tuple|axes|none>|<tuple|1|none>|<tuple|10|none>>|gr-edit-grid|<tuple|cartesian|<point|0|0>|1>|gr-edit-grid-old|<tuple|cartesian|<point|0|0>|1>|gr-arrow-begin|\<less\>|gr-line-width|2ln|gr-auto-crop|true|<graphics||<with|line-width|2ln|arrow-end|\<gtr\>|arrow-begin|\<less\>|<line|<point|-7|0>|<point|7.0|0.0>>>|<point|0|0>|<point|2|0>|<point|4|0>|<point|6|0>|<point|-2|0>|<point|-4|0>|<point|-6|0>|<math-at|0|<point|-0.182431538563302|-0.413665828813335>>|<math-at|1|<point|2.00000661463156|-0.400009921947347>>|<math-at|2|<point|4.00000992194735|-0.400009921947347>>|<math-at|3|<point|6.00000992194735|-0.400009921947347>>|<math-at|-1|<point|-2.19999007805265|-0.400009921947347>>|<math-at|-2|<point|-4.19999007805265|-0.400009921947347>>|<math-at|-3|<point|-6.2|-0.4>>>>
+
+  On the line, 0 and 1 determines the scale and direction of the line. Each
+  real numbers corresponds to a point on this line. the greatear the number
+  the more on the right the number is. The line is helpful but not to be used
+  in a proof.
+
+  Upper bound <math|B> of a set <math|S> is a number such that for all
+  <math|x\<in\> S>, <math|x\<leqslant\>B>. Here <math|S> is said to be
+  bounded above by <math|B>, and if <math|B> is also in <math|S> then
+  <math|B> is the maximum element or <math|B=max <around*|(|S|)>>.
+
+  Least upper bound or supremum of set <math|S>, <math|sup <around*|(|S|)>>
+  is an upperbound of <math|S> but no other upperbound of <math|S> is less
+  than <math|sup <around*|(|S|)>>. If <math|S> has maximum element then it is
+  the least upper bound, if it doesn't have but bounded above it still have
+  least upper bound. We can prove that least upperbound of a set is unique.
+
+  \ Here the last axiom of real numbers.
+
+  <\enumerate>
+    <item>Every nonempty bounded above subset of real numbers have supremum.
+  </enumerate>
+
+  We can also define the greatest lower bound or infimum of a set <math|S>,
+  <math|inf <around*|(|S|)>>, which is a lower bound of the set but no other
+  lower bound is greater than it.
+
+  From the axiom we can prove the followings.
+
+  <\enumerate>
+    <item>Every nonempty bounded below subset of real numbers have infimum.
+
+    <item>Set of all numbers of the form <math|<around*|(|1+1/n|)><rsup|n>>
+    for natural number <math|n> has supremum.
+  </enumerate>
+
+  We can prove that the set of natural numbers is unbounded above. Because
+  say we have upper bound for the set, let <math|B> the least upper bound
+  then <math|B-1> is not an upper bound so there is a natural number
+  <math|n\<gtr\>B-1> but then <math|n+1> is also a natural number and it is
+  greater than <math|B>. We have a contradiction.
+
+  Thus for every real number <math|x> there is a natural number
+  <math|n\<gtr\>x>. In particular for <math|x\<gtr\>0> and <math|y> arbitrary
+  real number, there is a natural number <math|n>, such that
+  <math|n*x\<gtr\>y>. It is called the archimedean property of real number.
+
+  We can use the property to prove that for <math|a,x,y\<in\> \<bbb-R\>> and
+  we have for all natural number <math|n>
+
+  <\equation*>
+    a\<leqslant\>x\<leqslant\>a+<dfrac|y|n>
+  </equation*>
+
+  then <math|x=a>. Since if <math|x\<gtr\>a> we have
+  <math|n*<around*|(|x-a|)>\<leqslant\>y> for all <math|n> violating the
+  archimedean principle.
+
+  Below is some properties regarding supremum and infimum.
+
+  <\enumerate>
+    <item>For <math|S> nonempty, bounded above, there is <math|x\<in\> S>
+    such that <math|x\<gtr\>sup<around*|(|S|)>-h>
+
+    <item>For <math|S> nonempty, bounded below, there is <math|x\<in\> S>
+    such that <math|x\<less\>inf<around*|(|S|)>+h>
+
+    <item>For <math|C=<around*|{|a+b\|a\<in\> A,b\<in\> B|}>> we have
+    <math|sup <around*|(|C|)>=sup <around*|(|A|)>+sup <around*|(|B|)>>
+
+    For all <math|a,b> <math|sup <around*|(|A|)>+sup
+    <around*|(|B|)>\<geqslant\>a+b> therefore <math|sup <around*|(|A|)>+sup
+    <around*|(|B|)>> is an upperbound for <math|C> hence <math|sup
+    <around*|(|A|)>+sup <around*|(|B|)>\<geqslant\>sup <around*|(|C|)>>.
+
+    There is <math|a,b> such for any integer <math|n\<gtr\>0> such that
+    <math|sup<around*|(|A|)>-<frac|1|n>\<less\>a> and <math|sup
+    <around*|(|B|)>-<frac|1|n>\<less\>b> then <math|sup
+    <around*|(|A|)>+sup<around*|(|B|)>\<less\>a+b+<frac|2|n>\<leqslant\>sup<around*|(|C|)>+<frac|2|n>>,
+    therefore <math|sup<around*|(|C|)>\<leqslant\>sup <around*|(|A|)>+sup
+    <around*|(|B|)>\<leqslant\>sup <around*|(|C|)>+<frac|2|n>>for all
+    <math|n>. Hence <math|sup <around*|(|C|)>=sup <around*|(|A|)>+sup
+    <around*|(|B|)>>.
+
+    <item>For <math|C=<around*|{|a+b\|a\<in\> A,b\<in\> B|}>> we have
+    <math|inf <around*|(|C|)>=inf <around*|(|A|)>+inf <around*|(|B|)>>
+
+    <item>For two nonempty set <math|S,T> so that for every
+    <math|s\<in\>S,t\<in\> T> we have <math|s\<leqslant\>t> then <math|sup
+    <around*|(|s|)>\<leqslant\>inf <around*|(|t|)>>
+
+    <math|t>'s are upperbounds for <math|S>, so <math|sup
+    <around*|(|S|)>\<leqslant\>t> for all <math|t>, hence <math|sup
+    <around*|(|S|)>> is a lower bound for <math|t>, therefore <math|sup
+    <around*|(|S|)>\<leqslant\>inf <around*|(|T|)>>
+
+    \ <item>For two real numbers <math|x\<less\>y> there is <math|z> such
+    that <math|x\<less\>z\<less\>y>.
+
+    <item>For arbitrary real numbers <math|x> there is two integers
+    <math|m,n> such that <math|m\<less\>x\<less\>n>
+
+    <item>For <math|x\<gtr\>0> there is natural numbers <math|n> such that
+    <math|1/n\<less\>x>
+
+    <item>For arbitrary real number <math|x>, there is integer <math|n> such
+    that <math|n\<leqslant\>x\<less\>n+1>, <math|n > is called the greatest
+    integer in <math|x> and written as <math|<around*|\<lfloor\>|x|\<rfloor\>>>.
+
+    Consider the set of integers greater than <math|x>, it is non empty since
+    integers are unbounded above. Then it has the minimum element, let's call
+    it <math|n+1>, therefore we have <math|n\<less\>x\<less\>n+1>.
+
+    <item>For two arbitrary real numbers <math|x\<less\>y> there is rational
+    number <math|r> such that <math|x\<less\>r\<less\>y>.
+
+    First, we show that if <math|y<rprime|'>-x<rprime|'>>\<gtr\>1 then there
+    is an integer <math|k> such that <math|x<rprime|'>\<less\>p\<less\>y<rprime|'>>.
+    First consider set of integer greater than <math|x<rprime|'>>. It's
+    nonempty, so let's call it's minimum <math|k>, then
+    <math|x<rprime|'>\<less\>p> and \ <math|p-1\<less\>x<rprime|'>> hence
+    <math|p\<less\>x<rprime|'>+1\<less\>y<rprime|'>>. Therefore
+    <math|x<rprime|'>\<less\>p\<less\>y<rprime|'>>.
+
+    Next, we have <math|y-x\<gtr\>0> hence by Archimedean property there is a
+    natural number <math|q> such that <math|q*<around*|(|y-x|)>=q*y-q*x\<gtr\>1>.
+    Thus there is an integer <math|p> such that
+    <math|q*x\<less\>p\<less\>q*y>.therefore
+    <math|x\<less\><dfrac|p|q>\<less\>y>.
+
+    <item>For two arbitrary real numbers <math|x\<less\>y> there is
+    irrational number <math|z> such that <math|x\<less\>z\<less\>y>.
+
+    Define <math|x<rprime|'>=x+<sqrt|2>> and <math|y<rprime|'>=y+<sqrt|2>>.
+    Then by the previous number there is rational numbers between
+    <math|x<rprime|'>> and <math|y'> let's call it <math|m>. Thus,
+    <math|m+<sqrt|2> >is irrational numbers between <math|x> and <math|y>.
+
+    <item>Rational numbers satifes archimedean property of number
+
+    for <math|r>, <math|p\<gtr\>0> rational numbers there is a natural number
+    <math|n> such that <math|n*p\<gtr\>r.> Proof. say there is no natural
+    number then for all natural number <math|n>, we have
+    <math|n\<leqslant\>r/p>. But natural number is unbounded from above,
+    therefore we have contradiction.
+
+    \;
+  </enumerate>
+
+  \;
+
+  \;
+
+  \;
+
+  \ \ 
+
+  \ 
+
+  \;
+
   \;
 
   \;
@@ -186,6 +550,11 @@
   <\collection>
     <associate|auto-1|<tuple|1|1>>
     <associate|auto-2|<tuple|2|3>>
+    <associate|auto-3|<tuple|3|?>>
+    <associate|auto-4|<tuple|3.1|?>>
+    <associate|auto-5|<tuple|3.2|?>>
+    <associate|auto-6|<tuple|3.3|?>>
+    <associate|auto-7|<tuple|1|?>>
   </collection>
 </references>
 
