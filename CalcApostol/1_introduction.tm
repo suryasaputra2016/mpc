@@ -517,9 +517,238 @@
     number then for all natural number <math|n>, we have
     <math|n\<leqslant\>r/p>. But natural number is unbounded from above,
     therefore we have contradiction.
-
-    \;
   </enumerate>
+
+  <subsection|Root>
+
+  We see that <math|x<rsup|2>=2> has no solution in rational numbers. But in
+  real numbers equation of the form <math|x<rsup|2>=a> has a solution as long
+  as <math|a\<geqslant\>0>. If <math|a=0> then <math|x=0>, if
+  <math|a\<gtr\>0> then there are two solution, because if <math|y<rsup|2>=a>
+  then <math|x<rsup|2>=y<rsup|2>\<Rightarrow\>x<rsup|2>-y<rsup|2>=0\<Rightarrow\><around*|(|x+y|)>*<around*|(|x-y|)>=0>.
+  That is both <math|y> and <math|-y> is the root of <math|a>.
+
+  Every nonnegative real number <math|a> has a unique nonnegative squareroot
+  that we write as <math|<sqrt|a>>. Let's see the proof.
+
+  If <math|a=0\<Rightarrow\><sqrt|a>=0>.
+
+  If <math|a\<gtr\>0> then define <math|A=<around*|{|x\|x<rsup|2>\<less\>a|}>>.
+  The set <math|A> is bounded from above by <math|1+a> since
+  <math|<around*|(|1+a|)><rsup|2>\<gtr\>a>. Also, <math|A> is nonempty
+  because <math|a/<around*|(|1+a|)>> is in <math|A>, see that
+  <math|<around*|(|1+a|)><rsup|2>\<gtr\>a> hence
+  <math|<around*|(|1+a|)><rsup|2>*a\<gtr\>a<rsup|2>> therefore
+  <math|a\<gtr\><around*|(|a/<around*|(|1+a|)>|)><rsup|2>>. Therefore
+  <math|A> has supremum <math|b>
+
+  Next we prove that <math|b<rsup|2>=a>. If <math|b<rsup|2>\<gtr\>a> then let
+  <math|c=b-<around*|(|b<rsup|2>-a|)>/<around*|(|2b|)>>. Then
+  <math|c\<less\>b> but <math|c<rsup|2>\<gtr\>a> hence <math|c\<gtr\>x> for
+  all <math|x\<in\> A>. <math|b > is not the least upper bound. If
+  <math|b<rsup|2>\<less\>a>, let <math|c\<less\>b> and
+  <math|c\<less\><around*|(|a-b<rsup|2>|)>/<around*|(|3b|)>>. Then
+  <math|<around*|(|b+c|)><rsup|2>\<less\>a> so <math|b\<less\>b+c\<in\>A >.
+  <math|b> is not an upper bound. Thus <math|b<rsup|2>=a> and
+  <math|<sqrt|a>\<equiv\>b>. End of proof.
+
+  The least upper bound axiom can also be used to proof the existence of
+  higher order root. For <math|n> odd for example for all <math|x> real
+  numbers, there is one real number <math|y> such that <math|y<rsup|n>=x>.
+  For <math|n> even then <math|x> must be nonnegative and if it is it has the
+  positive roots and negative roots <math|y> and <math|-y>, because
+  <math|y<rsup|n>=<around*|(|-y|)><rsup|n>=x>. We<space|1em>define
+  <math|<sqrt|x|n>> as positive real roots for even <math|n>. As additional
+  information <math|a<rsup|<frac|m|n>>=<sqrt|a<rsup|m>|n>> and
+  <math|a<rsup|-n>=1/a<rsup|m>>.
+
+  <subsection|Decimals>
+
+  Real number <math|r> can be written as <math|r=a<rsub|0>.a<rsub|1>a<rsub|2>a<rsub|3>\<ldots\>a<rsub|n>>
+  where <math|0\<leqslant\>a<rsub|i>\<leqslant\>9> and <math|a<rsub|i>\<in\>
+  \<bbb-Z\>>. The value is equivalent to the following.
+
+  <\equation*>
+    r=a<rsub|0>+<dfrac|a<rsub|1>|10>+<dfrac|a<rsub|2>|10<rsup|2>>+\<cdots\>+<dfrac|a<rsub|n>|10<rsup|n>>
+  </equation*>
+
+  The form is called finite decimal representation, and examples includes
+  0.5, 0.02, 7.25. All numbers of this form is rational. But some rational
+  like <math|1/3> cannot be written in this form.\ 
+
+  But any real number can be approximated uisng this form and the accuracy
+  can be tweaked by choosing <math|n>. Any number <math|x> is located between
+  two consecutive integers <math|a<rsub|0>\<less\>x\<less\>a<rsub|0>+1>. We
+  then subdivide the segment into 10 equal parts and the integer is inside
+  one of the segment <math|a<rsub|0>+<dfrac|a<rsub|1>|10>\<less\>x\<less\>a<rsub|0>+<dfrac|a<rsub|1>+1|10>>.
+  We can repeat the process <math|n> times and get the following.
+
+  <\equation*>
+    a<rsub|0>+<dfrac|a<rsub|1>|10>+<dfrac|a<rsub|2>|10<rsup|2>>+\<cdots\>+<dfrac|a<rsub|n>|10<rsup|n>>\<leqslant\>x\<leqslant\>a<rsub|0>+<dfrac|a<rsub|1>|10>+<dfrac|a<rsub|2>|10<rsup|2>>+\<cdots\>+<dfrac|a<rsub|n>+1|10<rsup|n>>
+  </equation*>
+
+  The length of the interval is <math|10<rsup|-n>>, so if <math|n> is large
+  enough we can be as accurate as possible. Using that we actually have
+  <math|1/3=0.3333\<ldots\>> and all ral numbers can be said to have infinite
+  decimal representations. The process is also called the sequence of nested
+  intervals.
+
+  The decimal expansion is actually defined by the axiom of least upper
+  bound. Now consider the set <math|S=<around*|{|a<rsub|0>,a<rsub|0>.a<rsub|1>,a<rsub|0>.a<rsub|1>a<rsub|2>,\<ldots\>|}>>
+  with the condition above. Then <math|x> is actually the supremum of
+  <math|S>. For example if <math|x=1/8> then <math|x=0.12500\<ldots\>>. If we
+  change the inequalities with strict inequality we get
+  <math|x=0.124999\<ldots\>> But <math|x> is still the supremum of <math|S>.
+  Hence a real number can have two different decimal representation.
+
+  <section|Mathematical Induction>
+
+  Principle of Mathematical Induction. Let <math|S> be a subset of natural
+  number that
+
+  <\enumerate>
+    <item><math|a\<in\> S>
+
+    <item>if <math|k\<in\> S> then <math|k+1\<in\> S>
+  </enumerate>
+
+  Well orderding principle. Nonempty subset of natural number contains the
+  least element. Well ordering principle can be derived from mathematical
+  induction. Also vice versa. But first let's proof the followings using well
+  ordering principle.
+
+  <\equation*>
+    1<rsup|2>+2<rsup|2>+\<cdots\>+<around*|(|n-1|)><rsup|2>\<leqslant\><dfrac|n<rsup|3>|3>\<leqslant\>1<rsup|2>+2<rsup|2>+\<cdots\>+n<rsup|2>
+  </equation*>
+
+  Define <math|S> the set of natural number that don't satisfy the
+  inequality. Note that 1 is not in <math|S> since it satisfies the
+  inequality, we can check. Say <math|S > is nonempty this it has its
+  smallest member <math|k>. Hence <math|k-1> satisfies the inequality since
+  it's not in <math|S>. But if <math|k-1> satisfies the inequality <math|k>
+  also satisfies the inequality, the proof is skipped. Hence we have a
+  contradiction. <math|S> is empty and the inequality applies for all natural
+  numbers.
+
+  Let's proof the following using induction
+
+  <\enumerate>
+    <item><math|1-4+9-16+\<cdots\>\<pm\>n<rsup|2>=<around*|(|-1|)><rsup|n+1>*<around*|(|1+2+\<cdots\>+n|)>>
+
+    Base case: <math|1=<around*|(|-1|)><rsup|2>*1>
+
+    Assume <math|1-\<cdots\>-<around*|(|2k|)><rsup|2>=-<around*|(|1+\<cdots\>+2k|)>>
+
+    Then <math|1-\<cdots\>-<around*|(|2k|)><rsup|2>+<around*|(|2k+1|)><rsup|2>=-<around*|(|1+\<cdots\>+2k|)>+<around*|(|2k+1|)><rsup|2>>
+
+    <\eqnarray*>
+      <tformat|<table|<row|<cell|1-\<cdots\>-<around*|(|2k|)><rsup|2>+<around*|(|2k+1|)><rsup|2>>|<cell|=>|<cell|-<around*|(|1+\<cdots\>+2k|)>+<around*|(|2k+1|)><rsup|2>>>|<row|<cell|>|<cell|=>|<cell|-<dfrac|2k*<around*|(|2k+1|)>|2>+<around*|(|2k+1|)>*<around*|(|2k|)>+2k+1>>|<row|<cell|>|<cell|=>|<cell|<dfrac|2k*<around*|(|2k+1|)>|2>+<around*|(|2k+1|)>>>|<row|<cell|>|<cell|=>|<cell|1+2+\<cdots\>+<around*|(|2k+1|)>>>>>
+    </eqnarray*>
+
+    It also works for <math|2k+1>.
+
+    <item><math|1+<frac|1|2>+\<cdots\>+<frac|1|2<rsup|n>>=2-<frac|1|2<rsup|n>>>
+
+    <item><math|<around*|(|1-<frac|1|2>|)>*<around*|(|1-<frac|1|3>|)>*\<cdots\>**<around*|(|1-<frac|1|n>|)>=<frac|1|n>>
+
+    <item><math|<around*|(|1-<frac|1|4>|)>*<around*|(|1-<frac|1|9>|)>*\<cdots\>**<around*|(|1-<frac|1|n<rsup|2>>|)>=<dfrac|n+1|2n>>
+
+    <item><math|(1+x)<rsup|n>\<gtr\>1+n*x+n*x<rsup|2>> for <math|x\<gtr\>0>,
+    <math|n\<geqslant\>3>
+  </enumerate>
+
+  <section|Summation>
+
+  We can write summation notation using sigma.
+
+  <\equation*>
+    <big|sum><rsup|n><rsub|i=1>a<rsub|i>=a<rsub|1>+a<rsub|2>+\<cdots\>+a<rsub|n>
+  </equation*>
+
+  The notation can be defined more formally using recursion.
+
+  <\enumerate>
+    <item><math|<big|sum><rsub|i=1><rsup|1>a<rsub|i>=a<rsub|1>>
+
+    <item><math|<big|sum><rsub|i=1><rsup|k+1>a<rsub|i>=<big|sum><rsub|i=1><rsup|k>a<rsub|i>+a<rsub|k+1>>
+  </enumerate>
+
+  Summation is additive, homogeneous and telescoping.
+
+  <\enumerate>
+    <item><math|<big|sum><around*|(|a<rsub|i>+b<rsub|i>|)>=<big|sum>a<rsub|i>+<big|sum>b<rsub|i>>
+
+    <item><math|<big|sum>c*a<rsub|i>=c*<big|sum>c<rsub|i>>
+
+    <item><math|<big|sum><rsub|i=1><rsup|n>a<rsub|i>=a<rsub|n>-a<rsub|0>>
+  </enumerate>
+
+  Let's prove the formula
+
+  <\enumerate>
+    <item><math|<big|sum><rsub|k=1><rsup|2n><around*|(|-1|)><rsup|k>*<around*|(|2k+1|)>=2n>
+
+    <item><math|<big|sum><rsub|k=n+1><rsup|2n><dfrac|1|k>=<big|sum><rsub|m=1><rsup|2n><dfrac|<around*|(|-1|)><rsup|m+1>|m>>
+
+    <\eqnarray*>
+      <tformat|<table|<row|<cell|<big|sum><rsub|k=n+2><rsup|2n+2><dfrac|1|k>-<big|sum><rsub|k=n+1><rsup|2n><dfrac|1|k>>|<cell|=>|<cell|<dfrac|1|2n+2>+<dfrac|1|2n+1>-<dfrac|1|n+1>>>>>
+    </eqnarray*>
+
+    <\eqnarray*>
+      <tformat|<table|<row|<cell|<big|sum><rsub|m=1><rsup|2n+2><dfrac|<around*|(|-1|)><rsup|m+1>|m>-<big|sum><rsub|m=1><rsup|2n><dfrac|<around*|(|-1|)><rsup|m+1>|m>>|<cell|=>|<cell|-<dfrac|1|2n+2>+<dfrac|1|2n+1>>>>>
+    </eqnarray*>
+
+    <item><math|2*<around*|(|<sqrt|n+1>-<sqrt|n>|)>\<less\><dfrac|1|<sqrt|n>>\<less\>2*<around*|(|<sqrt|n>-<sqrt|n-1>|)>>for
+    <math|n\<geqslant\>1>
+
+    The right inequality (from bottom to top)
+
+    <\eqnarray*>
+      <tformat|<table|<row|<cell|<dfrac|1|<sqrt|n>>>|<cell|\<less\>>|<cell|2*<around*|(|<sqrt|n>-<sqrt|n-1>|)>>>|<row|<cell|1>|<cell|\<less\>>|<cell|2*<around*|(|n-<sqrt|n><sqrt|n-1>|)>>>|<row|<cell|2<sqrt|n><sqrt|n-1>>|<cell|\<less\>>|<cell|2n-1>>|<row|<cell|2n<around*|(|n-1|)>>|<cell|\<less\>>|<cell|4n<rsup|2>-4n+1>>|<row|<cell|2n<rsup|2>-2n>|<cell|\<less\>>|<cell|4n<rsup|2>-4n+1>>|<row|<cell|0>|<cell|\<less\>>|<cell|2n<rsup|2>-2n+1>>|<row|<cell|0>|<cell|\<less\>>|<cell|2<around*|(|n<rsup|2>-n+0.25|)>+0.5>>|<row|<cell|0>|<cell|\<less\>>|<cell|2<around*|(|n-0.5|)><rsup|2>+0.5>>>>
+    </eqnarray*>
+
+    The left inequality (from bottom to top)
+
+    <\eqnarray*>
+      <tformat|<table|<row|<cell|2*<around*|(|<sqrt|n+1>-<sqrt|n>|)>>|<cell|\<less\>>|<cell|<dfrac|1|<sqrt|n>>>>|<row|<cell|2<around*|(|<sqrt|n><sqrt|n+1>-n|)>>|<cell|\<less\>>|<cell|1>>|<row|<cell|2<sqrt|n><sqrt|n+1>>|<cell|\<less\>>|<cell|1+2n>>|<row|<cell|2n<around*|(|n+1|)>>|<cell|\<less\>>|<cell|4n<rsup|2>+4n+1>>|<row|<cell|2n<rsup|2>+2n>|<cell|\<less\>>|<cell|4n<rsup|2>+4n+1>>|<row|<cell|0>|<cell|\<less\>>|<cell|2n<rsup|2>+2n+1>>|<row|<cell|0>|<cell|\<less\>>|<cell|2<around*|(|n<rsup|2>+n+0.25|)>+0.5>>|<row|<cell|0>|<cell|\<less\>>|<cell|2<around*|(|n+0.5|)><rsup|2>+0.5>>>>
+    </eqnarray*>
+
+    <item><math|2<sqrt|m>-2\<less\><big|sum><rsub|n=1><rsup|m><dfrac|1|<sqrt|n>>\<less\>2<sqrt|m>-1>
+  </enumerate>
+
+  <section|Absolute Value>
+
+  Here's the definition of absolute value <math|<around*|\||x|\|>>.
+
+  <\equation*>
+    <around*|\||x|\|>=<around*|{|<tabular|<tformat|<cwith|1|-1|1|1|cell-halign|c>|<table|<row|<cell|x>|<cell|for
+    x\<geqslant\>0>>|<row|<cell|-x>|<cell|for x\<less\>0>>>>>|\<nobracket\>>
+  </equation*>
+
+  Note that <math|-<around*|\||x|\|>\<leqslant\>x\<leqslant\><around*|\||x|\|>>.
+
+  For <math|a\<gtr\>0>, <math|<around*|\||x|\|>\<less\>a\<Leftrightarrow\>-a\<leqslant\>x\<leqslant\>a>.
+
+  And for two numbers <math|<around*|\||x+y|\|>\<leqslant\><around*|\||x|\|>+<around*|\||y|\|>>
+
+  For arbitrary numbers <math|<around*|\||<big|sum>a<rsub|i>|\|>\<leqslant\><big|sum><around*|\||a<rsub|i>|\|>>
+
+  The Cauchy-Schwarz Inequality
+
+  <\equation*>
+    <around*|(|<big|sum>a<rsub|i>b<rsub|i>|)><rsup|2>\<leqslant\><around*|(|<big|sum>a<rsub|i><rsup|2>|)>*<around*|(|<big|sum>b<rsub|i><rsup|2>|)>
+  </equation*>
+
+  Let's prove it and find the condition of equality.
+
+  <\eqnarray*>
+    <tformat|<table|<row|<cell|<big|sum><around*|(|a<rsub|i>x+b<rsub|i>|)><rsup|2>>|<cell|\<geqslant\>>|<cell|0>>|<row|<cell|<around*|(|<big|sum>a<rsub|i><rsup|2>|)>x<rsup|2>+2<around*|(|<big|sum>a<rsub|i>*b<rsub|i>|)>x+<around*|(|<big|sum>b<rsub|i><rsup|2>|)>>|<cell|\<geqslant\>>|<cell|0>>|<row|<cell|<around*|[|2<around*|(|<big|sum>a<rsub|i>*b<rsub|i>|)>|]><rsup|2>>|<cell|\<leqslant\>>|<cell|4<around*|(|<big|sum>a<rsub|i><rsup|2>|)><around*|(|<big|sum>b<rsub|i><rsup|2>|)>>>|<row|<cell|<around*|(|<big|sum>a<rsub|i>*b<rsub|i>|)><rsup|2>>|<cell|\<leqslant\>>|<cell|<around*|(|<big|sum>a<rsub|i><rsup|2>|)><around*|(|<big|sum>b<rsub|i><rsup|2>|)>>>>>
+  </eqnarray*>
+
+  Equality occurs when the first expression equals 0. that is
+  <math|x=b<rsub|i>/a<rsub|i>> for all <math|i>'s.
+
+  \;
 
   \;
 
@@ -549,12 +778,17 @@
 <\references>
   <\collection>
     <associate|auto-1|<tuple|1|1>>
+    <associate|auto-10|<tuple|5|?>>
+    <associate|auto-11|<tuple|6|?>>
+    <associate|auto-12|<tuple|1|?>>
     <associate|auto-2|<tuple|2|3>>
-    <associate|auto-3|<tuple|3|?>>
-    <associate|auto-4|<tuple|3.1|?>>
-    <associate|auto-5|<tuple|3.2|?>>
-    <associate|auto-6|<tuple|3.3|?>>
-    <associate|auto-7|<tuple|1|?>>
+    <associate|auto-3|<tuple|3|4>>
+    <associate|auto-4|<tuple|3.1|4>>
+    <associate|auto-5|<tuple|3.2|5>>
+    <associate|auto-6|<tuple|3.3|6>>
+    <associate|auto-7|<tuple|3.4|8>>
+    <associate|auto-8|<tuple|3.5|8>>
+    <associate|auto-9|<tuple|4|9>>
   </collection>
 </references>
 
@@ -568,6 +802,34 @@
       <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|2<space|2spc>Set>
       <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-2><vspace|0.5fn>
+
+      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|3<space|2spc>Axiom
+      of Real Number> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-3><vspace|0.5fn>
+
+      <with|par-left|<quote|1tab>|3.1<space|2spc>The field axioms
+      <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-4>>
+
+      <with|par-left|<quote|1tab>|3.2<space|2spc>The order axioms
+      <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-5>>
+
+      <with|par-left|<quote|1tab>|3.3<space|2spc>Integer, rational numbers,
+      etc <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-6>>
+
+      <with|par-left|<quote|1tab>|3.4<space|2spc>Root
+      <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-7>>
+
+      <with|par-left|<quote|1tab>|3.5<space|2spc>Decimals
+      <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-8>>
+
+      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|4<space|2spc>Mathematical
+      Induction> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-9><vspace|0.5fn>
     </associate>
   </collection>
 </auxiliary>
