@@ -748,6 +748,50 @@
   Equality occurs when the first expression equals 0. that is
   <math|x=b<rsub|i>/a<rsub|i>> for all <math|i>'s.
 
+  <section|Some exercise>
+
+  Let's prove the followings
+
+  <\enumerate>
+    <item><math|<around*|(|1+<dfrac|1|n>|)><rsup|n>=1+<big|sum><rsub|k=1><rsup|n><around*|{|<dfrac|1|k!><big|prod><rsub|r=0><rsup|k-1><around*|(|1-<dfrac|r|n>|)>|}>>
+
+    <item><math|2\<less\><around*|(|1+<dfrac|1|n>|)><rsup|n>\<less\>1+><math|<big|sum><rsub|k=1><rsup|n><dfrac|1|k!>>\<less\>3
+
+    <item><math|n<rsup|p>\<less\><dfrac|<around*|(|n+1|)><rsup|p+1>-n<rsup|p+1>|p+1>\<less\><around*|(|n+1|)><rsup|p>>
+
+    <item><math|<big|sum><rsub|k=1><rsup|n-1>k<rsup|p>\<less\><dfrac|n<rsup|p+1>|p+1>\<less\><big|sum><rsub|k=1><rsup|n>k<rsup|p>>
+
+    <item><math|<big|prod><around*|(|1+a<rsub|i>|)>\<geqslant\>1+<big|sum>a<rsub|i>>
+    for <math|a<rsub|i>\<gtr\>-1>
+
+    <item><math|<around*|(|1+x|)><rsup|n>\<geqslant\>1+n*x> for
+    <math|n\<gtr\>1>, equality occurs only at <math|x=0>.
+
+    <item>p-th power mean <math|M<rsub|p>=<around*|(|<dfrac|x<rsub|1><rsup|p>+\<cdots\>+x<rsub|n><rsup|p>|n>|)><rsup|1/p>>,
+    <math|M<rsub|1>>is mean, <math|M<rsub|2>> is root mean square,
+    <math|M<rsub|-1>>is harmonic mean. For <math|p\<gtr\>0>,
+    <math|M<rsub|p>\<less\>M<rsub|2p>> (use Cauchy Schwarz)
+
+    <item><math|a<rsup|2>+b<rsup|2>+c<rsup|2>=8> then
+    <math|a<rsup|4>+b<rsup|4>+c<rsup|4>\<geqslant\><frac|64|3>>
+
+    <item><math|a<rsub|1>, a<rsub|2>,\<ldots\>a<rsub|n>> are positive real
+    numebrs whose product is 1. Then <math|<big|sum>a<rsub|i>\<geqslant\>n>
+    equality occurs only when all <math|a<rsub|i><rprime|'>s> equal to one.
+
+    <item><math|G=<sqrt|a<rsub|1>*a<rsub|2>*\<cdots\>*a<rsub|n>|n>\<leqslant\><dfrac|a<rsub|1>+a<rsub|2>+\<cdots\>+a<rsub|n>|n>>,
+    equality occurs only when all <math|a<rsub|i>>'s are identical.
+
+    <item>for <math|q\<less\>0\<less\>p> then
+    <math|M<rsub|q>\<less\>G\<less\>M<rsub|p>> when the <math|a<rsub|i>>'s
+    are not all equal.
+
+    <item><math|a*b*c=8> then <math|a+b+c\<geqslant\>6> and
+    <math|a*b+b*c+a*c\<geqslant\>12>
+
+    <item><math|a+b+c=1> then <math|<around*|(|1-a|)>*<around*|(|1-b|)>*<around*|(|1-c|)>\<geqslant\>8*a*b*c>
+  </enumerate>
+
   \;
 
   \;
@@ -778,9 +822,10 @@
 <\references>
   <\collection>
     <associate|auto-1|<tuple|1|1>>
-    <associate|auto-10|<tuple|5|?>>
-    <associate|auto-11|<tuple|6|?>>
-    <associate|auto-12|<tuple|1|?>>
+    <associate|auto-10|<tuple|5|10>>
+    <associate|auto-11|<tuple|6|11>>
+    <associate|auto-12|<tuple|7|?>>
+    <associate|auto-13|<tuple|1|?>>
     <associate|auto-2|<tuple|2|3>>
     <associate|auto-3|<tuple|3|4>>
     <associate|auto-4|<tuple|3.1|4>>
@@ -830,6 +875,14 @@
       <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|4<space|2spc>Mathematical
       Induction> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-9><vspace|0.5fn>
+
+      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|5<space|2spc>Summation>
+      <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-10><vspace|0.5fn>
+
+      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|6<space|2spc>Absolute
+      Value> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-11><vspace|0.5fn>
     </associate>
   </collection>
 </auxiliary>
