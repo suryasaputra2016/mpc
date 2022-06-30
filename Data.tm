@@ -266,6 +266,96 @@
     (upper-bound y)))))
   </scm-code>
 
+  <section|Hierarchy and Closure>
+
+  Pair can be used as universal building blocks of data structure. The
+  following shows a pair and list of 4 numbers in two different
+  representation.
+
+  <\scm-code>
+    (cons 1 2)
+
+    (cons (cons 1 2)
+
+    \ \ \ \ \ \ (cons 3 4))
+
+    (cons (cons 1
+
+    \ \ \ \ \ \ \ \ \ \ \ \ (cons 2 3))
+
+    \ \ \ \ \ \ 4)
+  </scm-code>
+
+  The ability to create pair containing pair is called closure property of
+  cons. Closure can be used to create hieararchy.\ 
+
+  <subsection|Sequence>
+
+  Sequence is ordered data. It can be represented by pairs whose car is the
+  item, and cdr is the next pair, except the last one. It is also called a
+  list
+
+  <\scm-code>
+    (cons 1 (cons 2 (cons 3 (cons 4 nil))))
+
+    (list 1 2 3 4)
+  </scm-code>
+
+  Here car chose the first item, cdr chose sublist of all but the first item.
+  Also cons adds the first item at the beginning of the second item.
+
+  Belos is a procedure that retrieve the n't element of a list.
+
+  <\scm-code>
+    (define (list-ref list n)
+
+    \ \ (if (= n 0)
+
+    \ \ \ \ \ \ (car list)
+
+    \ \ \ \ \ \ (list-ref (cdr list) (- n 1))))
+  </scm-code>
+
+  Here are two procedures to find the length of a list.
+
+  <\scm-code>
+    (define (length list)
+
+    \ \ (if (null? list)
+
+    \ \ \ \ \ \ 0
+
+    \ \ \ \ \ \ (+ 1 length (cdr list))))
+  </scm-code>
+
+  <\scm-code>
+    (define (length list)
+
+    \ \ (define (iter list n)
+
+    \ \ \ \ (if (null? list)
+
+    \ \ \ \ \ \ \ \ n
+
+    \ \ \ \ \ \ \ \ (iter (cdr list) (+ n 1))))
+
+    \ \ (iter list 0))
+  </scm-code>
+
+  Here is to append two lists.
+
+  <\scm-code>
+    (define (append list1 list2)
+
+    \ \ (if (null? list1)
+
+    \ \ \ \ \ \ list2
+
+    \ \ \ \ \ \ (append (car list1) (append (cdr list1) list2))))
+  </scm-code>
+
+  \;
+
   \;
 
   \;
@@ -293,7 +383,9 @@
     <associate|auto-2|<tuple|1.1|1>>
     <associate|auto-3|<tuple|1.2|2>>
     <associate|auto-4|<tuple|1.3|3>>
-    <associate|auto-5|<tuple|1.4|?>>
+    <associate|auto-5|<tuple|1.4|3>>
+    <associate|auto-6|<tuple|2|?>>
+    <associate|auto-7|<tuple|2.1|?>>
   </collection>
 </references>
 
@@ -315,6 +407,10 @@
       <with|par-left|<quote|1tab>|1.3<space|2spc>Definition of Data
       <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-4>>
+
+      <with|par-left|<quote|1tab>|1.4<space|2spc>Interval Arithmetic
+      <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-5>>
     </associate>
   </collection>
 </auxiliary>
