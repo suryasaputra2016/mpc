@@ -351,24 +351,155 @@
 
     \ \ \ \ \ \ list2
 
-    \ \ \ \ \ \ (append (car list1) (append (cdr list1) list2))))
+    \ \ \ \ \ \ (cons (car list1) (append (cdr list1) list2))))
   </scm-code>
 
-  \;
+  One type of useful procedure for list is to transform the elements, for
+  example, multiplying all elements by some factors.
+
+  <\session|scheme|default>
+    <\input|Scheme] >
+      (define (scale-list items factor)
+
+      \ \ (if (null? items)
+
+      \ \ \ \ \ \ '()
+
+      \ \ \ \ \ \ (cons (* (car items) factor)
+
+      \ \ \ \ \ \ \ \ \ \ \ \ (scale-list (cdr items) factor))))
+    </input>
+
+    <\input|Scheme] >
+      \;
+    </input>
+  </session>
+
+  We can generalize this notion to map that takes a procedure and a list and
+  transform the elements in the list using the procedure.
+
+  <\session|scheme|default>
+    <\input|Scheme] >
+      (define (maps proc items)
+
+      \ \ (if (null? items)
+
+      \ \ \ \ \ \ '()
+
+      \ \ \ \ \ \ (cons (proc (car items))
+
+      \ \ \ \ \ \ \ \ \ \ \ \ (maps proc (cdr items)))))
+    </input>
+
+    <\input|Scheme] >
+      \;
+    </input>
+  </session>
+
+  Map captures common pattern and let us abstract the idea of elementwise
+  transformation. Therefore in using it we can supress the details and only
+  consider the procedure and the list in other words is creates abstraction
+  barrier so we don't haev to care about elementwise transformation when
+  using a map.
+
+  <subsection|Hierarchical Structure>
+
+  List can be used to represent sequence of sequence such as the following.
+
+  <\session|scheme|default>
+    <\unfolded-io|Scheme] >
+      (cons (list 1 2) (list 3 4))
+    <|unfolded-io>
+      ((1 2) 3 4)
+    </unfolded-io>
+
+    <\input|Scheme] >
+      \;
+    </input>
+  </session>
+
+  The sequence of sequence above can be represented as a tree. The following
+  is a procedure to count the leaves of a tree.
+
+  <\session|scheme|default>
+    <\input|Scheme] >
+      (define (count-leaves tree)
+
+      \ \ (cond ((null? tree) 0)
+
+      \ \ \ \ \ \ \ \ ((not (pair? tree)) 1)
+
+      \ \ \ \ \ \ \ \ ( else(+ (count-leaves (car tree))
+
+      \ \ \ \ \ \ \ \ \ \ \ (count-leaves (cdr tree))))))
+    </input>
+
+    <\input|Scheme] >
+      \;
+    </input>
+  </session>
+
+  Map and recursion can also be applied to tree. Here are procedure that
+  multiplies every leaves in tree by a factor.
+
+  <\session|scheme|default>
+    <\input|Scheme] >
+      (define nil '())
+
+      \;
+
+      (define (scale-tree tree factor)
+
+      \ \ (cond ((null? tree) nil)
+
+      \ \ \ \ \ \ \ \ ((not (pair? tree)) (* tree factor))
+
+      \ \ \ \ \ \ \ \ (else (cons (scale-tree (car tree) factor)
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (scale-tree (cdr tree)
+      factor)))))
+    </input>
+
+    <\input|Scheme] >
+      \;
+    </input>
+  </session>
+
+  Or we can use map and transform every subtree, and do it recursively.
+
+  <\session|scheme|default>
+    <\input>
+      Scheme]\ 
+    <|input>
+      (define (maps proc items)
+
+      \ \ (if (null? items)
+
+      \ \ \ \ \ \ '()
+
+      \ \ \ \ \ \ (cons (proc (car items))
+
+      \ \ \ \ \ \ \ \ \ \ \ \ (maps proc (cdr items)))))
+
+      \;
+
+      (define (scale-tree tree factor)
+
+      \ \ (maps (lambda (sub-tree)
+
+      \ \ \ \ \ \ \ \ \ \ (if (pair? sub-tree)
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ (scale-tree sub-tree factor)
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ (* sub-tree factor)))
+
+      \ \ \ \ \ \ \ \ tree))
+    </input>
+  </session>
 
   \;
 
-  \;
-
-  \;
-
-  \;
-
-  \;
-
-  \;
-
-  \;
+  ddd
 </body>
 
 <\initial>
@@ -384,8 +515,9 @@
     <associate|auto-3|<tuple|1.2|2>>
     <associate|auto-4|<tuple|1.3|3>>
     <associate|auto-5|<tuple|1.4|3>>
-    <associate|auto-6|<tuple|2|?>>
-    <associate|auto-7|<tuple|2.1|?>>
+    <associate|auto-6|<tuple|2|3>>
+    <associate|auto-7|<tuple|2.1|4>>
+    <associate|auto-8|<tuple|2.2|?>>
   </collection>
 </references>
 
@@ -411,6 +543,14 @@
       <with|par-left|<quote|1tab>|1.4<space|2spc>Interval Arithmetic
       <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-5>>
+
+      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|2<space|2spc>Hierarchy
+      and Closure> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-6><vspace|0.5fn>
+
+      <with|par-left|<quote|1tab>|2.1<space|2spc>Sequence
+      <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-7>>
     </associate>
   </collection>
 </auxiliary>

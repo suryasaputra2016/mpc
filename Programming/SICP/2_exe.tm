@@ -696,7 +696,356 @@
 
     <item>Number 21
 
+    <\session|scheme|default>
+      <\input|Scheme] >
+        (define (maps proc items)
+
+        \ \ (if (null? items)
+
+        \ \ \ \ \ \ '()
+
+        \ \ \ \ \ \ (cons (proc (car items))
+
+        \ \ \ \ \ \ \ \ \ \ \ \ (maps proc (cdr items)))))
+
+        \;
+
+        (define (square x)
+
+        \ \ (* x x))
+
+        \;
+
+        (define (square-list-1 items)
+
+        \ \ (if (null? items)
+
+        \ \ \ \ \ \ '()
+
+        \ \ \ \ \ \ (cons ( square (car items))
+
+        \ \ \ \ \ \ \ \ \ \ \ \ (square-list-1 (cdr items)))))
+
+        \;
+
+        (define (square-list-2 items)
+
+        \ \ (maps square items))
+      </input>
+
+      <\input|Scheme] >
+        \;
+      </input>
+    </session>
+
     <item>Number 22
+
+    It's reversed because the argument of the cons. But interchanging it
+    doesn't help because now the pair is iterated from left to right, not
+    right to left as it is defined for list.
+
+    <item>Number 23
+
+    <\session|scheme|default>
+      <\input|Scheme] >
+        (define (draw-star n)
+
+        \ \ (if (= n 1)
+
+        \ \ \ \ \ \ (display "*")
+
+        \ \ \ \ \ \ (display "**"))
+
+        \ \ (newline))
+      </input>
+
+      <\input|Scheme] >
+        \;
+      </input>
+    </session>
+
+    <item>Number 24
+
+    <\session|scheme|default>
+      <\unfolded-io|Scheme] >
+        (list 1 (list 2 (list 3 4)))
+      <|unfolded-io>
+        (1 (2 (3 4)))
+      </unfolded-io>
+
+      <\input|Scheme] >
+        \;
+      </input>
+    </session>
+
+    <item>Number 25
+
+    <\scm-code>
+      (define x '(1 3 (5 7) 9) )
+
+      (car (cdr (car (cdr (cdr x)))))
+
+      \;
+
+      (define y '((7)) )
+
+      (car (car y))
+
+      \;
+
+      (define z '(1 (2 (3 (4 (5 (6 7)))))) )
+
+      (car (cdr (car (cdr (car (cdr (car (cdr (car (cdr (car (cdr
+      z))))))))))))
+    </scm-code>
+
+    <item>Number 26
+
+    <\scm-code>
+      (1 2 3 4 5 6)
+
+      ((1 2 3) 4 5 6)
+
+      ((1 2 3) (4 5 6))
+    </scm-code>
+
+    <item>Number 27
+
+    <\session|scheme|default>
+      <\input|Scheme] >
+        (define nil '())
+
+        \;
+
+        (define (maps proc items)
+
+        \ \ (if (null? items)
+
+        \ \ \ \ \ \ '()
+
+        \ \ \ \ \ \ (cons (proc (car items))
+
+        \ \ \ \ \ \ \ \ \ \ \ \ (maps proc (cdr items)))))
+
+        \;
+
+        (define (reverses items)
+
+        \ \ (define (iter items result)
+
+        \ \ \ \ (cond ((null? items) result)
+
+        \ \ \ \ \ \ \ \ \ \ ((not (pair? items)) items)
+
+        \ \ \ \ \ \ \ \ \ \ ((iter (cdr items) (cons (car items) result)))))
+
+        \ \ (iter items nil))
+
+        \;
+
+        (define (deep-reverses items)
+
+        \ \ (maps reverses (reverses items)))
+      </input>
+
+      <\input|Scheme] >
+        \;
+      </input>
+    </session>
+
+    <item>Number 28
+
+    <\session|scheme|default>
+      <\input|Scheme] >
+        (define (appends list1 list2)
+
+        \ \ (if (null? list1)
+
+        \ \ \ \ \ \ list2
+
+        \ \ \ \ \ \ (cons (car list1) (appends (cdr list1) list2))))
+
+        \;
+
+        (define (fringe tree)
+
+        \ \ (cond ((null? tree) '())
+
+        \ \ \ \ \ \ \ \ ((not (pair? tree)) (list tree))
+
+        \ \ \ \ \ \ \ \ (else (appends (fringe (car tree)) (fringe (cdr
+        tree))))))
+      </input>
+
+      <\input|Scheme] >
+        \;
+      </input>
+    </session>
+
+    <item>Number 29
+
+    <\session|scheme|default>
+      <\input|Scheme] >
+        (define (make-mobile left right)
+
+        \ \ (list left right))
+
+        \;
+
+        (define (left-branch m) (car m))
+
+        (define (right-branch m) (car (cdr m)))
+
+        \;
+
+        (define (make-branch length structure)
+
+        \ \ (list length structure))
+
+        \;
+
+        (define (branch-length b) (car b))
+
+        (define (branch-structure b) (car (cdr b)))
+
+        \;
+
+        (define (total-weight m)
+
+        \ \ (if (not (pair? m))
+
+        \ \ \ \ \ \ m
+
+        \ \ \ \ \ \ (+ (total-weight (structure (left-branch m)))
+
+        \ \ \ \ \ \ \ \ \ (total-weight (structure (right-branch m))))))
+
+        \;
+
+        (define (balance? m)
+
+        \ \ (if (not (pair? m))
+
+        \ \ \ \ \ \ #t
+
+        \ \ \ \ \ \ (and (balance? (structure (left-branch m)))
+
+        \ \ \ \ \ \ \ \ \ \ \ (balance? (structure (right-branch m)))
+
+        \ \ \ \ \ \ \ \ \ \ \ (= (* (length (left-branch m)) (total-weight
+        (structure (left-branch m))))
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ (* (length (right-branch m))
+        (total-weight (structure (right-branch m))))))))
+
+        \;
+
+        ; just need to change
+
+        (define (right-branch m) (cdr m))
+
+        (define (branch-structure b) (cdr b))
+      </input>
+
+      <\input|Scheme] >
+        \;
+      </input>
+    </session>
+
+    <item>Number 30
+
+    <\session|scheme|default>
+      <\input|Scheme] >
+        (define (maps proc items)
+
+        \ \ (if (null? items)
+
+        \ \ \ \ \ \ '()
+
+        \ \ \ \ \ \ (cons (proc (car items))
+
+        \ \ \ \ \ \ \ \ \ \ \ \ (maps proc (cdr items)))))
+
+        \;
+
+        (define (square-tree tree)
+
+        \ \ (maps (lambda (sub-tree)
+
+        \ \ \ \ \ \ \ \ \ \ (if (pair? sub-tree)
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ (square-tree sub-tree)
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ (* sub-tree sub-tree)))
+
+        \ \ \ \ \ \ \ \ tree))
+      </input>
+
+      <\input|Scheme] >
+        \;
+      </input>
+    </session>
+
+    <item>Number 31
+
+    <\session|scheme|default>
+      <\input|Scheme] >
+        (define (tree-map proc tree)
+
+        \ \ (cond ((null? tree) nil)
+
+        \ \ \ \ \ \ \ \ ((not (pair? tree)) (proc tree))
+
+        \ \ \ \ \ \ \ \ (else (cons (tree-map proc (car tree))
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (tree-map proc (cdr
+        tree))))))
+      </input>
+
+      <\input|Scheme] >
+        \;
+      </input>
+    </session>
+
+    <item>Number 32
+
+    <\session|scheme|default>
+      <\input|Scheme] >
+        (define (add-element x)
+
+        \ \ (lambda (s) (cons x s)))
+
+        \;
+
+        (define (maps proc items)
+
+        \ \ (if (null? items)
+
+        \ \ \ \ \ \ '()
+
+        \ \ \ \ \ \ (cons (proc (car items))
+
+        \ \ \ \ \ \ \ \ \ \ \ \ (maps proc (cdr items)))))
+
+        \;
+
+        (define (subsets s)
+
+        \ \ (if (null? s)
+
+        \ \ \ \ \ \ (list nil)
+
+        \ \ \ \ \ \ (let ((rest (subsets (cdr s))))
+
+        \ \ \ \ \ \ \ \ (append rest (maps (add-element (car s)) rest)))))
+      </input>
+
+      <\input|Scheme] >
+        \;
+      </input>
+    </session>
+
+    <item>Number 33
   </enumerate>
 
   \;
