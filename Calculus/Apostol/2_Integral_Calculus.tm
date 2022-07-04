@@ -510,6 +510,151 @@
 
   <section|Excercises>
 
+  Prove that
+
+  <\enumerate>
+    <item><math|<around*|\<lfloor\>|x+n|\<rfloor\>>=<around*|\<lfloor\>|x|\<rfloor\>>+n>
+    for <math|n\<in\> \<bbb-Z\>>
+
+    <math|<around*|\<lfloor\>|x|\<rfloor\>>\<leqslant\>x\<less\><around*|\<lfloor\>|x|\<rfloor\>>+1\<Leftrightarrow\><around*|\<lfloor\>|x|\<rfloor\>>+n\<leqslant\>x+n\<less\><around*|\<lfloor\>|x|\<rfloor\>>+1+n\<Leftrightarrow\><around*|\<lfloor\>|x+n|\<rfloor\>>=<around*|\<lfloor\>|x|\<rfloor\>>+n>
+
+    <item><math|<around*|\<lfloor\>|-x|\<rfloor\>>=<around*|{|<tabular|<tformat|<table|<row|<cell|-<around*|\<lfloor\>|x|\<rfloor\>>>|<cell|if
+    x\<in\> \<bbb-Z\>>>|<row|<cell|-<around*|\<lfloor\>|x|\<rfloor\>>-1>|<cell|otherwise>>>>>|\<nobracket\>>>
+
+    if <math|x\<in\> \<bbb-Z\>> then <math|<around*|\<lfloor\>|x|\<rfloor\>>=x\<Leftrightarrow\><around*|\<lfloor\>|-x|\<rfloor\>>=-x=-<around*|\<lfloor\>|x|\<rfloor\>>>
+
+    else <math|<around*|\<lfloor\>|x|\<rfloor\>>\<less\>x\<less\><around*|\<lfloor\>|x|\<rfloor\>>+1\<Leftrightarrow\>-<around*|\<lfloor\>|x|\<rfloor\>>-1\<less\>-x\<less\>-<around*|\<lfloor\>|x|\<rfloor\>>\<Leftrightarrow\><around*|\<lfloor\>|-x|\<rfloor\>>=-<around*|\<lfloor\>|x|\<rfloor\>>-1>
+
+    <item><math|<around*|\<lfloor\>|x+y|\<rfloor\>>=<around*|{|<tabular|<tformat|<table|<row|<cell|<around*|\<lfloor\>|x|\<rfloor\>>+<around*|\<lfloor\>|y|\<rfloor\>>>>|<row|<cell|<around*|\<lfloor\>|x|\<rfloor\>>+<around*|\<lfloor\>|y|\<rfloor\>>+1>>>>>|\<nobracket\>>>
+
+    <math|<around*|\<lfloor\>|x|\<rfloor\>>\<leqslant\>x\<less\><around*|\<lfloor\>|x|\<rfloor\>>+1,<around*|\<lfloor\>|y|\<rfloor\>>\<leqslant\>y\<less\><around*|\<lfloor\>|y|\<rfloor\>>+1>
+    then <math|<around*|\<lfloor\>|x|\<rfloor\>>+<around*|\<lfloor\>|y|\<rfloor\>>\<leqslant\>x+y\<less\><around*|\<lfloor\>|x|\<rfloor\>>+<around*|\<lfloor\>|y|\<rfloor\>>+2>
+
+    Therefore there are two possibilities
+
+    <math|<around*|\<lfloor\>|x|\<rfloor\>>+<around*|\<lfloor\>|y|\<rfloor\>>\<leqslant\>x+y\<less\><around*|\<lfloor\>|x|\<rfloor\>>+<around*|\<lfloor\>|y|\<rfloor\>>+1>
+    or <math|<around*|\<lfloor\>|x|\<rfloor\>>+<around*|\<lfloor\>|y|\<rfloor\>>+1\<leqslant\>x+y\<less\><around*|\<lfloor\>|x|\<rfloor\>>+<around*|\<lfloor\>|y|\<rfloor\>>+2>
+
+    Therefore <math|><math|<around*|\<lfloor\>|x+y|\<rfloor\>>=><math|<around*|\<lfloor\>|x|\<rfloor\>>+<around*|\<lfloor\>|y|\<rfloor\>>>or
+    <math|<around*|\<lfloor\>|x|\<rfloor\>>+<around*|\<lfloor\>|y|\<rfloor\>>+1>
+
+    <item><math|<around*|\<lfloor\>|2x|\<rfloor\>>=<around*|\<lfloor\>|x|\<rfloor\>>+<around*|\<lfloor\>|x+<frac|1|2>|\<rfloor\>>>
+
+    Below, no 6
+
+    <item><math|<around*|\<lfloor\>|3x|\<rfloor\>>=<around*|\<lfloor\>|x|\<rfloor\>>+<around*|\<lfloor\>|x+<frac|1|3>|\<rfloor\>>+<around*|\<lfloor\>|x+<frac|2|3>|\<rfloor\>>>
+
+    Below, no 6
+
+    <item><math|<around*|\<lfloor\>|n*x|\<rfloor\>>=<big|sum><rsub|i=0><rsup|n-1><around*|\<lfloor\>|x+<frac|i|n>|\<rfloor\>>>
+
+    <math|<around*|\<lfloor\>|x|\<rfloor\>>\<leqslant\>x\<less\><around*|\<lfloor\>|x|\<rfloor\>>+1>.
+    Then <math|x> is in one of the subinteval
+    <math|<around*|[|<around*|\<nobracket\>|<around*|\<lfloor\>|x|\<rfloor\>>+<frac|k|n>,<around*|\<lfloor\>|x|\<rfloor\>>+<frac|k+1|n>|)>|\<nobracket\>>>in
+    that case then <math|<around*|\<lfloor\>|n*x|\<rfloor\>>=n*<around*|\<lfloor\>|x|\<rfloor\>>+k>.
+
+    Consider<math|<big|sum><rsub|i=0><rsup|n-1><around*|\<lfloor\>|x+<frac|i|n>|\<rfloor\>>>
+    and <math|x> is in the same interval as above
+    then<math|<around*|\<lfloor\>|x+<frac|i|n>|\<rfloor\>>=<around*|{|<tabular|<tformat|<table|<row|<cell|<around*|\<lfloor\>|x|\<rfloor\>>>|<cell|i\<less\>n-k>>|<row|<cell|<around*|\<lfloor\>|x|\<rfloor\>>+1>|<cell|n-1\<geqslant\>i\<geqslant\>n-k>>>>>|\<nobracket\>>>
+    therefore <math|<big|sum><rsub|i=0><rsup|n-1><around*|\<lfloor\>|x+<frac|i|n>|\<rfloor\>>=n*<around*|\<lfloor\>|x|\<rfloor\>>+k>
+
+    <item>Number of lattice points <math|<around*|(|x,y|)>> satisfying
+    <math|a\<leqslant\>x\<leqslant\>b>, <math|0\<less\>y\<leqslant\>f<around*|(|x|)>>
+    for nonnegative function <math|f> and <math|a,b\<in\> \<bbb-Z\>> is\ 
+
+    <\equation*>
+      <big|sum><rsub|n=a><rsup|b><around*|\<lfloor\>|f<around*|(|n|)>|\<rfloor\>>
+    </equation*>
+
+    The number of the lattice point below <math|f<around*|(|n|)>> for
+    <math|n\<in\> \<bbb-Z\>> is <math|<around*|\<lfloor\>|f<around*|(|n|)>|\<rfloor\>>>
+    hence we just sum the lattice points from <math|n=a> up to <math|n=b>
+
+    <item>The following formula applies where <math|a,b> are integers with no
+    common factors
+
+    <\equation*>
+      <big|sum><rsup|b-1><rsub|n=1><around*|\<lfloor\>|<frac|n*a|b>|\<rfloor\>>=<frac|<around*|(|a-1|)>*<around*|(|b-1|)>|2>
+    </equation*>
+
+    <\eqnarray*>
+      <tformat|<table|<row|<cell|<big|sum><rsup|b-1><rsub|n=1><around*|\<lfloor\>|<frac|n*a|b>|\<rfloor\>>+<big|sum><rsup|b-1><rsub|n=1><around*|\<lfloor\>|<frac|<around*|(|b-n|)>a|b>|\<rfloor\>>>|<cell|=>|<cell|<big|sum><rsup|b-1><rsub|n=1><around*|\<lfloor\>|<frac|n*a|b>|\<rfloor\>>+<big|sum><rsup|b-1><rsub|n=1><around*|\<lfloor\>|a-<frac|n*a|b>|\<rfloor\>>>>|<row|<cell|2<big|sum><rsup|b-1><rsub|n=1><around*|\<lfloor\>|<frac|n*a|b>|\<rfloor\>>>|<cell|=>|<cell|<big|sum><rsup|b-1><rsub|n=1><around*|\<lfloor\>|<frac|n*a|b>|\<rfloor\>>+<big|sum><rsup|b-1><rsub|n=1><around*|\<lfloor\>|-<frac|n*a|b>|\<rfloor\>>+<big|sum><rsup|b-1><rsub|n=1>a>>|<row|<cell|>|<cell|=>|<cell|<big|sum><rsup|b-1><rsub|n=1><around*|(|<around*|\<lfloor\>|<frac|n*a|b>|\<rfloor\>>+<around*|\<lfloor\>|-<frac|n*a|b>|\<rfloor\>>|)>+<around*|(|b-1|)>*a>>|<row|<cell|>|<cell|=>|<cell|<big|sum><rsup|b-1><rsub|n=1><around*|(|-1|)>+<around*|(|b-1|)>*a>>|<row|<cell|2<big|sum><rsup|b-1><rsub|n=1><around*|\<lfloor\>|<frac|n*a|b>|\<rfloor\>>>|<cell|=>|<cell|<around*|(|b-1|)>*<around*|(|a-1|)>>>|<row|<cell|<big|sum><rsup|b-1><rsub|n=1><around*|\<lfloor\>|<frac|n*a|b>|\<rfloor\>>>|<cell|=>|<cell|<frac|<around*|(|a-1|)>*<around*|(|b-1|)>|2>>>>>
+    </eqnarray*>
+
+    Or geometrically we can count the number of lattice points as in number
+    7. and get half of <math|<around*|(|a-1|)>*<around*|(|b-1|)>>
+
+    <item>A characteristic function <math|\<chi\><rsub|S> <around*|(|x|)>> is
+    either 1 or 0 depending <math|x> is in <math|S> or not. Let <math|f> is a
+    step function with constant value <math|c<rsub|k>> on k-th open
+    subinterval <math|I<rsub|k>> of interval
+    <math|<around*|[|a,b|]>=I<rsub|1>\<cup\>I<rsub|2>\<cup\>\<ldots\>\<cup\>I<rsub|n>.
+    >Then
+
+    <\equation*>
+      f<around*|(|x|)>=<big|sum><rsub|k=1><rsup|n>c<rsub|k>*\<chi\><rsub|I<rsub|k>><around*|(|x|)>
+    </equation*>
+  </enumerate>
+
+  <section|Integral of step functions>
+
+  Let <math|s<around*|(|x|)>> be a step function defined on
+  <math|<around*|[|a,b|]>>with value <math|s<rsub|k> > for
+  <math|x<rsub|k-1>\<less\>x\<less\>x<rsub|k>> subinterval of
+  <math|<around*|[|a,b|]>> with partition
+  <math|P=<around*|{|a=x<rsub|0>,x<rsub|1>,\<ldots\>,x<rsub|n-1>,x<rsub|n>=b|}>.
+  > Then the integral of <math|s> from <math|a> to <math|b> is as follows.
+
+  <\equation*>
+    <big|int><rsub|a><rsup|b><rsub|>s<around*|(|x|)>=<big|sum><rsub|k=1><rsup|n>s<rsub|k>*<around*|(|x<rsub|k>-x<rsub|k-1>|)>
+  </equation*>
+
+  See that if <math|s> is constant say <math|s<around*|(|x|)>=c> then the
+  integral is <math|c<around*|(|b-a|)>>. Also see that the value of <math|s>
+  at subinterval boundary doesn't affect the integral. Lastly for nonnegative
+  <math|s> the integral is equal to the area of the ordinate set of <math|s>.
+
+  Also, the value of integral is independent of partition <math|P> as long as
+  the function is constant in each subinterval. Thus we can refine the
+  partition and still get the same result.
+
+  Some properties of integral of step functions (and integral in general).
+
+  <\enumerate>
+    <item>Additive property <math|<big|int><rsub|a><rsup|b><around*|[|s<around*|(|x|)>+t<around*|(|x|)>|]>d*x=<big|int><rsub|a><rsup|b>s<around*|(|x|)>d*x+<big|int><rsub|a><rsup|b>t<around*|(|x|)>d*x>
+
+    <item>homogeneous property <math|<big|int><rsub|a><rsup|b>c*s<around*|(|x|)>d*x=c*<big|int><rsub|a><rsup|b>s<around*|(|x|)>d*x>
+
+    <item>The above two can be combined into linearity property
+
+    <item>comparison theorem: if <math|s<around*|(|x|)>\<less\>t<around*|(|x|)>>
+    for all <math|x> in <math|<around*|[|a,b|]>>:
+    <math|<big|int><rsub|a><rsup|b>s<around*|(|x|)>d*x\<less\><big|int><rsub|a><rsup|b>t<around*|(|x|)>d*x>
+
+    <item>Interval additivity: <math|<big|int><rsub|a><rsup|c>s<around*|(|x|)>d*x=<big|int><rsub|a><rsup|b>s<around*|(|x|)>d*x+<big|int><rsub|b><rsup|c>s<around*|(|x|)>d*x>
+    for <math|a\<less\>b\<less\>c>
+
+    <item>Translation invariance: <math|<big|int><rsub|a><rsup|b>s<around*|(|x|)>d*x=<big|int><rsub|a+c><rsup|b+c>s<around*|(|x-c|)>d*x>
+
+    <item>Expansion/contraction: <math|<big|int><rsub|k*a><rsup|k*b>s<around*|(|<frac|x|k>|)>d*x>=<math|k<big|int><rsub|a><rsup|b>s<around*|(|x|)>d*x>
+    for all <math|k\<gtr\>0>
+  </enumerate>
+
+  By definining <math|<big|int><rsub|a><rsup|b>s<around*|(|x|)>d*x=-<big|int><rsub|b><rsup|a>s<around*|(|x|)>d*x>
+  for <math|a\<gtr\>b> and <math|<big|int><rsub|a><rsup|a>s<around*|(|x|)>d*x=0>
+  we can generalize property 5 so that <math|b> doesn't have to be between
+  <math|a> and <math|c>. Also, property 5 can be defined for
+  <math|k\<less\>0> to get reflection property.
+
+  <\equation*>
+    <big|int><rsub|a><rsup|b>s<around*|(|x|)>d*x=-<big|int><rsub|-a><rsup|-b>s<around*|(|-x|)>d*x=<big|int><rsub|-b><rsup|-a>s<around*|(|-x|)>d*x
+  </equation*>
+
+  The symbol <math|x> above is dummy and can be changed with other unused
+  alphabet.
+
+  <section|Integral of a more general function>
+
   \;
 
   \;
@@ -530,16 +675,18 @@
 <\references>
   <\collection>
     <associate|auto-1|<tuple|1|1>>
-    <associate|auto-10|<tuple|10|?>>
-    <associate|auto-11|<tuple|11|?>>
+    <associate|auto-10|<tuple|10|8>>
+    <associate|auto-11|<tuple|11|8>>
+    <associate|auto-12|<tuple|12|10>>
+    <associate|auto-13|<tuple|13|?>>
     <associate|auto-2|<tuple|2|1>>
     <associate|auto-3|<tuple|3|2>>
     <associate|auto-4|<tuple|4|2>>
     <associate|auto-5|<tuple|5|2>>
     <associate|auto-6|<tuple|6|5>>
     <associate|auto-7|<tuple|7|5>>
-    <associate|auto-8|<tuple|8|?>>
-    <associate|auto-9|<tuple|9|?>>
+    <associate|auto-8|<tuple|8|7>>
+    <associate|auto-9|<tuple|9|8>>
   </collection>
 </references>
 
@@ -573,6 +720,26 @@
       <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|7<space|2spc>Exercises>
       <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-7><vspace|0.5fn>
+
+      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|8<space|2spc>Intervals
+      and Ordinate Sets> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-8><vspace|0.5fn>
+
+      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|9<space|2spc>Partition
+      and Step Functions> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-9><vspace|0.5fn>
+
+      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|10<space|2spc>Sum
+      and Product of Step Function> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-10><vspace|0.5fn>
+
+      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|11<space|2spc>Excercises>
+      <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-11><vspace|0.5fn>
+
+      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|12<space|2spc>Integral
+      of step functions> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-12><vspace|0.5fn>
     </associate>
   </collection>
 </auxiliary>

@@ -1046,6 +1046,99 @@
     </session>
 
     <item>Number 33
+
+    <\session|scheme|default>
+      <\input|Scheme] >
+        (define (map p sequence)
+
+        \ \ (accumulate (lambda (x y) (cons (p x) y))
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ nil
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ sequence))
+      </input>
+
+      <\input|Scheme] >
+        (define (append seq1 seq2)
+
+        \ \ (accumulate cons
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ seq2
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ seq1))
+      </input>
+
+      <\input|Scheme] >
+        (define (length sequence)
+
+        \ \ (accumulate (lambda (x y) (+ 1 y))
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ sequence))
+      </input>
+
+      <\input|Scheme] >
+        \;
+      </input>
+    </session>
+
+    <item>Number 34
+
+    <\session|scheme|default>
+      <\input|Scheme] >
+        (define (accumulate op initial sequence)
+
+        \ \ (if (null? sequence)
+
+        \ \ \ \ \ \ initial
+
+        \ \ \ \ \ \ (op (car sequence)
+
+        \ \ \ \ \ \ \ \ \ \ (accumulate op initial (cdr sequence)))))
+
+        \;
+
+        (define (horner-eval x coefficient-sequence)
+
+        \ \ (accumulate (lambda (this-coeff higher-terms) (+ (* higher-terms
+        x) this-coeff))
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ coefficient-sequence))
+      </input>
+
+      <\input|Scheme] >
+        \;
+      </input>
+    </session>
+
+    <item>Number 35
+
+    <\session|scheme|default>
+      <\input|Scheme] >
+        \;
+
+        \;
+      </input>
+
+      <\input|Scheme] >
+        \;
+      </input>
+    </session>
+
+    <item>Number 36
+
+    <\session|scheme|default>
+      <\input>
+        Scheme]\ 
+      <|input>
+        \;
+      </input>
+    </session>
+
+    <item>Number 37
   </enumerate>
 
   \;

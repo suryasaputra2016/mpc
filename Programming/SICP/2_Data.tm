@@ -499,7 +499,195 @@
 
   \;
 
-  ddd
+  <subsection|Sequence as Conventional Interface>
+
+  <\session|scheme|default>
+    <\input|Scheme] >
+      (define (sum-odd-squares tree)
+
+      \ \ (cond ((null? tree) 0)
+
+      \ \ \ \ \ \ \ \ ((not (pair? tree))
+
+      \ \ \ \ \ \ \ \ \ (if (odd? tree) (square tree) 0))
+
+      \ \ \ \ \ \ \ \ (else (+ (sum-odd-squares (car tree))
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (sum-odd-squares (cdr tree))))))
+    </input>
+
+    <\input|Scheme] >
+      (define (even-fibs n)
+
+      \ \ (define (next k)
+
+      \ \ \ \ (if (\<gtr\> k n)
+
+      \ \ \ \ \ \ \ \ nil
+
+      \ \ \ \ \ \ \ \ (let ((f (fib k)))
+
+      \ \ \ \ \ \ \ \ \ \ (if (even? f)
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ (cons f (next (+ k 1)))
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ (next (+ k 1))))))
+
+      \ \ (next 0))
+    </input>
+
+    <\input|Scheme] >
+      \;
+    </input>
+  </session>
+
+  The programs above have the following abstract description: enumerate -
+  filter - map each -accumulate result. But the implementation of the stages
+  are all mixed in different ways.
+
+  We can divide the rprocess according to the stages, first, we've already
+  known map.
+
+  <\session|scheme|default>
+    <\input|Scheme] >
+      (define (maps proc items)
+
+      \ \ (if (null? items)
+
+      \ \ \ \ \ \ '()
+
+      \ \ \ \ \ \ (cons (proc (car items))
+
+      \ \ \ \ \ \ \ \ \ \ \ \ (maps proc (cdr items)))))
+    </input>
+
+    <\input|Scheme] >
+      \;
+    </input>
+  </session>
+
+  Then filter can be defined as follows
+
+  <\session|scheme|default>
+    <\input|Scheme] >
+      (define (filter predicate sequence)
+
+      \ \ (cond ((null? sequence) nil)
+
+      \ \ \ \ \ \ \ \ ((predicate (car sequence)) (cons (car sequence)
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (filter
+      predicate (cdr sequence))))
+
+      \ \ \ \ \ \ \ \ (else (filter predicate (cdr sequence)))))
+    </input>
+
+    <\input|Scheme] >
+      \;
+    </input>
+  </session>
+
+  Accumulation can be done with the following
+
+  <\session|scheme|default>
+    <\input|Scheme] >
+      (define (accumulate op initial sequence)
+
+      \ \ (if (null? sequence)
+
+      \ \ \ \ \ \ initial
+
+      \ \ \ \ \ \ (op (car sequence)
+
+      \ \ \ \ \ \ \ \ \ \ (accumulate op initial (cdr sequence)))))
+    </input>
+
+    <\input|Scheme] >
+      \;
+    </input>
+  </session>
+
+  For enumerating we need two different ways for the two programs. For
+  Fibonacci we need ssequence of integers.
+
+  <\session|scheme|default>
+    <\input|Scheme] >
+      (define (enumerate-interval low high)
+
+      \ \ (if (\<gtr\> low high)
+
+      \ \ \ \ \ \ nil
+
+      \ \ \ \ \ \ (cons low (enumerate-interval (+ low 1) high))))
+    </input>
+
+    <\input|Scheme] >
+      \;
+    </input>
+  </session>
+
+  For tree we can use the following.
+
+  <\session|scheme|default>
+    <\input|Scheme] >
+      (define (enumerate-tree tree)
+
+      \ \ (cond ((null? tree) nil)
+
+      \ \ \ \ \ \ \ \ ((not (pair? tree)) (list tree))
+
+      \ \ \ \ \ \ \ \ (else (append (enumerate-tree (car tree))
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (enumerate-tree (cdr
+      tree))))))
+    </input>
+
+    <\input|Scheme] >
+      \;
+    </input>
+  </session>
+
+  Now let's redefine the two programs above.
+
+  <\session|scheme|default>
+    <\input|Scheme] >
+      (define (sum-odd-squares tree)
+
+      \ \ (accumulate +
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ (map square\ 
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (filter odd?
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (enumerate-tree
+      tree)))))
+    </input>
+
+    <\input|Scheme] >
+      (define (even-fibs n)
+
+      \ \ (accumulate cons
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ nil
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ (filter even?
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (map fib
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (enumerate-interval
+      0 n)))))
+    </input>
+
+    <\input|Scheme] >
+      \;
+    </input>
+  </session>
+
+  The program are more modular. Each module can be reuse and rearrange. See
+  that the examples are all stages of operations applied on sequence as
+  conventional interface.
 </body>
 
 <\initial>
@@ -517,7 +705,8 @@
     <associate|auto-5|<tuple|1.4|3>>
     <associate|auto-6|<tuple|2|3>>
     <associate|auto-7|<tuple|2.1|4>>
-    <associate|auto-8|<tuple|2.2|?>>
+    <associate|auto-8|<tuple|2.2|5>>
+    <associate|auto-9|<tuple|2.3|?>>
   </collection>
 </references>
 
@@ -551,6 +740,10 @@
       <with|par-left|<quote|1tab>|2.1<space|2spc>Sequence
       <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-7>>
+
+      <with|par-left|<quote|1tab>|2.2<space|2spc>Hierarchical Structure
+      <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-8>>
     </associate>
   </collection>
 </auxiliary>
