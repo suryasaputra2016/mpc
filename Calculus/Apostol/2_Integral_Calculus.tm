@@ -655,15 +655,257 @@
 
   <section|Integral of a more general function>
 
-  \;
+  For integral of a more general function<math|f> we are using step functions
+  below and abovee <math|f> that is <math|s> and <math|t>. Since
+  <math|s<around*|(|x|)>\<leqslant\>t<around*|(|x|)>>then <math|<big|int>
+  s<around*|(|x|)>d*x\<leqslant\><big|int> t<around*|(|x|)>d*x> also we know
+  that integral <math|f> is between those two and if there is only one number
+  <math|I> satisfying <math|<big|int> s<around*|(|x|)>d*x\<leqslant\>I\<leqslant\><big|int>
+  t<around*|(|x|)>d*x> then <math|I=<big|int> f<around*|(|x|)>d*x>.
+
+  But not all functions we can find step function above it for example
+  <math|f<around*|(|x|)>=<frac|1|x>>for <math|x\<neq\>0>
+  <math|f<around*|(|x|)>=0> for <math|x=0>. So first we restrict <math|f> to
+  bounded function that is those that there exists a number <math|M\<gtr\>0>
+  such that <math|-M\<leqslant\>f<around*|(|x|)>\<leqslant\>M>. or
+  <math|<around*|\||f<around*|(|x|)>|\|>\<leqslant\>M>.
+
+  Integral of bounded function. let <math|f> be function bounded on
+  <math|<around*|[|a,b|]>> and also let <math|s> and <math|t> step functions
+  on <math|<around*|[|a,b|]>> such that <math|s<around*|(|x|)>\<leqslant\>f<around*|(|x|)>\<leqslant\>t<around*|(|x|)>>
+  for all <math|x> in <math|<around*|[|a,b|]>> and there is onlly one number
+  <math|I> such that <math|<big|int> s<around*|(|x|)>d*x\<leqslant\>I\<leqslant\><big|int>
+  t<around*|(|x|)>d*x>. Then <math|f> is integrable on
+  <math|<around*|[|a,b|]>> and the integral of <math|f> from <math|a> to
+  <math|b> is <math|I>.
+
+  Also, <math|f> is called integrand, <math|a> and <math|b> is lower and
+  upper limit of integration, and <math|<around*|[|a,b|]>> is called interval
+  of integration. If <math|a\<gtr\>b> <math|<big|int>
+  <rsub|a><rsup|b>f<around*|(|x|)>d*x=-<big|int><rsub|b><rsup|a>f<around*|(|x|)>d*x
+  >also <math|<big|int> <rsub|a><rsup|a>f<around*|(|x|)>d*x=0>.
+
+  <section|Upper and Lower Integral>
+
+  For bounded function <math|f> on <math|<around*|[|a,b|]>> then there are
+  step function <math|s> and <math|t> on <math|<around*|[|a,b|]>> such that
+  <math|s\<leqslant\>f\<leqslant\>t> for all <math|x> on the interval. Then
+  we can define <math|S=<around*|{|<big|int><rsub|a><rsup|b>s<around*|(|x|)>d*x\|s\<leqslant\>f|}>>
+  and <math|T=<around*|{|<big|int><rsub|a><rsup|b>t<around*|(|x|)>d*x\|t\<geqslant\>f
+  |}>>. Then since <math|f> is bounded both cets are nonempty and all element
+  of <math|S> is less than or equal to all element of <math|T>. So we can
+  define <math|sup<around*|(|S|)>> and <math|inf<around*|(|T|)>> such that
+
+  <\equation*>
+    <big|int><rsub|a><rsup|b>s<around*|(|x|)>d*x\<leqslant\>sup<around*|(|S|)>\<leqslant\>inf<around*|(|T|)>\<leqslant\><big|int><rsub|a><rsup|b>t<around*|(|x|)>d*x
+    <rsub|>
+  </equation*>
+
+  then <math|sup<around*|(|S|)>> is defined as the lower integral of <math|f>
+  and <math|inf<around*|(|t|)>> is defined as the upper integral of <math|f>.
+
+  <\equation*>
+    <wide*|I|\<bar\>><around*|(|f|)>=sup<around*|{|<big|int><rsub|a><rsup|b>s<around*|(|x|)>d*x\|s\<leqslant\>f|}>
+  </equation*>
+
+  <\equation*>
+    <wide|I|\<bar\>><around*|(|f|)>=inf<around*|{|<big|int><rsub|a><rsup|b>t<around*|(|x|)>d*x\|t\<geqslant\>f|}>
+  </equation*>
+
+  Then we can say that every function <math|f> bounded on
+  <math|<around*|[|a,b|]>> has upper and lower integral. And if the upper and
+  lower integral are equal then <math|f> is integrable and
+  <math|<big|int><rsub|a><rsup|b>f<around*|(|x|)>
+  d<around*|(|x|)>=<wide*|I|\<bar\>><around*|(|f|)>=<wide|I|\<bar\>><around*|(|f|)>>.
+
+  <section|Area of ordinate set as integral>
+
+  Let <math|f> be a nonnegative function integrable on
+  <math|<around*|[|a,b|]>> and <math|Q> is the ordinate set of <math|f> over
+  <math|<around*|[|a,b|]>>. Then <math|Q> is measurable and its area
+  <math|a<around*|(|Q|)>=<big|int><rsub|a><rsup|b>f<around*|(|x|)>d*x >.
+
+  We can prove above by squeezing <math|Q> by two step regions each
+  corresponds to step function below and above <math|f>. Then since <math|f>
+  is integrable so there is only one number <math|I> between the upper and
+  lower integral and we can use exhaustion property of area to show that
+  <math|a<around*|(|Q|)>=I>.
+
+  while <math|Q> is set of <math|<around*|(|x,y|)>> for
+  <math|a\<leqslant\>x\<leqslant\>b> and <math|0\<leqslant\>y\<leqslant\>f<around*|(|x|)>.
+  >Let's define <math|Q<rprime|'>> as a set of \ <math|<around*|(|x,y|)>> for
+  <math|a\<leqslant\>x\<leqslant\>b> and <math|0\<leqslant\>y\<less\>f<around*|(|x|)>>.
+  Then by the same argument we get <math|a<around*|(|Q<rprime|'>|)>=I>
+  therefore <math|a<around*|(|Q-Q<rprime|'>|)>=0>. in other
+  words<nbsp><math|<around*|{|<around*|(|x,y|)>\|a\<leqslant\>x\<leqslant\>b,y=f<around*|(|x|)>|}>>
+  has zero area.
+
+  <section|Monotonic and Piecewise Monotonic Function>
+
+  A function <math|f> is increasing on <math|S> if for <math|x\<less\>y> both
+  on <math|S> then <math|f<around*|(|x|)>\<leqslant\>f<around*|(|y|)>> if the
+  equality part is removed <math|f> is called strictly increasing Decreasing
+  and strictly decreasing function can be defined in a similar way. A
+  function that is either increasing or decreasing is called monotonic, and
+  if it's either strictly decreasing and strictly increasing it is called
+  strictly monotonic.
+
+  A piecewise monotpnic function on <math|<around*|[|a,b|]> > are those who
+  are monotonic if there is a partition on <math|<around*|[|a,b|]>> in which
+  the function is monotonic on each subinterval.
+  <math|f<around*|(|x|)>=x<rsup|p>> is monotonic function for <math|p> odd
+  and piecewise monotonic for <math|p> even. <math|f<around*|(|x|)>=<sqrt|x>
+  >strictly increasing on positive x-axis. Also
+  <math|f<around*|(|x|)>=<sqrt|r<rsup|2>-x<rsup|2>>> is strictly increasing
+  on <math|<around*|(|-r,0|]>> and strictly decreasing on
+  <math|<around*|[|o,r|)>>.
+
+  <section|Integrability of bounded monotonic function>
+
+  Bounded monotonic function <math|f> on <math|<around*|[|a,b|]>> is
+  integrable over <math|<around*|[|a,b|]>>. The proof is the following.
+
+  \ First let's make partition <math|P=<around*|{|a=x<rsub|0>,x<rsub|1>,\<ldots\>,x<rsub|n>=b|}>>,
+  the length of each subinterval <math|k>
+  <math|<around*|(|x<rsub|k-1>,x<rsub|k>|)>> is equal which is
+  <math|<around*|(|b-a|)>/n>.
+
+  Second, define step functions for each subinterval <math|k> where
+  <math|x<rsub|k-1>\<leqslant\>x\<leqslant\>x<rsub|k>> we have
+  <math|s<rsub|n><around*|(|x|)>=f<around*|(|x<rsub|k-1>|)>> and
+  <math|t<rsub|n><around*|(|x|)>=f<around*|(|x<rsub|k>|)>>. Therefore
+
+  <\eqnarray*>
+    <tformat|<table|<row|<cell|<big|int><rsub|a><rsup|b>t<rsub|n>-<big|int><rsub|a><rsup|b>s<rsub|n>>|<cell|=>|<cell|<big|sum><rsub|k=1><rsup|n>f<around*|(|x<rsub|k>|)><around*|(|x<rsub|k>-x<rsub|k-1>|)>-<big|sum><rsub|k=1><rsup|n>f<around*|(|x<rsub|k-1>|)><around*|(|x<rsub|k>-x<rsub|k-1>|)>>>|<row|<cell|>|<cell|=>|<cell|<big|sum><rsup|n><rsub|k=1><around*|(|f<around*|(|x<rsub|k>|)>-f<around*|(|x<rsub|k-1>|)>|)><around*|(|x<rsub|k>-x<rsub|k-1>|)>>>|<row|<cell|>|<cell|=>|<cell|<big|sum><rsup|n><rsub|k=1><around*|(|f<around*|(|x<rsub|k>|)>-f<around*|(|x<rsub|k-1>|)>|)><frac|b-a|n>>>|<row|<cell|>|<cell|=>|<cell|<frac|b-a|n><around*|(|f<around*|(|x<rsub|n>|)>-f<around*|(|x<rsub|0>|)>|)>>>|<row|<cell|>|<cell|=>|<cell|<frac|b-a|n><around*|(|f<around*|(|b|)>-f<around*|(|a|)>|)>>>|<row|<cell|>|<cell|\<equiv\>>|<cell|<frac|C|n>>>>>
+  </eqnarray*>
+
+  Therefore we have <math|0\<leqslant\>><math|<wide|I|\<bar\>><around*|(|f|)>-<wide*|I|\<bar\>><around*|(|f|)>\<leqslant\><frac|C|n>>
+  for all <math|n\<in\> \<bbb-Z\>> therefore
+  <math|<wide|I|\<bar\>><around*|(|f|)>=<wide*|I|\<bar\>><around*|(|f|)>>
+
+  <section|Calculation of of bounded monotonic function>
+
+  If <math|f> is increasing on interval <math|<around*|[|a,b|]>> and let
+  <math|x<rsub|k>=a+<frac|b-a|n>k> for <math|k=0,1,\<ldots\>,n> if <math|I>
+  satisfies the followings.
+
+  <\equation*>
+    <frac|b-a|n><big|sum><rsub|k=0><rsup|n-1>f<around*|(|x<rsub|k>|)>\<leqslant\>I\<leqslant\><frac|b-a|n><big|sum><rsub|k=1><rsup|n>f<around*|(|x<rsub|k>|)>
+  </equation*>
+
+  for every <math|n\<in\> \<bbb-Z\>>. Then
+  <math|I=<big|int><rsub|a><rsup|b>f<around*|(|x|)>d*x .>
+
+  See that the summation on the left and right is the integral of upper and
+  lower step functions hence the integral and <math|I> are both between them,
+  and using the result of previous part we get.
+
+  <\equation*>
+    0\<leqslant\><around*|\||I-<big|int><rsub|a><rsup|b>f<around*|(|x|)>d*x
+    |\|>\<leqslant\><frac|C|n>
+  </equation*>
+
+  for all <math|n\<in\> \<bbb-Z\>> therefore it is proven. We can also prove
+  the similar case for decreasing function.
+
+  <subsection|Integration for <math|<big|int><rsub|a><rsup|b>x<rsup|p>d*x
+  >for positive integer <math|p>>
+
+  We can show that for <math|b\<gtr\>0> and <math|p\<in\> \<bbb-Z\><rsup|+>>
+
+  <\equation*>
+    <big|int><rsub|0><rsup|b>x<rsup|p> d*x=<frac|b<rsup|p+1>|p+1>
+  </equation*>
+
+  First use the following inequality
+
+  <\eqnarray*>
+    <tformat|<table|<row|<cell|<big|sum><rsup|n-1><rsub|k=1>k<rsup|p>\<leqslant\>>|<cell|<dfrac|n<rsup|p+1>|p+1>>|<cell|\<leqslant\><big|sum><rsub|k=1><rsup|n>k<rsup|p>>>|<row|<cell|<dfrac|b|n><big|sum><rsup|n-1><rsub|k=0><around*|(|<frac|k*b|n>|)><rsup|p>\<leqslant\>>|<cell|<dfrac|b<rsup|p+1>|p+1>>|<cell|\<leqslant\><dfrac|b|n><big|sum><rsup|n-1><rsub|k=1><around*|(|<frac|k*b|n>|)><rsup|p>>>|<row|<cell|>|<cell|>|<cell|>>|<row|<cell|<dfrac|b|n><big|sum><rsup|n-1><rsub|k=0>f<around*|(|x<rsub|k>|)>\<leqslant\>>|<cell|<dfrac|b<rsup|p+1>|p+1>>|<cell|\<leqslant\><dfrac|b|n><big|sum><rsup|n-1><rsub|k=1>f<around*|(|x<rsub|k>|)>>>>>
+  </eqnarray*>
+
+  For all <math|n> positive integers. Then for
+  <math|f<around*|(|x|)>=x<rsup|p>> we have
+  <math|I=<frac*|b<rsup|p+1>|><around*|(|p+1|)>>.
+
+  Here are some properties of integral
+
+  <\enumerate>
+    <item>Integrand lienarity: if <math|f> and <math|g> are integrable then
+    so is their linear combination also <math|<big|int><rsub|a><rsup|b><around*|(|c<rsub|1>*f<around*|(|x|)>+c<rsub|2>g<around*|(|x|)>|)>d*x=c<rsub|1><big|int><rsub|a><rsup|b>f<around*|(|x|)>d*x+c<rsub|2><big|int><rsub|a><rsup|b>g<around*|(|x|)>d*x
+    \ >
+
+    And the property can be generalized to linear combinations of many
+    integrand.
+
+    <item>Interval additivity: if the first two integral exists so does the
+    third one and <math|<big|int><rsub|a><rsup|b>f<around*|(|x|)>d*x+<big|int><rsub|b><rsup|c>f<around*|(|x|)>d*x=<big|int><rsub|a><rsup|c>f<around*|(|x|)>d*x>
+
+    <item>Translation<space|1em>invariance: for <math|f> integrable on
+    <math|<around*|[|a,b|]> > then for number <math|c> we have
+    <math|<big|int><rsub|a><rsup|b>f<around*|(|x|)>d*x=<big|int><rsub|a+c><rsup|b+c>f<around*|(|x-c|)>d*x>.
+
+    <item>Expansion or contraction: if <math|f> is integrable on
+    <math|<around*|[|a,b|]>> then for <math|k\<neq\>0>
+    <math|<big|int><rsub|a><rsup|b>f<around*|(|x|)>d*x=<frac|1|k><big|int><rsub|k*a><rsup|k*b>
+    f<around*|(|<frac|x|k>|)>d*x>
+
+    <item>Comparison: for <math|f<around*|(|x|)>\<leqslant\>g<around*|(|x|)>>
+    for all <math|x\<in\> <around*|[|a,b|]>> and both integrable on the
+    domain then <math|<big|int><rsub|a><rsup|b>f<around*|(|x|)>d*x\<leqslant\><big|int><rsub|a><rsup|b>g<around*|(|x|)>d*x
+    >.
+
+    if <math|f=0> then a nonnegative function will have a nonnegative
+    integral.
+  </enumerate>
+
+  <subsection|Integration of Polynomials>
+
+  We can generalized the integration of <math|x<rsup|p> > for
+  <math|-b\<less\>0>
+
+  <\equation*>
+    <big|int><rsub|0><rsup|-b>x<rsup|p> d*x=-<big|int><rsub|0><rsup|b><around*|(|-x|)><rsup|p>
+    d*x=<dfrac|<around*|(|-b|)><rsup|p+1>|p+1>
+  </equation*>
+
+  And using <math|<big|int><rsub|a><rsup|b>=<big|int><rsub|a><rsup|0>+<big|int><rsub|0><rsup|b>=<big|int><rsub|0><rsup|b>-<big|int><rsub|0><rsup|a>
+  > we have
+
+  <\equation*>
+    <big|int><rsub|a><rsup|b>x<rsup|p>d*x=<dfrac|b<rsup|p+1>-a<rsup|p+1>|p+1>\<equiv\><dfrac|x<rsup|p+1>|p+1><mid|\|><rsub|b><rsup|a>
+  </equation*>
+
+  The formula above along plus linearity of integrand property can be used to
+  compute integral of polynomials
+
+  <\equation*>
+    <big|int><rsub|a><rsup|b><big|sum><rsub|k=0><rsup|n>c<rsub|k>*x<rsup|k>*d*x=<big|sum><rsub|k=0><rsup|n>c<rsub|k><big|int><rsub|a><rsup|b>*x<rsup|k>*d*x=<big|sum><rsub|k=0><rsup|n>c<rsub|k><dfrac|b<rsup|k+1>-a<rsup|k+1>|k+1>
+  </equation*>
+
+  Also we can integrate polynomial involving absolute value by dividing the
+  domain corresponds to different case for the absolute value functions and
+  add them using interval additivity.
+
+  <section|Exercise>
+
+  Proof the following theorem using the theorem above
+
+  <\enumerate>
+    <item><math|<big|int><rsub|a><rsup|b>f<around*|(|x|)>d*x=<around*|(|b-a|)><big|int><rsub|0><rsup|1>f<around*|(|a+<around*|(|b-a|)>x|)>d*x
+    >
+
+    <item><math|<big|int><rsub|a><rsup|b>f<around*|(|A*x+B|)>d*x=<frac|1|A><big|int><rsub|A*a+B><rsup|A*b+B>f<around*|(|x|)>d*x
+    >
+
+    <item><math|<big|int><rsub|a><rsup|b>f<around*|(|c-x|)>d*x=<big|int><rsub|c-b><rsup|c-a>f<around*|(|x|)>d*x
+    <rsub|>>\ 
+  </enumerate>
 
   \;
 
   \;
 
   \;
-
-  \ 
 </body>
 
 <\initial>
@@ -678,8 +920,17 @@
     <associate|auto-10|<tuple|10|8>>
     <associate|auto-11|<tuple|11|8>>
     <associate|auto-12|<tuple|12|10>>
-    <associate|auto-13|<tuple|13|?>>
+    <associate|auto-13|<tuple|13|10>>
+    <associate|auto-14|<tuple|14|11>>
+    <associate|auto-15|<tuple|15|11>>
+    <associate|auto-16|<tuple|16|11>>
+    <associate|auto-17|<tuple|17|12>>
+    <associate|auto-18|<tuple|18|12>>
+    <associate|auto-19|<tuple|18.1|12>>
     <associate|auto-2|<tuple|2|1>>
+    <associate|auto-20|<tuple|18.2|13>>
+    <associate|auto-21|<tuple|19|?>>
+    <associate|auto-22|<tuple|1|?>>
     <associate|auto-3|<tuple|3|2>>
     <associate|auto-4|<tuple|4|2>>
     <associate|auto-5|<tuple|5|2>>
@@ -740,6 +991,40 @@
       <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|12<space|2spc>Integral
       of step functions> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-12><vspace|0.5fn>
+
+      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|13<space|2spc>Integral
+      of a more general function> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-13><vspace|0.5fn>
+
+      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|14<space|2spc>Upper
+      and Lower Integral> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-14><vspace|0.5fn>
+
+      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|15<space|2spc>Area
+      of ordinate set as integral> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-15><vspace|0.5fn>
+
+      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|16<space|2spc>Monotonic
+      and Piecewise Monotonic Function> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-16><vspace|0.5fn>
+
+      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|17<space|2spc>Integrability
+      of bounded monotonic function> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-17><vspace|0.5fn>
+
+      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|18<space|2spc>Calculation
+      of of bounded monotonic function> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-18><vspace|0.5fn>
+
+      <with|par-left|<quote|1tab>|18.1<space|2spc>Integration for
+      <with|mode|<quote|math>|<big|int><rsub|a><rsup|b>x<rsup|p>d*x >for
+      positive integer <with|mode|<quote|math>|p>
+      <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-19>>
+
+      <with|par-left|<quote|1tab>|18.2<space|2spc>Integration of Polynomials
+      <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-20>>
     </associate>
   </collection>
 </auxiliary>

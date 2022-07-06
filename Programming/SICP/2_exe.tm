@@ -1118,9 +1118,25 @@
 
     <\session|scheme|default>
       <\input|Scheme] >
-        \;
+        (define (count-leaves t)
 
-        \;
+        \ \ (accumulate +
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ (map (lambda (subt) (cond ((null? subt)
+        0)
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ((pair?
+        subt)\ 
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (count-leaves
+        subt))
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (else
+        1)))
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ t)))
       </input>
 
       <\input|Scheme] >
@@ -1131,14 +1147,249 @@
     <item>Number 36
 
     <\session|scheme|default>
-      <\input>
-        Scheme]\ 
-      <|input>
+      <\input|Scheme] >
+        (define (accumulate-n op init items)
+
+        \ \ (if (null? (car items))
+
+        \ \ \ \ \ \ '()
+
+        \ \ \ \ \ \ (cons (accumulate op init (maps car items))
+
+        \ \ \ \ \ \ \ \ \ \ \ \ (accumulate-n op init (maps cdr items)))))
+      </input>
+
+      <\input|Scheme] >
         \;
       </input>
     </session>
 
     <item>Number 37
+
+    <\session|scheme|default>
+      <\input|Scheme] >
+        (define (accumulate-n op init items)
+
+        \ \ (if (null? (car items))
+
+        \ \ \ \ \ \ '()
+
+        \ \ \ \ \ \ (cons (accumulate op init (maps car items))
+
+        \ \ \ \ \ \ \ \ \ \ \ \ (accumulate-n op init (maps cdr items)))))
+
+        \;
+
+        (define (dot-product v w)
+
+        \ \ (accumulate + 0 (map * v w)))
+
+        \;
+
+        (define (matrix-*-vector m v)
+
+        \ \ (map (lambda (m) (dot-product v m)) m))
+
+        \;
+
+        (define (transpose mat)
+
+        \ \ (accumulate-n cons '() mat))
+
+        \;
+
+        (define (matrix-*-matrix m n)
+
+        \ \ (let ((cols (transpose n)))
+
+        \ \ \ \ \ \ \ \ (map (lambda (m) (matrix-*-vector cols m)) m)))
+      </input>
+
+      <\input|Scheme] >
+        \;
+      </input>
+    </session>
+
+    <item>Number 38
+
+    <\session|scheme|default>
+      <\input|Scheme] >
+        (define (fold-left op initial sequence)
+
+        \ \ (define (iter result rest)
+
+        \ \ \ \ (if (null? rest)
+
+        \ \ \ \ \ \ \ \ result
+
+        \ \ \ \ \ \ \ \ (iter (op result (car rest))
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ (cdr rest))))
+
+        \ \ (iter initial sequence))
+      </input>
+
+      <\input|Scheme] >
+        \;
+      </input>
+    </session>
+
+    <\scm>
+      (fold-right / 1 (list 1 2 3))
+
+      (/ 1(/ 2 (/ 3 1)))
+
+      (fold-left / 1 (list 1 2 3))
+
+      (/ (/ (/ 1 1) 2) 3)
+
+      (fold-right list nil (list 1 2 3))
+
+      (cons 1 (cons 2 (cons 3 nil)))
+
+      (list 1 2 3)
+
+      (fold-left list nil (list 1 2 3))
+
+      (cons (cons (cons nil 1) 2) 3)
+
+      (((nil.1).2).3)
+    </scm>
+
+    Fold right and left would be the same for commutative operation
+
+    <item>Number 39
+
+    <\session|scheme|default>
+      <\input|Scheme] >
+        (define (reverse-fold-right items)\ 
+
+        \ \ \ (accumulate (lambda (first rest)\ 
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (append rest (list first)))\ 
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ '()\ 
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ items))
+      </input>
+
+      <\input|Scheme] >
+        (define (reverse sequence)
+
+        \ \ (fold-left (lambda (x y) (cons y x)) '() sequence))
+      </input>
+
+      <\input|Scheme] >
+        \;
+      </input>
+    </session>
+
+    <item>Number 40
+
+    <\session|scheme|default>
+      <\input|Scheme] >
+        (define (accumulate op initial sequence)\ 
+
+        \ \ \ (if (null? sequence)\ 
+
+        \ \ \ \ \ \ \ initial\ 
+
+        \ \ \ \ \ \ \ (op (car sequence)\ 
+
+        \ \ \ \ \ \ \ \ \ \ \ (accumulate op initial (cdr sequence)))))
+
+        \;
+
+        (define (enumerate-interval n)
+
+        \ \ (define (iter i list)
+
+        \ \ \ \ (if (\<gtr\> i n)
+
+        \ \ \ \ \ \ \ \ '()
+
+        \ \ \ \ \ \ \ \ (cons i
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ (iter (+ i 1) list))))
+
+        \ \ (iter 1 '()))
+
+        \;
+
+        (define (unique-pairs n)
+
+        \ \ (accumulate append
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ '()
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ (map (lambda (x) (map (lambda (y) (list y
+        x))
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (enumerate-interval
+        (- x 1))))
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (enumerate-interval n))))
+      </input>
+
+      <\input|Scheme] >
+        (define (sum-prime-pairs n)
+
+        \ \ (filter sum-prime?
+
+        \ \ \ \ \ \ \ \ \ \ (unique-pairs n)))
+      </input>
+
+      <\input|Scheme] >
+        \;
+      </input>
+    </session>
+
+    <item>Number 41
+
+    <\session|scheme|default>
+      <\input|Scheme] >
+        (define (unique-triple n)
+
+        \ \ (accumulate append
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ '()
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ (map (lambda (x) (accumulate append
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ '()
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (map
+        (lambda (y)(map (lambda (z) (list z y x))
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (enumerate-interval
+        (- y 1))))
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (enumerate-interval
+        (- x 1)))))
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (enumerate-interval n))))
+      </input>
+
+      <\input|Scheme] >
+        (define (triple-sum-equal-to m n)
+
+        \ \ (filter (lambda (x) (= (+ (car x) (cdar x) (cddar x))
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m))\ 
+
+        \ \ \ \ \ \ \ \ (unique-tirple n)))
+      </input>
+
+      <\input|Scheme] >
+        \;
+      </input>
+    </session>
+
+    <item>Number 42
+
+    \;
+
+    <item>Number 43
   </enumerate>
 
   \;

@@ -688,6 +688,117 @@
   The program are more modular. Each module can be reuse and rearrange. See
   that the examples are all stages of operations applied on sequence as
   conventional interface.
+
+  Sequence canbe used to represent computation commons to nested loops.
+  Consider the problem, given <math|n\<in\> \<bbb-Z\>> find all ordered pair
+  <math|i,j> such that <math|1\<leqslant\>j\<leqslant\>i\<leqslant\>n> and
+  <math|i+j> is prime. First we accumulate the pairs
+
+  <\session|scheme|default>
+    <\unfolded-io|Scheme] >
+      (accumulate append
+
+      \ \ \ \ \ \ \ \ \ \ \ \ nil
+
+      \ \ \ \ \ \ \ \ \ \ \ \ (map (lambda i)
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (map (lambda (j) (list i j))
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (enumerate-interval 1 (- i
+      1)))
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (enumerate-interval 1 n)))
+    <|unfolded-io>
+      <errput|Unbound variable: accumulate>
+    </unfolded-io>
+
+    <\input|Scheme] >
+      (define (flat-map proc seq)
+
+      \ \ (accumulate append nil (map proc seq)))
+    </input>
+
+    <\input|Scheme] >
+      \;
+    </input>
+  </session>
+
+  Then define the filter for prime
+
+  <\session|scheme|default>
+    <\input|Scheme] >
+      (define (prime-sum? pair)
+
+      \ \ (prime? (+ (car pair) (cdr pair))))
+    </input>
+
+    <\input|Scheme] >
+      \;
+    </input>
+  </session>
+
+  and then create the list of triple and combine the result
+
+  <\session|scheme|default>
+    <\input|Scheme] >
+      (define (make-pair-sum pair)
+
+      \ \ (list (car pair) (cdr pair) (+ (car pair) (cdr pair))))
+    </input>
+
+    <\input|Scheme] >
+      (define (prime-sum-pairs n)
+
+      \ \ (map make-pair-sum
+
+      \ \ \ \ \ \ \ (filter prime-sum?
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (flatmap (lambda (i) (map (lambda (j)
+      (list i j))
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ enumerate-interval
+      1 (- i 1)))
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (enumerate-interval
+      1-n)))))
+    </input>
+
+    <\input|Scheme] >
+      \;
+    </input>
+  </session>
+
+  Nested mapping can also be sued to generate permutation of a set (here
+  list).
+
+  <\session|scheme|default>
+    <\input>
+      Scheme]\ 
+    <|input>
+      (define (permutation \ s)
+
+      \ \ (if (null? s)
+
+      \ \ \ \ \ \ (list '())
+
+      \ \ \ \ \ \ (flatmap (lambda (x) (map lambda (p) (cons x p)
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (permutation
+      (remove x s))))
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ s)))
+    </input>
+
+    <\input|Scheme] >
+      (define (remove item sequence)
+
+      \ \ (filter (lambda (x) (not (= x item)))
+
+      \ \ \ \ \ \ \ \ \ \ sequence))
+    </input>
+  </session>
+
+  \;
 </body>
 
 <\initial>
@@ -706,7 +817,7 @@
     <associate|auto-6|<tuple|2|3>>
     <associate|auto-7|<tuple|2.1|4>>
     <associate|auto-8|<tuple|2.2|5>>
-    <associate|auto-9|<tuple|2.3|?>>
+    <associate|auto-9|<tuple|2.3|6>>
   </collection>
 </references>
 
@@ -744,6 +855,10 @@
       <with|par-left|<quote|1tab>|2.2<space|2spc>Hierarchical Structure
       <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-8>>
+
+      <with|par-left|<quote|1tab>|2.3<space|2spc>Sequence as Conventional
+      Interface <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-9>>
     </associate>
   </collection>
 </auxiliary>
