@@ -798,7 +798,134 @@
     </input>
   </session>
 
-  \;
+  <subsection|A Picture Language>
+
+  A picture language has one elementary element, a painter, that draws scaled
+  and shifted image. There is flip-vert and flip horiz to flip image, and
+  also beside and below that takes two images and stack them horizontally and
+  vertically. Below, we use wave as the elementary element painter
+
+  <\scm-code>
+    (define wave2 (beside wave (flip-vert wave)))
+
+    (define wave4 (below wave2 wave2))
+  </scm-code>
+
+  We can abstract the two procedures above into the following.
+
+  <\scm-code>
+    (define (flipped-pairs painter)
+
+    \ \ (let ((painter2 (beside painter (flip-vert painter))))
+
+    \ \ \ \ (below painter2 painter2)))
+  </scm-code>
+
+  We can also define recursive procedure as below.
+
+  <\scm-code>
+    (define (right-split painter n)
+
+    \ \ (if (= n 0)
+
+    \ \ \ \ \ \ painter
+
+    \ \ \ \ \ \ (let ((smaller (right-split painter (- n 1))))
+
+    \ \ \ \ \ \ \ \ (beside painter (below smaller smaller)))))
+  </scm-code>
+
+  <\scm-code>
+    (define (corner-split painter n)
+
+    \ \ (if (= n 0)
+
+    \ \ \ \ \ \ painter
+
+    \ \ \ \ \ \ (let ((up (up-split painter (- n 1)))
+
+    \ \ \ \ \ \ \ \ \ \ \ \ (right (right-split painter (- n 1))))
+
+    \ \ \ \ \ \ \ \ (let ((top-left (beside up up))
+
+    \ \ \ \ \ \ \ \ \ \ \ \ \ \ (botom-right (below right right))
+
+    \ \ \ \ \ \ \ \ \ \ \ \ \ \ (corner (corner-split painter (- n 1))))
+
+    \ \ \ \ \ \ \ \ \ \ (beside (below painter top-left )
+
+    \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (below bottom-right corner))))))
+  </scm-code>
+
+  <\scm-code>
+    (define (square-limit n)
+
+    \ \ (let ((quarter (corner-split painter n)))
+
+    \ \ \ \ (let ((half (beside (flip-horiz quarter) quarter)))
+
+    \ \ \ \ \ \ (below (flip-vert half) half))))
+  </scm-code>
+
+  We also have higher-order operations, such as arranging four painters, but
+  take four procedures that will be applied to the four painters.
+
+  <\scm-code>
+    (define (square-of-four tl tr bl br)
+
+    \ \ (lambda (painter)
+
+    \ \ \ \ (let ((top (beside (tl painter) (tr painter)))
+
+    \ \ \ \ \ \ \ \ \ \ (bottom (beside (bl painter) (br painter))))
+
+    \ \ \ \ \ \ (below bottom top))))
+  </scm-code>
+
+  Then we can redefine flipped pairs and square-limit.
+
+  <\scm-code>
+    (define (flipped pairs painter)
+
+    \ \ (let ((combine4 (square-of-four identity flip-vert
+
+    \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ identity
+    flip vert)))
+
+    \ \ \ \ (combine4 painter)))
+  </scm-code>
+
+  <\scm-code>
+    <\scm-code>
+      (define (square-limit painter n)
+
+      \ \ (let ((combine4 (square-of-four flip-horiz identity
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rotate180
+      flip-vert)))
+
+      \ \ \ \ (combine4 painter)))
+    </scm-code>
+  </scm-code>
+
+  To implement painter we need to have frame that can be described by three
+  vectors, origin and two edge vectors. To have frame we need a constructor
+  and three selectors. Images will use unit square and it will be mapped to
+  the frame using <math|origin<around*|(|frame|)>+x*edge1<around*|(|frame|)>+y*edge2<around*|(|frame|)><rsub|>>.
+
+  <\scm-code>
+    (define (frame-coord-map frame)
+
+    \ \ (lambda (v) (add-vec (origin-frame frame)
+
+    \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (add-vec (scale-vect
+    (xcor-vect v) (edge1-frame frame))
+
+    \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (scale
+    vect (ycor-vect v) (edge2-frame frame))))))
+  </scm-code>
+
+  Painters
 </body>
 
 <\initial>
@@ -810,6 +937,7 @@
 <\references>
   <\collection>
     <associate|auto-1|<tuple|1|1>>
+    <associate|auto-10|<tuple|2.4|?>>
     <associate|auto-2|<tuple|1.1|1>>
     <associate|auto-3|<tuple|1.2|2>>
     <associate|auto-4|<tuple|1.3|3>>

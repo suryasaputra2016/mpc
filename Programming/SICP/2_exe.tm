@@ -1387,10 +1387,257 @@
 
     <item>Number 42
 
-    \;
+    <\session|scheme|default>
+      <\input|Scheme] >
+        (define (queens board-size)
+
+        \ \ (define (queen-cols k)
+
+        \ \ \ \ (if (= k 0)
+
+        \ \ \ \ \ \ \ \ (list '())
+
+        \ \ \ \ \ \ \ \ (filter
+
+        \ \ \ \ \ \ \ \ \ (lambda (positions) (safe? k positions))
+
+        \ \ \ \ \ \ \ \ \ (flatmap
+
+        \ \ \ \ \ \ \ \ \ \ (lambda (rest-of-queens)
+
+        \ \ \ \ \ \ \ \ \ \ \ \ (map (lambda (new-row)
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (adjoin-position new-row k
+        rest-of-queens))
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (enumerate-interval board-size)))
+
+        \ \ \ \ \ \ \ \ \ \ (queen-cols (- k 1))))))
+
+        \ \ (queen-cols board-size))
+
+        \;
+
+        (define (adjoin-position row col rest)
+
+        \ \ (cons (list row col) rest))
+
+        \;
+
+        (define (safe? k positions)
+
+        \ \ (= 0
+
+        \ \ \ \ \ (accumulate + 0
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (map (lambda (x) (if (check (car
+        positions) x)
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0
+        1))
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (cdr positions)))))
+
+        (define (check a b)
+
+        \ \ (let ((ax (car a))
+
+        \ \ \ \ \ \ \ \ (ay (cadr a))
+
+        \ \ \ \ \ \ \ \ (bx (car b))
+
+        \ \ \ \ \ \ \ \ (by (cadr b)))
+
+        \ \ \ \ (and (not (= ax bx))
+
+        \ \ \ \ \ \ \ \ \ (not (= ay by))
+
+        \ \ \ \ \ \ \ \ \ (not (= (abs (- ax bx)) (abs (- ay by)))))))
+
+        \;
+
+        (define (enumerate-interval n)
+
+        \ \ (define (iter i list)
+
+        \ \ \ \ (if (\<gtr\> i n)
+
+        \ \ \ \ \ \ \ \ '()
+
+        \ \ \ \ \ \ \ \ (cons i
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ (iter (+ i 1) list))))
+
+        \ \ (iter 1 '()))
+
+        (define (filter pred? items)
+
+        \ \ (cond ((null? items) '())
+
+        \ \ \ \ \ \ \ \ ((pred? (car items)) (cons (car items) (filter pred?
+        (cdr items))))
+
+        \ \ \ \ \ \ \ \ (else (filter pred? (cdr items)))))
+
+        (define (flatmap proc items)
+
+        \ \ (accumulate append '() (map proc items)))
+
+        (define (accumulate op initial sequence)
+
+        \ \ (if (null? sequence)
+
+        \ \ \ \ \ \ initial
+
+        \ \ \ \ \ \ (op (car sequence)
+
+        \ \ \ \ \ \ \ \ \ \ (accumulate op initial (cdr sequence)))))
+
+        (queens 8)
+      </input>
+
+      <\input|Scheme] >
+        \;
+      </input>
+    </session>
 
     <item>Number 43
+
+    queen-cols evaluated for every iteration on map with time $$$$ (later)
+
+    <item>Number 44
+
+    <\session|scheme|default>
+      <\input|Scheme] >
+        <\scm-code>
+          (define (up-split painter n)
+
+          \ \ (if (= n 0)
+
+          \ \ \ \ \ \ painter
+
+          \ \ \ \ \ \ (let ((smaller (up-split painter (- n 1))))
+
+          \ \ \ \ \ \ \ \ (below painter (beside smaller smaller)))))
+        </scm-code>
+      </input>
+
+      <\input|Scheme] >
+        \;
+      </input>
+    </session>
+
+    <item>Number 45
+
+    <\session|scheme|default>
+      <\input|Scheme] >
+        (define (split outer inner)
+
+        \ \ (lambda (painter) (outer (inner painter)\ 
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (inner
+        painter))))
+      </input>
+
+      <\input|Scheme] >
+        \;
+      </input>
+    </session>
+
+    <item>Number 46
+
+    <\session|scheme|default>
+      <\input|Scheme] >
+        (define (make-vect x y)
+
+        \ \ (cons x y))
+      </input>
+
+      <\input|Scheme] >
+        (define (xcor-vect v)
+
+        \ \ (car v))
+      </input>
+
+      <\input|Scheme] >
+        (define (ycor-vect v)
+
+        \ \ (cdr v))
+      </input>
+
+      <\input|Scheme] >
+        (define (add-vect v1 v2)
+
+        \ \ (make-vect (+ (xcor-vect v1) (xcor-vect v2))
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ (+ (ycor-vect v1) (ycor-vect v2))))
+      </input>
+
+      <\input|Scheme] >
+        (define (sub-vect v1 v2)
+
+        \ \ (make-vect (- (xcor-vect v1) (xcor-vect v2))
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ (- (ycor-vect v1) (ycor-vect v2))))
+      </input>
+
+      <\input|Scheme] >
+        (define (scale-vect s v)
+
+        \ \ (make-vect (* s (xcor-vect v))
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ (* s (ycor-vect v))))
+      </input>
+
+      <\input|Scheme] >
+        \;
+      </input>
+    </session>
+
+    <item>Number 47
+
+    <\session|scheme|default>
+      <\input|Scheme] >
+        (define (origin frame)
+
+        \ \ (car frame))
+      </input>
+
+      <\input|Scheme] >
+        (define (edge1 frame)
+
+        \ \ (car (cdr frame)))
+      </input>
+
+      <\input|Scheme] >
+        (define (edge2 frame); for list
+
+        \ \ (car (cdr (cdr frame))))
+      </input>
+
+      <\input|Scheme] >
+        (define (edge2 frame); for cons
+
+        \ \ (cdr (cdr frame)))
+      </input>
+
+      <\input|Scheme] >
+        \;
+      </input>
+    </session>
+
+    <item>Number 48
+
+    <item>Number 49
+
+    <item>
+
+    \;
   </enumerate>
+
+  \;
+
+  \;
 
   \;
 
