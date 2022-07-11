@@ -925,7 +925,187 @@
     vect (ycor-vect v) (edge2-frame frame))))))
   </scm-code>
 
-  Painters
+  Painters draws it picture on frame given on it. Below produce a procedure
+  configuraing a drawing of line segments into frame.
+
+  <\scm-code>
+    (define (segments-\<gtr\>painter segment-list)
+
+    \ \ (lambda (frame)
+
+    \ \ \ \ (for-each
+
+    \ \ \ \ \ (lambda (segment)
+
+    \ \ \ \ \ \ \ (draw-line
+
+    \ \ \ \ \ \ \ \ ((frame-coord-map frame) (start-segment segment))
+
+    \ \ \ \ \ \ \ \ ((frame-coord-map frame) (end-segment segment))))
+
+    \ \ \ \ \ segment-list)))
+  </scm-code>
+
+  Procedure form of painter create abstraction barrier so that we can use all
+  primitive painters.
+
+  For transformation of painter, they can work withouth knowing the painter.
+
+  <\scm-code>
+    (define (transform-painter painter origin corner1 corner2)
+
+    \ \ (lambda (frame)
+
+    \ \ \ \ (let ((m (frame-coord-map frame)))
+
+    \ \ \ \ \ \ (let ((new-origin (m origin)))
+
+    \ \ \ \ \ \ \ \ (painter (make-frame
+
+    \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ new-origin
+
+    \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (sub-vect (m corner1) new-origin)
+
+    \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (sub-vect (m corner2)
+    new-origin)))))))
+  </scm-code>
+
+  Below are the transformations of the painter implemented using
+  transform-painter.
+
+  <\session|scheme|default>
+    <\input|Scheme] >
+      (define (flip-vert painter)
+
+      \ \ (transform-painter painter
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (make-vect 0.0 1.0)
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (make-vect 1.0 1.0)
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (make-vect 0.0 0.0)))
+
+      \;
+
+      (define (shrink-to-upper-right painter)
+
+      \ \ (transform-painter painter
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (make-vect 0.5 0.5)
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (make-vect 1.0 0.5)
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (make-vect 0.5 1.0)))
+
+      \;
+
+      (define (rotate90 painter)
+
+      \ \ (transform-painter painter
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (make-vect 1.0 0.0)
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (make-vect 1.0 1.0)
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (make-vect 0.0 0.0)))
+
+      \;
+
+      (define (squash-inwards painter)
+
+      \ \ (transform-painter painter
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (make-vect 0.0 0.0)
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (make-vect 0.65 0.35)
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (make-vect 0.35 0.65)))
+    </input>
+
+    <\input|Scheme] >
+      \;
+    </input>
+  </session>
+
+  Procedure that compound painter can also be implemented the same way.
+
+  <\session|scheme|default>
+    <\input|Scheme] >
+      (define (beside painter1 painter2)
+
+      \ \ (let ((split-point (make-vect 0.5 0.0)))
+
+      \ \ \ \ (let ((paint-left(transform-painter painter1
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (make-vect
+      0.0 0.0)
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ split-point
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (make-vect
+      0.0 1.0)))
+
+      \ \ \ \ \ \ \ \ \ \ (paint-right (transform-painter painter2
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ split-point
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (make-vect
+      1.0 0.0)
+
+      \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (make-vect
+      0.5 1.0))))
+
+      \ \ \ \ \ \ (lambda (frame) (paint-left frame)(paint-right frame)))))
+    </input>
+
+    <\input|Scheme] >
+      \;
+    </input>
+  </session>
+
+  Level of language for Robust design. The picture language shows a
+  stratified design that is complex system comprises of system of levels each
+  with its own language. compound elements of one level becomes the primitive
+  level of the upper level. Stratified design makes program robust that is
+  small change in specification only require small change in program.\ 
+
+  <section|Symbolic Data>
+
+  Data can also contains other than numbers such as <scm|(a b c
+  d)><space|1em>or <scm|((Andy 1) (Ben 2) (Charlie 3))>. To mainpulat symbols
+  we need to quote data, treating the symbols as data object rather than
+  expression to be evaluated.
+
+  <\scm-code>
+    (define a 1)
+
+    (define b 2)
+
+    (list a b) ;(1 2)
+
+    (list 'a 'b) ; (a,b)
+
+    (car '(a b c)); a
+  </scm-code>
+
+  Another primitive is <scm|eq?> that check wether two symbols are equal as
+  used in theh following procedure.
+
+  <\scm-code>
+    (define (memq item x)
+
+    \ \ (cond ((null? x) false)
+
+    \ \ \ \ \ \ \ \ ((eq? item (car x)) x)
+
+    \ \ \ \ \ \ \ \ (else (memq item (cdr x))))))
+  </scm-code>
+
+  <subsection|Symbolic Differentiation>
+
+  \;
+
+  \ 
 </body>
 
 <\initial>
@@ -937,7 +1117,9 @@
 <\references>
   <\collection>
     <associate|auto-1|<tuple|1|1>>
-    <associate|auto-10|<tuple|2.4|?>>
+    <associate|auto-10|<tuple|2.4|8>>
+    <associate|auto-11|<tuple|3|?>>
+    <associate|auto-12|<tuple|3.1|?>>
     <associate|auto-2|<tuple|1.1|1>>
     <associate|auto-3|<tuple|1.2|2>>
     <associate|auto-4|<tuple|1.3|3>>
@@ -987,6 +1169,10 @@
       <with|par-left|<quote|1tab>|2.3<space|2spc>Sequence as Conventional
       Interface <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-9>>
+
+      <with|par-left|<quote|1tab>|2.4<space|2spc>A Picture Language
+      <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-10>>
     </associate>
   </collection>
 </auxiliary>

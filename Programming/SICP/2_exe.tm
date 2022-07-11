@@ -1628,9 +1628,325 @@
 
     <item>Number 48
 
+    <\session|scheme|default>
+      <\input|Scheme] >
+        (define (make-segment v1 v2)
+
+        \ \ (cons v1 v2))
+
+        \;
+
+        (define (start-segment s)
+
+        \ \ (car s))
+
+        \;
+
+        (define (end-segment s)
+
+        \ \ (cdr s))
+      </input>
+
+      <\input|Scheme] >
+        \;
+      </input>
+    </session>
+
     <item>Number 49
 
-    <item>
+    <\session|scheme|default>
+      <\unfolded-io|Scheme] >
+        (segments-\<gtr\>painter (list (make-segment (make-vect 0 0)
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (make-vect
+        1 0)))
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (make-segment
+        (make-vect 1 0)
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (make-vect
+        0 0))
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (make-segment )
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (make-segment )))
+      <|unfolded-io>
+        <errput|Unbound variable: segments-\>painter>
+      </unfolded-io>
+
+      <\input|Scheme] >
+        \;
+      </input>
+    </session>
+
+    <\session|scheme|default>
+      <\unfolded-io|Scheme] >
+        (segments-\<gtr\>painter (list (make-segment (make-vect 0 0)
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (make-vect
+        1 0))
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (make-segment
+        (make-vect 1 0)
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (make-vect
+        1 1))
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (make-segment
+        (make-vect 1 1)
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (make-vect
+        0 1))
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (make-segment
+        (make-vect 0 1)
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (make-vect
+        0 0))))
+      <|unfolded-io>
+        <errput|Unbound variable: segments-\>painter>
+      </unfolded-io>
+
+      <\unfolded-io|Scheme] >
+        (segments-\<gtr\>painter (list (make-segment (make-vect 0 0)
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (make-vect
+        1 1))
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (make-segment
+        (make-vect 1 0)
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (make-vect
+        0 1))))
+      <|unfolded-io>
+        <errput|Unbound variable: segments-\>painter>
+      </unfolded-io>
+
+      <\unfolded-io|Scheme] >
+        (segments-\<gtr\>painter (list (make-segment (make-vect 0.5 0)
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (make-vect
+        1 0.5))
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (make-segment
+        (make-vect 1 0.5)
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (make-vect
+        0.5 1))
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (make-segment
+        (make-vect 0.5 1)
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (make-vect
+        0 0.5))
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (make-segment
+        (make-vect 0 0.5)
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (make-vect
+        0.5 0))))
+      <|unfolded-io>
+        <errput|Unbound variable: segments-\>painter>
+      </unfolded-io>
+
+      <\input|Scheme] >
+        \;
+      </input>
+    </session>
+
+    <item>Number 50
+
+    <\session|scheme|default>
+      <\input|Scheme] >
+        (define (flip-horiz painter)
+
+        \ \ (transform-painter painter
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (make-vect 1.0 0.0)
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (make-vect 0.0 0.0)
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (make-vect 1.0 1.0)))
+      </input>
+
+      <\input|Scheme] >
+        (define (rotate180 painter)
+
+        \ \ (transform-painter painter
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (make-vect 1.0 1.0)
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (make-vect 0.0 1.0)
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (make-vect 1.0 0.0)))
+      </input>
+
+      <\input|Scheme] >
+        (define (rotate270 painter)
+
+        \ \ (transform-painter painter
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (make-vect 0.0 1.0)
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (make-vect 0.0 0.0)
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (make-vect 1.0 1.0)))
+      </input>
+
+      <\input|Scheme] >
+        \;
+      </input>
+    </session>
+
+    <item>Number 51
+
+    <\session|scheme|default>
+      <\input|Scheme] >
+        (define (below painter1 painter2)
+
+        \ \ (let ((split-point (make-vect 0.0 5.0)))
+
+        \ \ \ \ (let ((paint-bottom(transform-painter painter1
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (make-vect
+        0.0 0.0)
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (make-vect
+        1.0 0.0)
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ split-point))
+
+        \ \ \ \ \ \ \ \ \ \ (paint-top (transform-painter painter2
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ split-point
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (make-vect
+        1.0 0.5)
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (make-vect
+        1.0 1.0))))
+
+        \ \ \ \ \ \ (lambda (frame) (paint-bottom frame)(paint-top frame)))))
+      </input>
+
+      <\input|Scheme] >
+        \;
+      </input>
+    </session>
+
+    <item>Number 52
+
+    <\session|scheme|default>
+      <\input|Scheme] >
+        (define (corner-split painter n)
+
+        \ \ (if (= n 0)
+
+        \ \ \ \ \ \ painter
+
+        \ \ \ \ \ \ (beside (below painter (up-split painter (- n 1)))
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ (below (right-split painter (- n 1))
+        (corner-split painter (- n 1))))))\ 
+
+        \;
+
+        (define (square-limit painter n)
+
+        \ \ (let ((combine4 (square-of-four flip-vert rotate180
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ identity
+        flip-horiz)))
+
+        \ \ \ \ (combine4 (corner-split painter n))))
+      </input>
+
+      <\input|Scheme] >
+        \;
+      </input>
+    </session>
+
+    <item>Number 53
+
+    <\session|scheme|default>
+      <\unfolded-io|Scheme] >
+        (list 'a 'b 'c) ; (a b c)
+
+        (list (list 'george)) ; ((george))
+
+        (cdr '((x1 x2) (y1 y2))) ; ((y1 y2))\ 
+
+        (cadr '((x1 x2) (y1 y2))) ; (y1 y2)
+
+        (pair? (car '(a short list))) ; #f
+
+        (memq 'red '((red shoes) (blue socks))) ; #f
+
+        (memq 'red '(red shoes blue socks)) ; (red shoes blue socks)
+      <|unfolded-io>
+        (a b c)
+      </unfolded-io>
+
+      <\unfolded-io|Scheme] >
+        (pair? (car '(a short list)))
+      <|unfolded-io>
+        #f
+      </unfolded-io>
+
+      <\input|Scheme] >
+        \;
+      </input>
+    </session>
+
+    <item>Number 54
+
+    <\session|scheme|default>
+      <\input|Scheme] >
+        (define (equal? a b)
+
+        \ \ (= 0
+
+        \ \ \ \ \ (accumulate +
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (map (lambda (x y) (if (eq? x y)
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 1))
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ a
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b))))
+      </input>
+
+      <\input|Scheme] >
+        \;
+      </input>
+    </session>
+
+    <item>Number 55
+
+    <\session|scheme|default>
+      <\unfolded-io|Scheme] >
+        (car ''abracadabra)
+      <|unfolded-io>
+        quote
+      </unfolded-io>
+
+      <\unfolded-io|Scheme] >
+        (car (quote 'abracadabra))
+      <|unfolded-io>
+        quote
+      </unfolded-io>
+
+      <\input|Scheme] >
+        \;
+      </input>
+    </session>
+
+    <item>Number 56
 
     \;
   </enumerate>
