@@ -847,7 +847,117 @@
 
   <section|Work>
 
-  \;
+  Work is energy expended in moving objects. Here we're going to see a one
+  dimensinal work, where both the movement and the force is on the same
+  straight line. If the force is constant <math|f<around*|(|x|)>=c> then the
+  work on movement along x-axis from <math|x=a> to <math|x=b > is
+  <math|W<rsub|a><rsup|b><around*|(|f|)>=c<around*|(|b-a|)>>. For a more
+  general force that can be a function of position then the work can be shown
+  as <math|W<rsub|a><rsup|b><around*|(|f|)>=<big|int><rsub|a><rsup|b>f<around*|(|x|)>d*x
+  >.
+
+  Fundamental property of work
+
+  <\enumerate>
+    <item>Additive: for <math|a\<less\>c\<less\>b>,
+    <math|W<rsub|a><rsup|b><around*|(|f|)>=W<rsub|a><rsup|c><around*|(|f|)>+W<rsub|c><rsup|b><around*|(|f|)>>
+
+    <item>Monotone: <math|f\<less\>\<leqslant\>g> on <math|<around*|[|a,b|]>>
+    then <math|W<rsub|a><rsup|b><around*|(|f|)>\<leqslant\>W<rsub|a><rsup|b><around*|(|g|)>>
+
+    <item>Elementary formula: if <math|f<around*|(|x|)>=c>, constant then
+    <math|W<rsub|a><rsup|b><around*|(|f|)>=c*<around*|(|b-a|)>>
+  </enumerate>
+
+  Property 1 can be generalize to any number of subinterval of
+  <math|<around*|[|a,b|]>> say <math|a=x<rsub|0>\<less\>x<rsub|1>\<less\>x<rsub|2>\<less\>\<cdots\>\<less\>x<rsub|n>=b>.
+  Then <math|W<rsub|a><rsup|b><around*|(|f|)>=<big|sum><rsub|k-1><rsup|n>W<rsup|x<rsub|k>><rsub|x<rsub|k-1><rsup|>><around*|(|f|)>>.
+  If the force is a step function <math|s> then
+  <math|W<rsub|a><rsup|b><around*|(|s|)>=<big|sum><rsub|k=1><rsup|n>s<rsub|k><around*|(|x<rsub|k>-x<rsub|k-1>|)>=<big|int><rsub|a><rsup|b>s<around*|(|x|)>d*x>.
+
+  For a force <math|f> satisfying the three properties above and <math|f> is
+  integrable, then the work of <math|f> moving particle along x-axis from
+  <math|a> to <math|b> is <math|W<rsub|a><rsup|b><around*|(|f|)>=<big|int><rsub|a><rsup|b>f<around*|(|x|)>d*x>.
+  We can prove this by defining step function <math|s> and <math|t> below and
+  above <math|f>, <math|s\<leqslant\>f\<leqslant\>t> on interval
+  <math|<around*|[|a,b|]>>. Then by monotone property
+  <math|><math|W<rsub|a><rsup|b><around*|(|s|)>\<leqslant\>W<rsub|a><rsup|b><around*|(|f|)>\<leqslant\>W<rsub|a><rsup|b><around*|(|t|)>>
+  therefore <math|<big|int><rsub|a><rsup|b>s<around*|(|x|)>d*x\<leqslant\>W<rsub|a><rsup|b><around*|(|f|)>\<leqslant\><big|int><rsub|a><rsup|b>t<around*|(|x|)>d*x>.
+  Since all step functions like so satisfy the inequality and <math|f> is
+  integrable then <math|W<rsub|a><rsup|b><around*|(|f|)>=<big|int><rsub|a><rsup|b>f<around*|(|x|)>d*x>.
+
+  A force needed to stretch a spring is <math|f<around*|(|x|)>=c*x*>where
+  <math|c> is constant and <math|x> is the deformation of string. Then the
+  work needed to stretch a string for length <math|a> is
+  <math|<big|int><rsub|0><rsup|a>c*x*d*x=<frac|1|2>c*x*<rsup|2>>.
+
+  The work done to put charges from <math|q=a> to <math|q=b> on a capacitor
+  is <math|<big|int><rsub|a><rsup|b>V<around*|(|q|)>d*q>, where
+  <math|V<around*|(|q|)>> is the voltage between capacitor plate when it
+  contains <math|q> charges. Show that if voltage is proportional to the
+  charge then the work done in inserting charge <math|Q> into capacitor is
+  <math|<frac|1|2>Q*V<around*|(|Q|)>>.
+
+  <section|Average Value>
+
+  Arithmetic means for numbers <math|a<rsub|1>,a<rsub|2>,\<ldots\>,a<rsub|n>
+  >is <math|<wide|a|\<bar\>>=<frac|1|n><big|sum><rsub|k=1><rsup|n>a<rsub|k>>.
+  If <math|a<rsub|k>> are value of <math|f> at distinct point
+  <math|x<rsub|k>> then <math|<wide|a|\<bar\>>>=<math|<frac|1|n><big|sum><rsub|k=1><rsup|n>f<around*|(|x<rsub|k>|)>>if
+  <math|f> is integrable we can generalize the arithmetic means to infinitely
+  many points on an interval. that is the average value of <math|f> on
+  <math|<around*|[|a,b|]>> is the following.
+
+  <\equation*>
+    A<around*|(|f|)>=<dfrac|1|b-a><big|int><rsub|a><rsup|b>f<around*|(|x|)>d*x
+  </equation*>
+
+  if <math|f> is nonnegative we can rewrite the expression as
+  <math|<around*|(|b-a|)>A<around*|(|f|)>=<big|int><rsub|a><rsup|b>f<around*|(|x|)>d*x>
+  and see that the rectangle with length <math|b-a> and heigght
+  <math|A<around*|(|f|)>> has the same area with the ordinate set of <math|f>
+  on the interval. Also so see that for <math|f> step functions that is
+  constant on interval partitioned by <math|x<rsub|k>=a+k<around*|(|b-a|)>/n>
+  for <math|k=0,1,\<ldots\>,n> then\ 
+
+  <\equation*>
+    A<around*|(|f|)>=<dfrac|1|b-a><big|int><rsub|a><rsup|b>f<around*|(|x|)>d*x=A<around*|(|f|)>=<dfrac|1|b-a><big|sum><rsub|k=1><rsup|n>f<around*|(|x<rsub|k>|)><frac|b-a|n>=<frac|1|n><big|sum><rsub|k=1><rsup|n>f<around*|(|x<rsub|k>|)>
+  </equation*>
+
+  A more general arithmetic mean is weighted arithmetic mean where each item
+  <math|a<rsub|k>> is multiplied by the weight <math|w<rsub|k>>.
+
+  <\equation*>
+    <wide|a|\<bar\>>=<dfrac|<big|sum><rsub|k=1><rsup|n>w<rsub|k>*a<rsub|k>|<big|sum><rsub|k=1><rsup|n>a<rsub|k>>
+  </equation*>
+
+  And the generalization of the concept into integral is\ 
+
+  <\equation*>
+    A<around*|(|f|)>=<dfrac|<big|int><rsub|a><rsup|b>w<around*|(|x|)>*f<around*|(|x|)>d*x|<big|int><rsub|a><rsup|b>w<around*|(|x|)>d*x>
+  </equation*>
+
+  for the nonzero denominator. Weighted interval has many applications one of
+  them is to find the center of mass of a rod with<nbsp> linear mass density
+  <math|\<rho\><around*|(|x|)>>, lyuing on x-axis from <math|x=0> to
+  <math|x=a>.
+
+  <\equation*>
+    <wide|x|\<bar\>>=<dfrac|<big|int><rsub|0><rsup|a>\<rho\><around*|(|x|)>*x
+    d*x|<big|int><rsub|0><rsup|a>\<rho\><around*|(|x|)>d*x>
+  </equation*>
+
+  Here <math|<big|int><rsub|0><rsup|a>\<rho\><around*|(|x|)>*x d*x> is the
+  first moment of the rod.
+
+  Also, the second moment, or the radius of gyration of the same object
+
+  <\equation*>
+    r<rsup|2>=<dfrac|<big|int><rsub|0><rsup|a>\<rho\><around*|(|x|)>*x<rsup|2>d*x|<big|int><rsub|0><rsup|a>\<rho\><around*|(|x|)>d*x>
+  </equation*>
+
+  Here <math|<big|int><rsub|0><rsup|a>\<rho\><around*|(|x|)>*x<rsup|2>d*x> is
+  the second moment, or moment of inertia of the rod.
 
   \;
 </body>
@@ -861,15 +971,14 @@
 <\references>
   <\collection>
     <associate|auto-1|<tuple|1|1>>
-    <associate|auto-10|<tuple|5|?>>
     <associate|auto-2|<tuple|2|2>>
     <associate|auto-3|<tuple|2.1|2>>
     <associate|auto-4|<tuple|2.2|3>>
     <associate|auto-5|<tuple|2.3|6>>
-    <associate|auto-6|<tuple|3|?>>
-    <associate|auto-7|<tuple|4|?>>
-    <associate|auto-8|<tuple|5|?>>
-    <associate|auto-9|<tuple|5|?>>
+    <associate|auto-6|<tuple|3|11>>
+    <associate|auto-7|<tuple|4|11>>
+    <associate|auto-8|<tuple|5|13>>
+    <associate|auto-9|<tuple|6|13>>
   </collection>
 </references>
 
@@ -895,6 +1004,22 @@
       <with|par-left|<quote|1tab>|2.3<space|2spc>Geometry of Sine and Cosine
       <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-5>>
+
+      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|3<space|2spc>Polar
+      Coordinates> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-6><vspace|0.5fn>
+
+      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|4<space|2spc>Volume>
+      <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-7><vspace|0.5fn>
+
+      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|5<space|2spc>Work>
+      <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-8><vspace|0.5fn>
+
+      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|6<space|2spc>Average
+      Value> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-9><vspace|0.5fn>
     </associate>
   </collection>
 </auxiliary>

@@ -1103,9 +1103,78 @@
 
   <subsection|Symbolic Differentiation>
 
+  To define differentiation symbolically, we first define the rule on
+  abstract object such as sum, product and variables. To keep it isimple we
+  only care about two operands.
+
+  <\enumerate>
+    <item><math|<frac|d*c|d*x>=0>
+
+    <item><math|<frac|d*x|d*x>=1>
+
+    <item><math|<frac|d<around*|(|u+v|)>|d*x>=<frac|d*u|d*x>+<frac|d*v|d*x>>
+
+    <item><math|<frac|d<around*|(|u*v|)>|d*x>=u<frac|d*v|d*x>+v<frac|d*u|d*x>>
+  </enumerate>
+
+  The last two are recursive. To define derivative let's use wishful thinking
+  and assume we already have the followings.
+
+  <\enumerate>
+    <item><scm|(variable? e)> is it variable
+
+    <item><scm|(same-variable? v1 v2)> are they the same variable
+
+    <item><scm|(sum? e)> is it a sum
+
+    <item><scm|(addend e)> select the addend
+
+    <item><scm|(augend e)> select the augend
+
+    <item><scm|(make-sum a1 a2)> make a sum from
+
+    <item><scm|(product? e)> is it a product
+
+    <item><scm|(multiplier e)> select the multiplier
+
+    <item><scm|(multiplicand e)> select the multiplicand
+
+    <item><scm|(make-product m1 m2)> make a sum from
+  </enumerate>
+
+  Now let's define derivative.
+
+  <\scm-code>
+    (define (deriv exp var)
+
+    \ \ (cond ((number? exp) 0)
+
+    \ \ \ \ \ \ \ \ ((variable? exp) (if (same-variable? exp var) 1 0))
+
+    \ \ \ \ \ \ \ \ ((sum? exp) (make-sum (deriv (addend exp) var)
+
+    \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (deriv
+    (augend exp) var)))
+
+    \ \ \ \ \ \ \ \ ((product? exp) (make-sum (make-product (multiplier exp)
+
+    \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (deriv
+    (multiplicand exp) var))
+
+    \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (make-product
+    (multiplicand exp)
+
+    \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (deriv
+    (multiplier exp) var))))
+
+    \ \ \ \ \ \ \ \ (else (error "unknown expression type: DERIV" exp))))
+  </scm-code>
+
+  Now let's represent algebraic expression.
+
   \;
 
-  \ 
+  \;
 </body>
 
 <\initial>
@@ -1118,8 +1187,8 @@
   <\collection>
     <associate|auto-1|<tuple|1|1>>
     <associate|auto-10|<tuple|2.4|8>>
-    <associate|auto-11|<tuple|3|?>>
-    <associate|auto-12|<tuple|3.1|?>>
+    <associate|auto-11|<tuple|3|10>>
+    <associate|auto-12|<tuple|3.1|11>>
     <associate|auto-2|<tuple|1.1|1>>
     <associate|auto-3|<tuple|1.2|2>>
     <associate|auto-4|<tuple|1.3|3>>
@@ -1173,6 +1242,14 @@
       <with|par-left|<quote|1tab>|2.4<space|2spc>A Picture Language
       <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-10>>
+
+      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|3<space|2spc>Symbolic
+      Data> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-11><vspace|0.5fn>
+
+      <with|par-left|<quote|1tab>|3.1<space|2spc>Symbolic Differentiation
+      <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-12>>
     </associate>
   </collection>
 </auxiliary>
