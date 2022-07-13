@@ -1948,6 +1948,140 @@
 
     <item>Number 56
 
+    <\session|scheme|default>
+      <\input|Scheme] >
+        (define (exponentiation? x)
+
+        \ \ (and (pair? x) (eq? (car x) '**)))
+      </input>
+
+      <\input|Scheme] >
+        (define (base x) (cadr x))
+      </input>
+
+      <\input|Scheme] >
+        (define (exponent x) (caddr x))
+      </input>
+
+      <\input|Scheme] >
+        (define (make-exponentiation b e)
+
+        \ \ (cond ((=number? e 0) 1)
+
+        \ \ \ \ \ \ \ \ ((=number? e 1) b)
+
+        \ \ \ \ \ \ \ \ ((and () ()) (pow b e))
+
+        \ \ \ \ \ \ \ \ (else (list '** b e))))
+      </input>
+    </session>
+
+    <item>Number 57
+
+    <\session|scheme|default>
+      <\input|Scheme] >
+        (define (addend x) (cadr x))
+      </input>
+
+      <\input|Scheme] >
+        (define (augend x) (make-sum (caddr x) (cadddr)))
+      </input>
+
+      <\input|Scheme] >
+        (define (make-sum a1 . a2)\ 
+
+        \ \ (cond ((=number? a1 0) a2)
+
+        \ \ \ \ \ \ \ \ ((=number? a2 0) a1)
+
+        \ \ \ \ \ \ \ \ ((and (number? a1) (number? a2)) (+ a1 a2))
+
+        \ \ \ \ \ \ \ \ (else (append (list '+ a1) a2))))
+      </input>
+
+      <\input|Scheme] >
+        (define (multiplier x) (cadr x))
+      </input>
+
+      <\input|Scheme] >
+        (define (multiplicand x) (make-sum (caddr x) (cadddr x)))
+      </input>
+
+      <\input|Scheme] >
+        (define (make-product a1 . a2)\ 
+
+        \ \ (cond (((or (=number? m1 0) (=number? m2 0)) 0)
+
+        \ \ \ \ \ \ \ \ ((=number? m1 1) m2)
+
+        \ \ \ \ \ \ \ \ ((=number? m2 1) m1)
+
+        \ \ \ \ \ \ \ \ ((and (number? m1) (number? m2)) (* m1 m2))
+
+        \ \ \ \ \ \ \ \ (else (append (list '* a1) a2)))))
+      </input>
+
+      <\input|Scheme] >
+        \;
+      </input>
+    </session>
+
+    <item>Number 58
+
+    <\enumerate>
+      <item>part a
+
+      <\session|scheme|default>
+        <\input|Scheme] >
+          (define (make-sum a1 a2) (list a1 '+ a2 ))
+        </input>
+
+        <\input|Scheme] >
+          (define (addend x) (car x))
+        </input>
+
+        <\input|Scheme] >
+          (define (augend x) (caddr x))
+        </input>
+
+        <\input|Scheme] >
+          (define (sum? x) (= (cadr) '+))
+        </input>
+
+        <\input|Scheme] >
+          (define (make-product a1 a2) (list a1 '* a2))
+        </input>
+
+        <\input|Scheme] >
+          (define (addend x) (car x))
+        </input>
+
+        <\input|Scheme] >
+          (define (augend x) (caddr x))
+        </input>
+
+        <\input|Scheme] >
+          (define (product? x) (= (cadr) '*))
+        </input>
+
+        <\input|Scheme] >
+          \;
+        </input>
+      </session>
+
+      <item>part b
+
+      <\session|scheme|default>
+        <\input>
+          Scheme]\ 
+        <|input>
+          \;
+        </input>
+      </session>
+    </enumerate>
+
+    <item>Number 59
+
     \;
   </enumerate>
 

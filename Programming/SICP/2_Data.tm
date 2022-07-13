@@ -1172,7 +1172,126 @@
 
   Now let's represent algebraic expression.
 
+  We can use lisp combination to represent equation. For example <math|a*x+b>
+  can be represented as <scm|(+ (* a x) b)>. Here are the implementation of
+  the procedure above.
+
+  <\scm-code>
+    (define (variable? x) (symbol? x))
+  </scm-code>
+
+  <\scm-code>
+    (define (same-variable? v1 v2)
+
+    \ \ (and (variable? v1) (variable? v2) (= v1 v2)))
+  </scm-code>
+
+  <\scm-code>
+    (define (sum? x)
+
+    \ \ (and (pair? x) (eq? (car x) '+)))
+  </scm-code>
+
+  <\scm-code>
+    (define (addend x) (cadr x))
+  </scm-code>
+
+  <\scm-code>
+    (define (augend x) (caddr x))
+  </scm-code>
+
+  <\scm-code>
+    (define (make-sum a1 a2) (list '+ a1 a2))
+  </scm-code>
+
+  <\scm-code>
+    (define (product? x)\ 
+
+    \ \ (and (pair? x) (eq? (car x) '*)))
+  </scm-code>
+
+  <\scm-code>
+    (define (multiplier x) (cadr x))
+  </scm-code>
+
+  <\scm-code>
+    (define (multiplicand x) (caddr x))
+  </scm-code>
+
+  <\scm-code>
+    (define (make-product m1 m2) (list '* m1 m2))
+  </scm-code>
+
+  Now let's try the derivation. The program is correct but they are not
+  simplified.
+
+  <\scm-code>
+    (deriv '(+ x 3) 'x) ; (+ 1 0)
+
+    (deriv '(* x y) 'x) ; (+ (* x 0) (* 1 y))
+
+    (deriv '(* (* x y) (+ x 3)) 'x)\ 
+
+    (+ (* (* x y)\ 
+
+    \ \ \ \ \ \ (+ 1 0))\ 
+
+    \ \ \ (* (+ (* x 0)\ 
+
+    \ \ \ \ \ \ \ \ \ (* 1 y))\ 
+
+    \ \ \ \ \ \ (+ x 3)))
+  </scm-code>
+
+  To involve summation, we only need to change the constructor, make-sum and
+  make-product.
+
+  <\scm-code>
+    (define (=number? exp num) (and (number? exp) (= exp num)))
+
+    \;
+
+    (define (make-sum a1 a2)
+
+    \ \ (cond ((=number? a2 0) a1)
+
+    \ \ \ \ \ \ \ \ ((=number? a1 0) a2)
+
+    \ \ \ \ \ \ \ \ ((and (number? a1) (number? a2)) (+ a1 a2))
+
+    \ \ \ \ \ \ \ \ (else (list '+ a1 a2))))
+
+    \;
+
+    (define (make-product m1 m2)
+
+    \ \ (cond ((or (=number? m1 0) (=number? m2 0)) 0)
+
+    \ \ \ \ \ \ \ \ ((=number? m2 1) m1)
+
+    \ \ \ \ \ \ \ \ ((=number? m1 1) m2)
+
+    \ \ \ \ \ \ \ \ ((and (number? m1) (number? m2)) (* m1 m2))
+
+    \ \ \ \ \ \ \ \ (else (list '* m1 m2))))
+  </scm-code>
+
+  Using the updated version of cunstructors, the system is better but still
+  has problems.
+
+  <\scm-code>
+    (deriv '(+ x 3) 'x) ; 1
+
+    (deriv '(* x y) 'x) ;\ 
+
+    (deriv '(* (* x y) (+ x 3)) 'x) ; (+ (* x y) (* y (+ x 3)))
+  </scm-code>
+
+  <subsection|Sets>
+
   \;
+
+  \ 
 
   \;
 </body>
@@ -1189,6 +1308,9 @@
     <associate|auto-10|<tuple|2.4|8>>
     <associate|auto-11|<tuple|3|10>>
     <associate|auto-12|<tuple|3.1|11>>
+    <associate|auto-13|<tuple|3.2|?>>
+    <associate|auto-14|<tuple|4.1|?>>
+    <associate|auto-17|<tuple|4.4|?>>
     <associate|auto-2|<tuple|1.1|1>>
     <associate|auto-3|<tuple|1.2|2>>
     <associate|auto-4|<tuple|1.3|3>>
