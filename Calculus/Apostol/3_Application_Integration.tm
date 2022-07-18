@@ -948,7 +948,7 @@
   </equation*>
 
   Here <math|<big|int><rsub|0><rsup|a>\<rho\><around*|(|x|)>*x d*x> is the
-  first moment of the rod.
+  first moment, or the center of mass, or the expectation value.
 
   Also, the second moment, or the radius of gyration of the same object
 
@@ -957,7 +957,280 @@
   </equation*>
 
   Here <math|<big|int><rsub|0><rsup|a>\<rho\><around*|(|x|)>*x<rsup|2>d*x> is
-  the second moment, or moment of inertia of the rod.
+  the second moment, or moment of inertia, or variance.
+
+  Exercise
+
+  Check wether the weighted avarage is additive
+  <math|A<around*|(|f+g|)>=A<around*|(|f|)>+A<around*|(|g|)>>, homogeneous
+  <math|A<around*|(|c*f|)>=c*A<around*|(|f|)>>, and monotone
+  <math|f\<leqslant\>g\<Rightarrow\>A<around*|(|f|)>\<leqslant\>A<around*|(|g|)>>
+  as it is for average.
+
+  <\enumerate>
+    <item>additivity: satisfied
+
+    <\equation*>
+      <dfrac|<big|int><rsub|a><rsup|b>w<around*|(|x|)>*<around*|[|f<around*|(|x|)>+g
+      <around*|(|x|)>|]>d*x|<big|int><rsub|a><rsup|b>w<around*|(|x|)>d*x>=<dfrac|<big|int><rsub|a><rsup|b>w<around*|(|x|)>*f<around*|(|x|)>d*x|<big|int><rsub|a><rsup|b>w<around*|(|x|)>d*x>+<dfrac|<big|int><rsub|a><rsup|b>w<around*|(|x|)>*g<around*|(|x|)>d*x|<big|int><rsub|a><rsup|b>w<around*|(|x|)>d*x>
+    </equation*>
+
+    <item>homogeneous: satisfied
+
+    <\equation*>
+      <dfrac|<big|int><rsub|a><rsup|b>w<around*|(|x|)>*<around*|[|c*f<around*|(|x|)>|]>d*x|<big|int><rsub|a><rsup|b>w<around*|(|x|)>d*x>=c*<dfrac|<big|int><rsub|a><rsup|b>w<around*|(|x|)>*f<around*|(|x|)>d*x|<big|int><rsub|a><rsup|b>w<around*|(|x|)>d*x>
+    </equation*>
+
+    <item>monotone: also satsified
+  </enumerate>
+
+  Let <math|A<rsub|a><rsup|b> <around*|(|f|)>> is the average of <math|f> on
+  <math|<around*|[|a,b|]>> then if <math|a\<less\>c\<less\>b> there is number
+  <math|t>, <math|0\<less\>t\<less\>1>, such that <math|A<rsub|a><rsup|b>
+  <around*|(|f|)>=t*A<rsub|a><rsup|c> <around*|(|f|)>+<around*|(|1-t|)>A<rsub|c><rsup|b>
+  <around*|(|f|)>>. Thus average is also weighted average of its part.
+
+  If <math|t=<dfrac|c-a|b-a> >
+
+  <\eqnarray*>
+    <tformat|<table|<row|<cell|t*A<rsub|a><rsup|c>
+    <around*|(|f|)>+<around*|(|1-t|)>A<rsub|c><rsup|b>
+    <around*|(|f|)>>|<cell|=>|<cell|t<dfrac|1|c-a><big|int><rsub|a><rsup|c>f<around*|(|x|)>d*x+<around*|(|1-t|)><dfrac|1|b-c><big|int><rsub|c><rsup|b>f<around*|(|x|)>d*x>>|<row|<cell|>|<cell|=>|<cell|<dfrac|c-a|b-a><dfrac|1|c-a><big|int><rsub|a><rsup|c>f<around*|(|x|)>d*x+<around*|(|1-<dfrac|c-a|b-a>|)><dfrac|1|b-c><big|int><rsub|c><rsup|b>f<around*|(|x|)>d*x>>|<row|<cell|>|<cell|=>|<cell|<dfrac|1|b-a><big|int><rsub|a><rsup|c>f<around*|(|x|)>d*x+<dfrac|1|b-a><big|int><rsub|c><rsup|b>f<around*|(|x|)>d*x>>|<row|<cell|>|<cell|=>|<cell|A<rsub|a><rsup|b>
+    <around*|(|f|)>>>>>
+  </eqnarray*>
+
+  Also proof that statement above applies for weighted average.
+
+  If <math|t=<dfrac|<big|int><rsub|a><rsup|c>w<around*|(|x|)>d*x|<big|int><rsub|a><rsup|b>w<around*|(|x|)>d*x>>
+
+  <\eqnarray*>
+    <tformat|<table|<row|<cell|t*A<rsub|a><rsup|c>
+    <around*|(|f|)>+<around*|(|1-t|)>A<rsub|c><rsup|b>
+    <around*|(|f|)>>|<cell|=>|<cell|t<dfrac|<big|int><rsub|a><rsup|c>w<around*|(|x|)>*f<around*|(|x|)>d*x|<big|int><rsub|a><rsup|c>w<around*|(|x|)>d*x>+<around*|(|1-t|)><dfrac|<big|int><rsub|c><rsup|b>w<around*|(|x|)>*f<around*|(|x|)>d*x|<big|int><rsub|c><rsup|b>w<around*|(|x|)>d*x>>>|<row|<cell|>|<cell|=>|<cell|<dfrac|<big|int><rsub|a><rsup|c>w<around*|(|x|)>d*x|<big|int><rsub|a><rsup|b>w<around*|(|x|)>d*x><dfrac|<big|int><rsub|a><rsup|c>w<around*|(|x|)>*f<around*|(|x|)>d*x|<big|int><rsub|a><rsup|c>w<around*|(|x|)>d*x>+<around*|(|1-<dfrac|<big|int><rsub|a><rsup|c>w<around*|(|x|)>d*x|<big|int><rsub|a><rsup|b>w<around*|(|x|)>d*x>|)><dfrac|<big|int><rsub|c><rsup|b>w<around*|(|x|)>*f<around*|(|x|)>d*x|<big|int><rsub|c><rsup|b>w<around*|(|x|)>d*x>>>|<row|<cell|>|<cell|=>|<cell|<dfrac|<big|int><rsub|a><rsup|b>w<around*|(|x|)>*f<around*|(|x|)>d*x|<big|int><rsub|a><rsup|b>w<around*|(|x|)>d*x>>>|<row|<cell|>|<cell|=>|<cell|A<rsub|a><rsup|b>
+    <around*|(|f|)>>>>>
+  </eqnarray*>
+
+  Find the mass density of a rod with length <math|L> so that the center of
+  mass is <math|L/4> from one end of \ the rod.
+
+  Assume that <math|\<rho\><around*|(|x|)>=x<rsup|n>> then
+  <math|<wide|x|\<bar\>>=<dfrac|<big|int><rsub|0><rsup|L>x<rsup|n+1>d*x|<big|int><rsub|0><rsup|L>x<rsup|n>d*x>=<dfrac|n+1|n+2>L>.
+  Therefore <math|<dfrac|n+1|n+2>=<dfrac|1|4>> or <math|4n+4=n+2>,
+  <math|n=-<dfrac|2|3>>. Or <math|<dfrac|n+1|n+2>=<dfrac|3|4>> or
+  <math|4n+4=3n+6>, <math|n=2>.
+
+  Voltage as a function of time is <math|\<varepsilon\><around*|(|t|)>=3*sin<around*|(|2*t|)>>,
+  calculate the average over <math|<around*|[|0,<frac|\<mathpi\>|2>|]>>and
+  rms over the same interval.
+
+  <\equation*>
+    <wide|\<varepsilon\>|\<bar\>>=<dfrac|2|\<mathpi\>><big|int><rsub|0><rsup|<frac|\<mathpi\>|2>>3*sin<around*|(|2*t|)>d*t=
+  </equation*>
+
+  <\equation*>
+    \<varepsilon\><rsub|rms><rsup|2>=<dfrac|2|\<mathpi\>><big|int><rsub|0><rsup|<frac|\<mathpi\>|2>>9*sin<rsup|2><around*|(|2*t|)>d*t=
+  </equation*>
+
+  Electrical circuit has voltage <math|\<varepsilon\><around*|(|t|)>=160*sin
+  t> and current <math|i<around*|(|t|)>=2*sin<around*|(|t-<frac*|\<mathpi\>|6>|)>>.
+
+  The average power is\ 
+
+  <\equation*>
+    <dfrac|1|T><big|int><rsub|0><rsup|T>320*sin
+    t*sin<around*|(|t-<frac*|\<mathpi\>|6>|)>d*t=<dfrac|1|T><big|int><rsub|0><rsup|T>160*<around*|(|cos<frac*|\<mathpi\>|6>-cos<around*|(|2t-<frac*|\<mathpi\>|6>|)>|)>d*t
+  </equation*>
+
+  Therefore <math|T=\<mathpi\>>. and the average power is
+  <math|><math|<dfrac|160|\<mathpi\>><big|int><rsub|0><rsup|\<mathpi\>>*<around*|(|<dfrac|<sqrt|3>|2>-cos<around*|(|2t-<frac*|\<mathpi\>|6>|)>|)>d*t=80<sqrt|3>>
+
+  <section|Integral as function of upper limit>
+
+  If <math|<big|int><rsub|a><rsup|x>f<around*|(|t|)>*d*t> exists for
+  <math|x\<in\><around*|[|a,b|]>> then we can define a function
+  <math|A<around*|(|x|)>=><math|<big|int><rsub|a><rsup|x>f<around*|(|t|)>*d*t>,
+  an indefinite integral of <math|f>. it is called indefinite integral
+  because it also depends on <math|a>. So we can also have
+  <math|F<around*|(|x|)>=><math|<big|int><rsub|c><rsup|x>f<around*|(|t|)>*d*t>
+  as indefinite integral, but the difference between them
+  <math|A<around*|(|x|)>-F<around*|(|x|)>> is constant.
+
+  Integral may be calculated by subtracting the indefinite integral on both
+  limits. That is if <math|F<around*|(|x|)>=<big|int><rsub|a><rsup|x>f<around*|(|t|)>d*t>
+  then <math|<big|int><rsub|a><rsup|b>f<around*|(|t|)>d*t=F<around*|(|b|)>-F<around*|(|a|)>\<equiv\>F<around*|(|x|)>\|<rsub|a><rsup|b>>.
+
+  Indefinite integral can be seen as area below the function from lower limit
+  to <math|x> if the function is nonnegative. Otherwise it is the subtraction
+  between the area above the x-axis by the area below the x-axis.
+
+  If a function <math|f> is nonnegative then its indefinite integral is
+  increasing since for <math|y\<gtr\>x> then
+  <math|A<around*|(|y|)>-A<around*|(|x|)>=<big|int><rsub|x><rsup|y>f<around*|(|x|)>d*x\<geqslant\>0>.
+  Also if f is increasing then the indefinite integral is convex that is it
+  bends upwards, that is the cord joining two points in it is above the
+  graph. The following is a more rigorous definition.
+
+  A function <math|f> is convex on <math|<around*|[|a,b|]>> if for
+  <math|x,y\<in\> <around*|[|a,b|]>> and <math|\<alpha\>>,
+  <math|0\<less\>\<alpha\>\<less\>1> we have
+  <math|f<around*|(|z|)>\<leqslant\>\<alpha\>f<around*|(|y|)>+<around*|(|1-\<alpha\>|)>f<around*|(|x|)>>
+  where <math|z=\<alpha\>y+<around*|(|1-\<alpha\>|)>x>. And <math|f > is
+  concave if <math|f<around*|(|z|)>\<geqslant\>\<alpha\>f<around*|(|y|)>+<around*|(|1-\<alpha\>|)>f<around*|(|x|)>>.
+
+  Let <math|A<around*|(|x|)>=<big|int><rsub|a><rsup|x>f<around*|(|t|)>d*t>,
+  then <math|A> is covex if <math|f> is increasing and <math|A> is concave if
+  <math|f> is decreasing.\ 
+
+  Let choose <math|x\<less\>z\<less\>y> and
+  <math|z=\<alpha\>y+<around*|(|1-\<alpha\>|)>x> for
+  <math|0\<less\>\<alpha\>\<less\>1>.
+
+  Since <math|f> is increasing <math|<big|int><rsub|x><rsup|z>f<around*|(|t|)>d*t\<leqslant\>><math|<big|int><rsub|x><rsup|z>f<around*|(|z|)>d*t=f<around*|(|z|)><around*|(|z-x|)>>
+  also <math|<big|int><rsub|z><rsup|y>f<around*|(|t|)>d*t\<geqslant\><big|int><rsub|z><rsup|y>f<around*|(|z|)>d*t=f<around*|(|z|)><around*|(|y-z|)>>.
+
+  Now <math|z=\<alpha\>y+<around*|(|1-\<alpha\>|)>x> therefore
+  <math|<around*|(|1-\<alpha\>|)><around*|(|z-x|)>=\<alpha\><around*|(|y-z|)>>
+
+  <\eqnarray*>
+    <tformat|<table|<row|<cell|<around*|(|1-\<alpha\>|)><around*|(|z-x|)>>|<cell|=>|<cell|\<alpha\><around*|(|y-z|)>>>|<row|<cell|<around*|(|1-\<alpha\>|)>f<around*|(|z|)><around*|(|z-x|)>>|<cell|=>|<cell|\<alpha\>f<around*|(|z|)><around*|(|y-z|)>>>|<row|<cell|<around*|(|1-\<alpha\>|)><big|int><rsub|x><rsup|z>f<around*|(|t|)>d*t>|<cell|\<leqslant\>>|<cell|\<alpha\><big|int><rsub|z><rsup|y>f<around*|(|t|)>d*t>>|<row|<cell|<around*|(|1-\<alpha\>|)><around*|(|A<around*|(|z|)>-A<around*|(|x|)>|)>>|<cell|\<leqslant\>>|<cell|\<alpha\><around*|(|A<around*|(|y|)>-A<around*|(|z|)>|)>>>|<row|<cell|A<around*|(|z|)>>|<cell|\<leqslant\>>|<cell|\<alpha\>*A<around*|(|y|)>+<around*|(|1-\<alpha\>|)>*A<around*|(|x|)>>>>>
+  </eqnarray*>
+
+  Therefore <math|A> is convex on <math|<around*|[|a,b|]>>. Concavity if
+  <math|f> is decreasing can be proven in a similar way using <math|-f>.
+
+  Thus, we can say that sine is concave on <math|<around*|[|0,\<mathpi\>|]>>
+  since cosine is decreasing, and sine is convex on
+  <math|<around*|[|\<mathpi\>,2\<mathpi\>|]>> since cosine is increasing.
+
+  If <math|f> is constant then its indefinite integral is linear, for example
+  the integral of step function <math|f=<around*|\<lfloor\>|x|\<rfloor\>>> is
+  piecewise linear. See that even if <math|f> discontinue or jumps at some
+  value, its integral doesn't.
+
+  Exercise
+
+  Let <math|f<around*|(|x|)>=x-<around*|\<lfloor\>|x|\<rfloor\>>-<frac|1|2>>
+  for noninteger <math|x> and <math|f<around*|(|x|)>=0> for <math|x> integer.
+  Define <math|P<around*|(|x|)>=<big|int><rsub|0><rsup|x>f<around*|(|t|)>d*t>.\ 
+
+  <\enumerate>
+    <item>Draw graph of <math|f >and prove that it is periodic with period of
+    1.
+
+    We have <math|<around*|\<lfloor\>|x+1|\<rfloor\>>=<around*|\<lfloor\>|x|\<rfloor\>>+1>.
+    Therefore
+
+    <math|f<around*|(|x+1|)>=<around*|(|x+1|)>-<around*|\<lfloor\>|x+1|\<rfloor\>>-<frac|1|2>=x+1-<around*|\<lfloor\>|x|\<rfloor\>>-1-<frac|1|2>=x-<around*|\<lfloor\>|x|\<rfloor\>>-<frac|1|2>=f<around*|(|x|)>>
+
+    <item>prove that <math|P<around*|(|x|)>=<frac|1|2><around*|(|x<rsup|2>-x|)>>
+    for <math|0\<leqslant\>x\<leqslant\>1> and <math|P> is also periodic with
+    period of 1.
+
+    Notice that the value of function at subdivision (here zero at <math|x>
+    equal 0 and 1) doesn't affect integral therefore we need only find the
+    form of <math|f> on <math|(0,1)> which is
+    <math|f<around*|(|x|)>=x-<frac|1|2>>. Then, for
+    <math|0\<leqslant\>x\<leqslant\>1> <math|P<around*|(|x|)>=<big|int><rsub|0><rsup|x><around*|(|t-<frac|1|2>|)>d*t>=<math|<frac|1|2><around*|(|x<rsup|2>-x|)>>.
+
+    Now let's proove that <math|P<around*|(|x+1|)>-P<around*|(|x|)>=<big|int><rsub|x><rsup|x+1>f<around*|(|t|)>d*t>=0.
+
+    case for integer <math|x>, <math|<big|int><rsub|x><rsup|x+1>f<around*|(|t|)>d*t=<big|int><rsub|0><rsup|1>f<around*|(|t+x|)>d*t=<big|int><rsub|0><rsup|1>f<around*|(|t|)>d*t=<big|int><rsub|0><rsup|1><frac|1|2><around*|(|x<rsup|2>-x|)>d*t=0>
+
+    otherwise there is <math|0\<less\>\<epsilon\>\<less\>1> such that
+    <math|<big|int><rsub|x><rsup|x+1>f<around*|(|t|)>d*t=<big|int><rsub|<around*|\<lfloor\>|x|\<rfloor\>>+\<epsilon\>><rsup|<around*|\<lfloor\>|x|\<rfloor\>>+\<epsilon\>+1>f<around*|(|t|)>d*t=<big|int><rsub|<around*|\<lfloor\>|x|\<rfloor\>>+\<epsilon\>><rsup|<around*|\<lfloor\>|x|\<rfloor\>>+1>f<around*|(|t|)>d*t+<big|int><rsub|<around*|\<lfloor\>|x|\<rfloor\>>+1><rsup|<around*|\<lfloor\>|x|\<rfloor\>>+\<epsilon\>+1>f<around*|(|t|)>d*t=<big|int><rsub|<around*|\<lfloor\>|x|\<rfloor\>>+\<epsilon\>><rsup|<around*|\<lfloor\>|x|\<rfloor\>>+1>f<around*|(|t|)>d*t+<big|int><rsub|<around*|\<lfloor\>|x|\<rfloor\>>><rsup|<around*|\<lfloor\>|x|\<rfloor\>>+\<epsilon\>>f<around*|(|t|)>d*t=<big|int><rsub|<around*|\<lfloor\>|x|\<rfloor\>>><rsup|<around*|\<lfloor\>|x|\<rfloor\>>+1>f<around*|(|t|)>d*t=0>
+
+    <item>express <math|P<around*|(|x|)>> in terms of
+    <math|<around*|\<lfloor\>|x|\<rfloor\>>>
+
+    <math|P<around*|(|x|)>=<frac|1|2><around*|(|<around*|(|x-<around*|\<lfloor\>|x|\<rfloor\>>|)><rsup|2>+<around*|(|x-<around*|\<lfloor\>|x|\<rfloor\>>|)>|)>>
+
+    <item>Find constant <math|c> such that
+    <math|<big|int><rsub|0><rsup|1><around*|(|P<around*|(|t|)>+c|)>d*t=0>
+
+    <math|<big|int><rsub|0><rsup|1><around*|(|<frac|1|2><around*|(|x<rsup|2>-x|)>+c|)>d*t=0>
+    therefore <math|<frac|1|6>-<frac|1|4>+c=0> therefore <math|c=<frac|1|12>>
+
+    <item>Prove that <math|Q<around*|(|x|)>=<big|int><rsub|0><rsup|x><around*|(|P<around*|(|t|)>+c|)>d*t>
+    is periodic with period 1 and that <math|Q<around*|(|x|)>=<frac|x<rsup|3>|6>-<frac|x<rsup|2>|4>+<frac|x|12>>
+    for <math|0\<leqslant\>x\<leqslant\>1>.
+
+    For <math|0\<leqslant\>x\<leqslant\>1> we have
+    <math|><math|Q<around*|(|x|)>=<big|int><rsub|0><rsup|x><around*|(|<frac|1|2><around*|(|t<rsup|2>-t|)>+<frac|1|12>|)>d*t=<frac|x<rsup|3>|6>-<frac|x<rsup|2>|4>+<frac|x|12>>
+
+    \ For periodicity we ca use the same trick as number 2.
+
+    <item>For odd integrable function <math|f> with period 2 and
+    <math|g<around*|(|x|)>=<big|int><rsub|0><rsup|x>f<around*|(|t|)>d*t> then
+    <math|g<around*|(|2n|)>=0> and <math|g> is even function with period 2.
+
+    Proof of <math|g<around*|(|2n|)>=0>,\ 
+
+    For <math|n=1>, <math|g<around*|(|2|)>=><math|<big|int><rsub|0><rsup|2>f<around*|(|t|)>d*t=<big|int><rsub|0><rsup|1>f<around*|(|t|)>d*t+<big|int><rsub|1><rsup|2>f<around*|(|t|)>d*t=<big|int><rsub|0><rsup|1>f<around*|(|t|)>d*t+<big|int><rsub|-1><rsup|0>f<around*|(|t+2|)>d*t=<big|int><rsub|0><rsup|1>f<around*|(|t|)>d*t+<big|int><rsub|-1><rsup|0>f<around*|(|t|)>d*t=<big|int><rsub|0><rsup|1>f<around*|(|t|)>d*t-<big|int><rsub|1><rsup|0>f<around*|(|-t|)>d*t=<big|int><rsub|0><rsup|1>f<around*|(|t|)>d*t+<big|int><rsub|0><rsup|1>f<around*|(|-t|)>d*t=<big|int><rsub|0><rsup|1>f<around*|(|t|)>d*t-<big|int><rsub|0><rsup|1>f<around*|(|t|)>d*t=0>.
+
+    For <math|n\<gtr\>1>, <math|g<around*|(|2n|)>=<big|int><rsub|0><rsup|2n>f<around*|(|t|)>d*t=<big|sum><rsub|i=0><rsup|n-1><big|int><rsub|0><rsup|2>f<around*|(|t+2i|)>d*t=n<big|int><rsub|0><rsup|2>f<around*|(|t|)>d*t=0>
+
+    For <math|n=0> it's obvious, for <math|n\<less\>0>,
+    <math|g<around*|(|-2n|)>=<big|int><rsub|0><rsup|-2n>f<around*|(|t|)>d*t=-<big|int><rsub|0><rsup|2n>f<around*|(|-t|)>d*t=<big|int><rsub|0><rsup|2n>f<around*|(|t|)>d*t=0>
+
+    Proof of period: <math|g<around*|(|x+2|)>-g<around*|(|x|)>=<big|int><rsub|x><rsup|x+2>f<around*|(|t|)>d*t=<big|int><rsub|<around*|\<lfloor\>|x|\<rfloor\>>+\<epsilon\>><rsup|<around*|\<lfloor\>|x|\<rfloor\>>+\<epsilon\>+2>f<around*|(|t|)>d*t=<big|int><rsub|<around*|\<lfloor\>|x|\<rfloor\>>+\<epsilon\>><rsup|<around*|\<lfloor\>|x|\<rfloor\>>+2>f<around*|(|t|)>d*t+<big|int><rsub|<around*|\<lfloor\>|x|\<rfloor\>>+2><rsup|<around*|\<lfloor\>|x|\<rfloor\>>+\<epsilon\>+2>f<around*|(|t|)>d*t=<big|int><rsub|<around*|\<lfloor\>|x|\<rfloor\>>+\<epsilon\>><rsup|<around*|\<lfloor\>|x|\<rfloor\>>+2>f<around*|(|t|)>d*t+<big|int><rsub|<around*|\<lfloor\>|x|\<rfloor\>>><rsup|<around*|\<lfloor\>|x|\<rfloor\>>+\<epsilon\>>f<around*|(|t|)>d*t=<big|int><rsub|<around*|\<lfloor\>|x|\<rfloor\>>><rsup|<around*|\<lfloor\>|x|\<rfloor\>>+2>f<around*|(|t|)>d*t=<big|int><rsub|0><rsup|2>f<around*|(|t|)>d*t=0>
+    or <math|g<around*|(|x+2|)>-g<around*|(|x|)>=<big|int><rsub|-1><rsup|1>f<around*|(|t|)>d*t=0>
+
+    Proof that <math|g<around*|(|x|)>> is even:
+    <math|g<around*|(|-x|)>=<big|int><rsub|0><rsup|-x>f<around*|(|t|)>d*t>=<math|-<big|int><rsub|0><rsup|x>f<around*|(|-t|)>d*t=<big|int><rsub|0><rsup|x>f<around*|(|t|)>d*t=g<around*|(|x|)>>
+
+    <item>For even integrable function <math|f> with period 2, let
+    <math|g<around*|(|x|)>=<big|int><rsub|0><rsup|x>f<around*|(|t|)>d*t> and
+    <math|A=g<around*|(|1|)>>
+
+    <\enumerate>
+      <item>prove that <math|g> is odd and
+      <math|g<around*|(|x+2|)>-g<around*|(|x|)>=g<around*|(|2|)>>
+
+      <math|g<around*|(|-x|)>=<big|int><rsub|0><rsup|-x>f<around*|(|t|)>d*t=-<big|int><rsub|0><rsup|x>f<around*|(|-t|)>d*t=-<big|int><rsub|0><rsup|x>f<around*|(|t|)>d*t=-g<around*|(|x|)>>
+
+      <math|g<around*|(|x+2|)>-g<around*|(|x|)>=<big|int><rsub|x><rsup|x+2>f<around*|(|t|)>d*t=<big|int><rsub|x><rsup|x+2>f<around*|(|t|)>d*t=<big|int><rsub|<around*|\<lfloor\>|x|\<rfloor\>>><rsup|<around*|\<lfloor\>|x|\<rfloor\>>+2>f<around*|(|t|)>d*t=<big|int><rsub|0><rsup|2>f<around*|(|t|)>d*t=g<around*|(|2|)>>
+      or\ 
+
+      <math|g<around*|(|x+2|)>-g<around*|(|x|)>=><math|<big|int><rsub|1><rsup|3>f<around*|(|t|)>d*t=<big|int><rsub|1><rsup|2>f<around*|(|t|)>d*t+<big|int><rsub|2><rsup|3>f<around*|(|t|)>d*t=<big|int><rsub|1><rsup|2>f<around*|(|t|)>d*t+<big|int><rsub|0><rsup|1>f<around*|(|t|)>d*t=g<around*|(|2|)>>
+
+      <item>What is <math|g<around*|(|2|)>> and <math|g<around*|(|5|)>> in
+      terms of <math|A>?
+
+      <math|g<around*|(|2|)>=><math|<big|int><rsub|0><rsup|2>f<around*|(|t|)>d*t=<big|int><rsub|0><rsup|1>f<around*|(|t|)>d*t+<big|int><rsub|1><rsup|2>f<around*|(|t|)>d*t=<big|int><rsub|0><rsup|1>f<around*|(|t|)>d*t+<big|int><rsub|-1><rsup|0>f<around*|(|t|)>d*t=<big|int><rsub|0><rsup|1>f<around*|(|t|)>d*t-<big|int><rsub|1><rsup|0>f<around*|(|-t|)>d*t=<big|int><rsub|0><rsup|1>f<around*|(|t|)>d*t+<big|int><rsub|0><rsup|1>f<around*|(|t|)>d*t=2A>
+
+      <math|g<around*|(|5|)>=<big|int><rsub|0><rsup|5>f<around*|(|t|)>d*t=g<around*|(|4|)>+<big|int><rsub|4><rsup|5>f<around*|(|t|)>d*t=g<around*|(|4|)>+g<around*|(|1|)>=5A>
+
+      <item>For what value of <math|A>, <math|g> will be periodic with period
+      2?
+
+      <math|g<around*|(|x+2|)>-g<around*|(|x|)>=g<around*|(|2|)>=2A=0>, then
+      <math|A=0>
+    </enumerate>
+
+    <item>Let <math|f,g> integrable <math|f> is odd, <math|g> is even,
+    <math|f<around*|(|5|)>=7>, <math|f<around*|(|0|)>=0>,
+    <math|g<around*|(|x|)>=f<around*|(|x+5|)>>,
+    <math|f<around*|(|x|)>=<big|int><rsub|0><rsup|x>g<around*|(|t|)>d*t>
+
+    Prove that <math|f<around*|(|x-5|)>=-g<around*|(|x|)>>,
+    <math|<big|int><rsub|0><rsup|5>f<around*|(|t|)>d*t=7>,
+    <math|<big|int><rsub|0><rsup|x>f<around*|(|t|)>d*t=g<around*|(|0|)>-g<around*|(|x|)>>
+
+    <math|g<around*|(|-x|)>=f<around*|(|-x+5|)>>,
+    <math|f<around*|(|x-5|)>=-f<around*|(|5-x|)>=-g<around*|(|-x|)>=-g<around*|(|x|)>>
+
+    <math|<big|int><rsub|0><rsup|5>f<around*|(|t|)>d*t=<big|int><rsub|-5><rsup|0>f<around*|(|t+5|)>d*t=<big|int><rsub|-5><rsup|0>g<around*|(|t|)>d*t=-<big|int><rsub|5><rsup|0>g<around*|(|-t|)>d*t=<big|int><rsub|5><rsup|0>g<around*|(|t|)>d*t><math|=<big|int><rsub|0><rsup|5>g<around*|(|t|)>d*t=f<around*|(|5|)>=7>
+
+    <math|<big|int><rsub|0><rsup|x>f<around*|(|t|)>d*t=<big|int><rsub|-5><rsup|x-5>g<around*|(|t|)>d*t=<big|int><rsub|-5><rsup|0>g<around*|(|t|)>d*t+<big|int><rsub|0><rsup|x-5>g<around*|(|t|)>d*t=><math|-<big|int><rsub|5><rsup|0>g<around*|(|-t|)>d*t+<big|int><rsub|0><rsup|x-5>g<around*|(|t|)>d*t=><math|-<big|int><rsub|5><rsup|0>g<around*|(|t|)>d*t+<big|int><rsub|0><rsup|x-5>g<around*|(|t|)>d*t=<big|int><rsub|0><rsup|5>g<around*|(|t|)>d*t+<big|int><rsub|0><rsup|x-5>g<around*|(|t|)>d*t=f<around*|(|5|)>+f<around*|(|x-5|)>=g<around*|(|0|)>-g<around*|(|x|)>>
+
+    \;
+  </enumerate>
+
+  \;
+
+  \;
+
+  \;
 
   \;
 </body>
@@ -971,6 +1244,7 @@
 <\references>
   <\collection>
     <associate|auto-1|<tuple|1|1>>
+    <associate|auto-10|<tuple|7|15>>
     <associate|auto-2|<tuple|2|2>>
     <associate|auto-3|<tuple|2.1|2>>
     <associate|auto-4|<tuple|2.2|3>>
@@ -1020,6 +1294,10 @@
       <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|6<space|2spc>Average
       Value> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-9><vspace|0.5fn>
+
+      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|7<space|2spc>Integral
+      as function of upper limit> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-10><vspace|0.5fn>
     </associate>
   </collection>
 </auxiliary>
