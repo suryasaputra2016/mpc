@@ -1289,9 +1289,152 @@
 
   <subsection|Sets>
 
-  \;
+  To define set we define the operations on them, union-set,
+  intersection-set, element-of-set?, adjoin-set (adjoin set insert an element
+  to a set). The actual implementation of set is free as long as it is
+  consistent with the operations.\ 
+
+  Set can be implemented using unordered list as follows.
+
+  <\scm-code>
+    (define (element-of-set? x set)
+
+    \ \ (cond ((null? set) false)
+
+    \ \ \ \ \ \ \ \ ((equal? (car set)) true)
+
+    \ \ \ \ \ \ \ \ (else (element-of-set? x (cdr set)))))
+
+    (define (adjoin-set x set)
+
+    \ \ (if (element-of-set? x set)
+
+    \ \ \ \ \ \ set
+
+    \ \ \ \ \ \ (cons x set)))
+
+    (define (intersection-set set1 set2)
+
+    \ \ (cond ((or (null? set1) (null? set2)) '())
+
+    \ \ \ \ \ \ \ \ ((element-of-set? (car set1) set2)\ 
+
+    \ \ \ \ \ \ \ \ \ (cons (car set1) (intersection-set (cdr set1) set2))
+
+    \ \ \ \ \ \ \ \ (else (intersection-set (cdr set1) set2))))
+  </scm-code>
+
+  See that using this implementation, element-of-set in worse case scenario,
+  that is x is not in the set then the number of step is n, hence
+  <math|\<Theta\><around*|(|n|)>> thus the same case applies for adjoin set
+  and intersection set must check if set1 is in set2 for every element of set
+  1 hence <math|\<Theta\><around*|(|n<rsup|2>|)>>, the same case also applies
+  for union set.
+
+  We can also implement set as ordered list by listing the elements in order.
+
+  <\scm-code>
+    (define (element-of-set? x set)
+
+    \ \ (cond ((= x (car set)) true)
+
+    \ \ \ \ \ \ \ \ ((\<gtr\> x (car set)) false)
+
+    \ \ \ \ \ \ \ \ (else (element-of-set? x (cdr set)))))
+  </scm-code>
+
+  The number of steps of above prodecure is <math|n/2>, hence we still have
+  <math|\<Theta\><around*|(|n|)>>. But the intersection procedure is better,
+  that is <math|\<Theta\><around*|(|n|)>>.
+
+  <\scm-code>
+    (define (intersection-set set1 set2)
+
+    \ \ (if (or (null? set1) (null? set2))
+
+    \ \ \ \ \ \ '()
+
+    \ \ \ \ \ \ (let ((x1 \ (car set1)) (x2 (car set2)))\ 
+
+    \ \ \ \ \ \ \ \ (cond ((= x1 x2) (cons x1 (intersection-set (cdr set1)
+    (cdr set2))))
+
+    \ \ \ \ \ \ \ \ \ \ \ \ \ \ ((\<less\> x1 x2) (intersection-set (cdr
+    set1) set2))
+
+    \ \ \ \ \ \ \ \ \ \ \ \ \ \ ((\<gtr\> x1 x2) (intersection-set set1 (cdr
+    set2))))))))
+
+    \;
+  </scm-code>
+
+  We can also implement set as a binary tree with condition that the elements
+  on the left subtree is less than the element in the node which is less than
+  the elements on the right subtree. If the tree is balance to check if a
+  number is in the tree we need to do as many check as the depth of the tree.
+  threfore we have <math|\<Theta\><around*|(|log n|)>>.\ 
+
+  We can use list of three elements for one node in the tree.
 
   \ 
+
+  <\scm-code>
+    (define (entry tree) (car tree))
+
+    (define (left-branch tree) (cadr tree))
+
+    (define (right-branch tree) (caddr tree))
+
+    (define (make-tree entry left right)
+
+    \ \ (list entry left right))
+  </scm-code>
+
+  \ Checking element is implemented as follows
+
+  <\scm-code>
+    (define (element-of-set? x set)
+
+    \ \ (cond ((null? set) false)
+
+    \ \ \ \ \ \ \ \ ((= x (entry set)) true)
+
+    \ \ \ \ \ \ \ \ ((\<less\> x (entry set)) (element-of-set? x (left-branch
+    set)))
+
+    \ \ \ \ \ \ \ \ ((\<gtr\> x (entry set)) (element-of-set? x (right-branch
+    set)))))
+  </scm-code>
+
+  Adjoin element also have logarithmic order of number of steps.
+
+  <\scm-code>
+    define (adjoin-set x set)
+
+    \ (cond ((null? set) (make-tree x '() '()))
+
+    \ \ \ \ \ \ \ ((= x (entry set)) set)
+
+    \ \ \ \ \ \ \ ((\<less\> x (entry set))
+
+    \ \ \ \ \ \ \ \ (make-tree (entry set)
+
+    \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (adjoin-set x (left-branch set))
+
+    \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (right-branch set)))
+
+    \ \ \ \ \ \ \ ((\<gtr\> x (entry set))
+
+    \ \ \ \ \ \ \ \ (make-tree (entry set) (left-branch set)
+
+    \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (adjoin-set x (right-branch
+    set))))))
+  </scm-code>
+
+  But the logarihtmic number of steps if the tree is balanced, if the tree is
+  highly unbalnced, for example it has no left entry then the number of steps
+  is linear. We can define procedure to balance a tree or defining new data
+  structure.
 
   \;
 </body>
@@ -1308,9 +1451,7 @@
     <associate|auto-10|<tuple|2.4|8>>
     <associate|auto-11|<tuple|3|10>>
     <associate|auto-12|<tuple|3.1|11>>
-    <associate|auto-13|<tuple|3.2|?>>
-    <associate|auto-14|<tuple|4.1|?>>
-    <associate|auto-17|<tuple|4.4|?>>
+    <associate|auto-13|<tuple|3.2|13>>
     <associate|auto-2|<tuple|1.1|1>>
     <associate|auto-3|<tuple|1.2|2>>
     <associate|auto-4|<tuple|1.3|3>>
@@ -1372,6 +1513,10 @@
       <with|par-left|<quote|1tab>|3.1<space|2spc>Symbolic Differentiation
       <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-12>>
+
+      <with|par-left|<quote|1tab>|3.2<space|2spc>Sets
+      <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-13>>
     </associate>
   </collection>
 </auxiliary>

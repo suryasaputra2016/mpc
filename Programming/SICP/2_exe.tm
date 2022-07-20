@@ -2082,6 +2082,108 @@
 
     <item>Number 59
 
+    <\session|scheme|default>
+      <\input|Scheme] >
+        (define (union-set set1 set2)
+
+        \ \ (cond ((null? set1) set2)
+
+        \ \ \ \ \ \ \ \ ((null? set2) set1)
+
+        \ \ \ \ \ \ \ \ ((element-of-set? (car set1) set2)\ 
+
+        \ \ \ \ \ \ \ \ \ (union-set (cdr set1) set2))
+
+        \ \ \ \ \ \ \ \ (else (cons (car set1) (union-set (cdr set1)
+        set2)))))
+      </input>
+
+      <\input|Scheme] >
+        \;
+      </input>
+    </session>
+
+    <item>Number 60
+
+    element-of-set doesn't change
+
+    <\session|scheme|default>
+      <\input|Scheme] >
+        (define (adjoin-set x set) (cons x set))
+      </input>
+
+      <\input|Scheme] >
+        (define (union set1 set2)
+
+        \ \ (append set1 set2))
+      </input>
+
+      <\input|Scheme] >
+        \;
+      </input>
+    </session>
+
+    intersection doesn't change. The efficiency of adjoin is
+    <math|\<Theta\><around*|(|1|)>>, and that of element of set,
+    intersection, and union is <math|\<Theta\><around*|(|n|)>,\<Theta\><around*|(|n<rsup|2>|)>,\<Theta\><around*|(|n|)>>
+
+    <item>Number 61
+
+    <\session|scheme|default>
+      <\input|Scheme] >
+        (define (adjoin x set)
+
+        \ \ (cond ((null? set) (cons x '()))
+
+        \ \ \ \ \ \ \ \ ((= x (car set)) set)
+
+        \ \ \ \ \ \ \ \ ((\<gtr\> x (car set)) cons (car set (cons x cdr
+        set)))
+
+        \ \ \ \ \ \ \ \ (else cons (car set) (adjoin-set x (cdr set)))))
+      </input>
+
+      <\input|Scheme] >
+        \;
+      </input>
+    </session>
+
+    <item>Number 62
+
+    <\session|scheme|default>
+      <\input|Scheme] >
+        (define (union-set set1 set2)
+
+        \ \ (cond ((null? set1) set2)
+
+        \ \ \ \ \ \ \ \ ((null? set2) set1)
+
+        \ \ \ \ \ \ \ \ (let ((x1 \ (car set1)) (x2 (car set2)))
+
+        \ \ \ \ \ \ \ \ \ \ (cond ((= x1 x2) (cons x1 (union-set (cdr set1)\ 
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (cdr
+        set2))))
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ((\<less\> x1 x2) (cons x1 (union-set
+        (cdr set1)
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ set2)))
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ((\<gtr\> x1 x2) (cons x2 (union-set
+        set1
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (cdr
+        set2))))))))
+      </input>
+
+      <\input|Scheme] >
+        \;
+      </input>
+    </session>
+
+    <item>Number 63
+
     \;
   </enumerate>
 
