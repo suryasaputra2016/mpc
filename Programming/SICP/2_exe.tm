@@ -2184,6 +2184,149 @@
 
     <item>Number 63
 
+    <\session|scheme|default>
+      <\input|Scheme] >
+        (define (tree-\<gtr\>list-1 tree)
+
+        \ \ (if (null? tree)
+
+        \ \ \ \ \ \ '()
+
+        \ \ \ \ \ \ (append (tree-\<gtr\>list-1 (left-branch tree))
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ (cons (entry tree)
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (tree-\<gtr\>list-1
+        (right-branch tree))))))
+      </input>
+
+      <\input|Scheme] >
+        (define (tree-\<gtr\>list-2 tree)
+
+        \ \ (define (copy-to-list tree result-list)
+
+        \ \ \ \ (if (null? tree)
+
+        \ \ \ \ \ \ \ \ result-list
+
+        \ \ \ \ \ \ \ \ (copy-to-list (left-branch tree)
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (cons (entry tree)
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (copy-to-list
+        (right-branch tree)\ 
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result-list)))))
+
+        \ \ (copy-to-list tree '()))
+      </input>
+
+      <\input|Scheme] >
+        \;
+      </input>
+    </session>
+
+    They have the same result. The first one has
+    <math|\<Theta\><around*|(|n*log n|)>> the second one has
+    <math|\<Theta\><around*|(|n|)>>
+
+    <item>Number 64
+
+    <\session|scheme|default>
+      <\input|Scheme] >
+        (define (list-\<gtr\>tree elements)
+
+        \ \ (car (partial-tree elements (length elements))))
+
+        (define (partial-tree elts n)
+
+        \ \ (if (= n 0)
+
+        \ \ \ \ \ \ (cons '() elts)
+
+        \ \ \ \ \ \ (let ((left-size (quotient (- n 1) 2)))
+
+        \ \ \ \ \ \ \ \ (let ((left-result
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (partial-tree elts left-size)))
+
+        \ \ \ \ \ \ \ \ \ \ (let ((left-tree (car left-result))
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (non-left-elts (cdr left-result))
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (right-size (- n (+ left-size 1))))
+
+        \ \ \ \ \ \ \ \ \ \ \ \ (let ((this-entry (car non-left-elts))
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (right-result
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (partial-tree
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (cdr non-left-elts)
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ right-size)))
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ (let ((right-tree (car right-result))
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (remaining-elts
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (cdr right-result)))
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (cons (make-tree this-entry
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ left-tree
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ right-tree)
+
+        \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ remaining-elts))))))))
+      </input>
+
+      <\input|Scheme] >
+        \;
+      </input>
+    </session>
+
+    Partial tree works recursively, it first divide the array into two
+    approximately equal part, left and right, then call itself for the left
+    part, then it take the first element from the right make it a node and
+    call itself for the rest of the element, then it make tree with chosen
+    node, left tree and right tree. Also it produce the remaining element if
+    n is less than the length of array, but in this case the remaining
+    element is empty and the tree it make is a balance tree.
+
+    <math|(1,3,5, 7,9, 11)\<rightarrow\><around*|(|<around*|(|1,3|)>,5,<around*|(|7,9,11|)>|)>\<rightarrow\><around*|(|<around*|(|null,1,<around*|(|3|)>|)>,5,<around*|(|<around*|(|7|)>,9,<around*|(|11|)>|)>|)>>
+
+    It has <math|\<Theta\><around*|(|n|)>>
+
+    <item>Number 65
+
+    union and intersection of set s1 and s2, we can make the two into list
+    combine the list and take the list back into binary tree.
+
+    <item>Number 66
+
+    <\session|scheme|default>
+      <\input>
+        Scheme]\ 
+      <|input>
+        (define (lookup-bin-tree database id)
+
+        \ \ (cond ((null? database) false)
+
+        \ \ \ \ \ \ \ \ ((= id (node database)) (node database))
+
+        \ \ \ \ \ \ \ \ ((\<less\> id (node database)) (lookup-bin-tree
+        (left-tree database) id))
+
+        \ \ \ \ \ \ \ \ ((\<gtr\> id (node database)) (lookup-bin-tree
+        (right-tree database) id))))
+      </input>
+    </session>
+
+    <item>Number 67
+
+    <item>Number 68
+
     \;
   </enumerate>
 
