@@ -675,7 +675,11 @@
     <item>Prove
 
     <\equation*>
-      <around*|\||sin x|\|>\<less\><around*|\||x|\|>\<less\><frac|\<mathpi\>|2>
+      <around*|\||sin x|\|>\<less\><around*|\||x|\|>\ 
+    </equation*>
+
+    <\equation*>
+      for 0\<less\>x\<less\><frac|\<mathpi\>|2>
     </equation*>
 
     <section|Polar Coordinates>

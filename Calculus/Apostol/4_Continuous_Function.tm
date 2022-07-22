@@ -210,10 +210,111 @@
   <math|cos<around*|(|0|)>> which is 1, we have
   <math|lim<rsub|x\<rightarrow\>0><dfrac|sin x|x>=1>.
 
-  Also for <math|f<around*|(|x|)>=x<rsup|r>> where <math|r> is rational then
-  <math|f> is continuous since ___
+  Also for <math|f<around*|(|x|)>=x<rsup|r>> where <math|r> is rational and
+  <math|x\<gtr\>0> then <math|f> is continuous since it can be written as
+  integral.
 
-  \;
+  \ Exercise
+
+  <\equation*>
+    lim<rsub|x\<rightarrow\>a><dfrac|sin x-sin
+    a|x-a>=lim<rsub|x\<rightarrow\>a><dfrac|2*sin
+    <around*|(|<frac|x-a|2>|)>cos<around*|(|<frac|x+a|2>|)>|x-a>=lim<rsub|x\<rightarrow\>a>cos<around*|(|<frac|x+a|2>|)>=cos
+    a
+  </equation*>
+
+  <\equation*>
+    lim<rsub|x\<rightarrow\>0><dfrac|1-cos
+    x|x<rsup|2>>=lim<rsub|x\<rightarrow\>0><dfrac|2*sin<rsup|2><around*|(|<frac|x|2>|)>|x<rsup|2>>=lim<rsub|x\<rightarrow\>0><dfrac|*sin<rsup|2><around*|(|<frac|x|2>|)>|2<around*|(|<frac|x|2>|)><rsup|2>>=<frac|1|2>
+  </equation*>
+
+  <\equation*>
+    lim<rsub|x\<rightarrow\>0><dfrac|1-<sqrt|1-x<rsup|2>>|x<rsup|2>>=lim<rsub|x\<rightarrow\>0><dfrac|1-<sqrt|1-x<rsup|2>>|x<rsup|2>><around*|(|<dfrac|1+<sqrt|1-x<rsup|2>>|1+<sqrt|1-x<rsup|2>>>|)>=lim<rsub|x\<rightarrow\>0><dfrac|x<rsup|2>|x<rsup|2><around*|(|1+<sqrt|1-x<rsup|2>>|)>>=<dfrac|1|2>
+  </equation*>
+
+  <section|Composite functions and continuity>
+
+  Given two function <math|u<around*|(|x|)>> and <math|v<around*|(|x|)>> we
+  can compose the two into new function <math|f<around*|(|x|)>=v<around*|[|u<around*|(|x|)>|]>>
+  or <math|f<around*|(|x|)>=v*\<circ\>u<around*|(|x|)>> in which we apply
+  <math|u> on <math|x> then the we apply <math|v> on the result of
+  <math|u<around*|(|x|)>>. For example, if
+  <math|u<around*|(|x|)>=1-x<rsup|2>> and <math|v<around*|(|x|)>=<sqrt|x>>
+  then <math|f<around*|(|x|)>=<sqrt|1-x<rsup|2>>>. Notice that the domain of
+  <math|v> must be compatible with the range of <math|u>. That is in our
+  example since <math|v> only defined for <math|x\<gtr\>0>, then the domain
+  of <math|u> must be defined so that <math|1-x<rsup|2>\<gtr\>0>.
+
+  We can compose a composition (also applies for higer number of composition)
+  and it has associative property, <math|u\<circ\><around*|(|v\<circ\>w|)>=<around*|(|u\<circ\>v|)>\<circ\>w>.
+  However, composition is generally not commutative
+  <math|u\<circ\>v\<neq\>v\<circ\>u>.
+
+  If <math|u> and <math|v> are both continuous at <math|p> and
+  <math|v<around*|(|p|)>> respectively then <math|u\<circ\>v> is also
+  continuous at <math|p>. Hence <math|sin<around*|(|x<rsup|2>|)>> is
+  continuous.
+
+  <section|Bolzano Theorem>
+
+  Sign preserving property: For <math|f> coninuous at <math|c> then there is
+  an interval <math|<around*|(|c-\<delta\>,c+\<delta\>|)>> that <math|f> has
+  the same sign as <math|f<around*|(|c|)>>. For let
+  <math|f<around*|(|c|)>\<gtr\>0> then for
+  <math|N<rsub|1><around*|(|f<around*|(|c|)>,\<epsilon\>|)>> there is
+  <math|N<rsub|2><around*|(|c,\<delta\>|)>> such that <math|x\<in\>
+  N<rsub|2>> then <math|f<around*|(|x|)>\<in\> N<rsub|1>>. Now we choose
+  <math|\<epsilon\>=f<around*|(|c|)>/2>. Then for <math|x\<in\> \ N<rsub|2>>
+  that is <math|x\<in\> <around*|(|c-\<delta\>,c+\<delta\>|)>> we have
+  <math|f<around*|(|c|)>/2\<less\>f<around*|(|x|)>\<less\>3f<around*|(|c|)>/2>
+  hence <math|f<around*|(|x|)>\<gtr\>0>, it has the same sign with
+  <math|f<around*|(|c|)>>. We can do similar thing for
+  <math|f<around*|(|c|)>\<less\>0>
+
+  Bolzano theorem: For <math|f> continuous function on
+  <math|<around*|[|a,b|]>> if <math|f<around*|(|a|)>> and
+  <math|f<around*|(|b|)>> have different signs then there exists at least one
+  <math|c\<in\> <around*|[|a,b|]>> such that <math|f<around*|(|c|)>=0>.
+  Because, let <math|f<around*|(|a|)>\<less\>0> and
+  <math|f<around*|(|b|)>\<gtr\>0>, and define <math|S> containing
+  <math|x\<in\> <around*|[|a,b|]>> such that
+  <math|f<around*|(|x|)>\<less\>0>, then it is nonempty since <math|a\<in\>
+  S> and it is bounded by definition of <math|x>. Therefore we have
+  <math|c=sup<around*|(|S|)>>.\ 
+
+  Now, <math|c=0>, since if <math|c\<less\>0> then by sign preserving
+  property there is <math|c<rprime|'>\<in\>
+  <around*|(|c-\<delta\>,c+\<delta\>|)>> such that
+  <math|f<around*|(|c<rprime|'>|)>\<less\>0> and we can choose
+  <math|c<rprime|'>\<gtr\>c> therefore <math|c<rprime|'>\<in\> S> hence
+  <math|c> is not upperbound of <math|S>. Now, if <math|c\<gtr\>0> then again
+  by sign preserving property we can have <math|c<rprime|''>\<less\>c> and
+  <math|f<around*|(|c<rprime|''>|)>\<less\>0> then <math|c> is not the least
+  upper bound of <math|S> hence <math|c=0>.
+
+  <section|Intermediate Value Theorem>
+
+  Intermediate Value Theorem. Lef <math|f> be continuous on
+  <math|<around*|[|a,b|]>> choose <math|x<rsub|1>\<less\>x<rsub|2>>, both on
+  <math|<around*|[|a,b|]>> such that <math|f<around*|(|x<rsub|1>|)>\<neq\>f<around*|(|x<rsub|2>|)>>
+  then <math|f> takes all value between <math|f<around*|(|x<rsub|1>|)>> and
+  <math|f<around*|(|x<rsub|2>|)>>. Because let
+  <math|f<around*|(|x<rsub|1>|)>\<less\>f<around*|(|x<rsub|2>|)>>, <math|k>
+  be any value between <math|f<around*|(|x<rsub|1>|)><infix-and>f<around*|(|x<rsub|2>|)>>,
+  and <math|g<around*|(|x|)>=f<around*|(|x|)>-k>. Then <math|g> is continuous
+  on <math|<around*|[|a,b|]>> and <math|g<around*|(|x<rsub|1>|)>\<less\>0\<less\>g<around*|(|x<rsub|2>|)>>
+  therefore there is <math|c> such that <math|g<around*|(|c|)>=0> hence
+  <math|f<around*|(|c|)>=k>.
+
+  Every positive numbers has one positive n-th root. That is for
+  <math|a\<gtr\>0> and <math|n\<in\> \<bbb-Z\><rsup|+>> then there is exactly
+  one <math|b\<gtr\>0> such that <math|b<rsup|n>=a>. Because choose
+  <math|c\<gtr\>max<around*|(|a,1|)>> then
+  <math|f<around*|(|0|)>=0\<less\>a\<less\>c\<less\>f<around*|(|c|)>=c<rsup|n>>
+  then there is <math|b\<in\> <around*|[|0,c|]>> such that
+  <math|f<around*|(|b|)>=b<rsup|n>=a>, so <math|b> exists. And since
+  <math|f<around*|(|x|)>=x<rsup|n>> is increasing on <math|[0,c> only one
+  such <math|b> satisfies the condition.
 
   \;
 </body>
@@ -228,8 +329,11 @@
   <\collection>
     <associate|auto-1|<tuple|1|1>>
     <associate|auto-2|<tuple|2|1>>
-    <associate|auto-3|<tuple|3|?>>
-    <associate|auto-4|<tuple|3.1|?>>
+    <associate|auto-3|<tuple|3|2>>
+    <associate|auto-4|<tuple|3.1|2>>
+    <associate|auto-5|<tuple|4|?>>
+    <associate|auto-6|<tuple|5|?>>
+    <associate|auto-7|<tuple|6|?>>
   </collection>
 </references>
 
@@ -243,6 +347,14 @@
       <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|2<space|2spc>Limit
       of a function> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-2><vspace|0.5fn>
+
+      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|3<space|2spc>Continuity
+      of Functions> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-3><vspace|0.5fn>
+
+      <with|par-left|<quote|1tab>|3.1<space|2spc>Theorem of Limits
+      <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-4>>
     </associate>
   </collection>
 </auxiliary>
