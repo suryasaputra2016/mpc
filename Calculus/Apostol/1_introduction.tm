@@ -386,8 +386,9 @@
   Least upper bound or supremum of set <math|S>, <math|sup <around*|(|S|)>>
   is an upperbound of <math|S> but no other upperbound of <math|S> is less
   than <math|sup <around*|(|S|)>>. If <math|S> has maximum element then it is
-  the least upper bound, if it doesn't have but bounded above it still have
-  least upper bound. We can prove that least upperbound of a set is unique.
+  the least upper bound, if it doesn't one have but bounded above it still
+  have least upper bound. We can prove that least upperbound of a set is
+  unique.
 
   \ Here the last axiom of real numbers.
 
@@ -824,8 +825,7 @@
     <associate|auto-1|<tuple|1|1>>
     <associate|auto-10|<tuple|5|10>>
     <associate|auto-11|<tuple|6|11>>
-    <associate|auto-12|<tuple|7|?>>
-    <associate|auto-13|<tuple|1|?>>
+    <associate|auto-12|<tuple|7|11>>
     <associate|auto-2|<tuple|2|3>>
     <associate|auto-3|<tuple|3|4>>
     <associate|auto-4|<tuple|3.1|4>>
@@ -883,6 +883,10 @@
       <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|6<space|2spc>Absolute
       Value> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-11><vspace|0.5fn>
+
+      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|7<space|2spc>Some
+      exercise> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-12><vspace|0.5fn>
     </associate>
   </collection>
 </auxiliary>
