@@ -490,9 +490,9 @@
     number <math|r> such that <math|x\<less\>r\<less\>y>.
 
     First, we show that if <math|y<rprime|'>-x<rprime|'>>\<gtr\>1 then there
-    is an integer <math|k> such that <math|x<rprime|'>\<less\>p\<less\>y<rprime|'>>.
+    is an integer <math|p> such that <math|x<rprime|'>\<less\>p\<less\>y<rprime|'>>.
     First consider set of integer greater than <math|x<rprime|'>>. It's
-    nonempty, so let's call it's minimum <math|k>, then
+    nonempty, so let's call it's minimum <math|p>, then
     <math|x<rprime|'>\<less\>p> and \ <math|p-1\<less\>x<rprime|'>> hence
     <math|p\<less\>x<rprime|'>+1\<less\>y<rprime|'>>. Therefore
     <math|x<rprime|'>\<less\>p\<less\>y<rprime|'>>.

@@ -257,7 +257,7 @@
 
   <section|Bolzano Theorem>
 
-  Sign preserving property: For <math|f> coninuous at <math|c> then there is
+  Sign preserving property: For <math|f> continuous at <math|c> then there is
   an interval <math|<around*|(|c-\<delta\>,c+\<delta\>|)>> that <math|f> has
   the same sign as <math|f<around*|(|c|)>>. For let
   <math|f<around*|(|c|)>\<gtr\>0> then for
@@ -352,11 +352,11 @@
   using Bolzano theorem. <math|f(0)=-8>, later
 
   For <math|n> odd positive integer and <math|a\<less\>0>, then there is
-  exactly one negative number <math|b> such that <math|b<rsup|n>=a>. Conder
-  function <math|f<around*|(|x|)>=x<rsup|n>>, then <math|f<around*|(|0|)>=>
+  exactly one negative number <math|b> such that <math|b<rsup|n>=a>. Consider
+  function <math|f<around*|(|x|)>=x<rsup|n>>, then <math|f<around*|(|0|)>=0>
   and let <math|a<rsub|m>=min<around*|(|a,-1|)>> then
   <math|f<around*|(|a<rsub|m>|)>\<leqslant\>a>, hence by intermediate value
-  theorem between <math|a<rsub|m>> ad <math|0> there is a number
+  theorem between <math|a<rsub|m>> and <math|0> there is a number
   <math|b\<less\>0> such that <math|b<rsup|n>=a>.
 
   Brower's fixed-point, suppose on <math|<around*|[|0,1|]>>,
@@ -382,7 +382,7 @@
   <section|Inversion>
 
   For a function <math|f> with domain <math|A> and range <math|B>, for every
-  element of <math|A> there is exactly one elelement of <math|B>, and for an
+  element of <math|A> there is exactly one element of <math|B>, and for an
   element of <math|B>, there are at least one element of <math|A>, if there
   is only one element of <math|A> for each element of <math|B>, we can define
   the inverse of <math|f>, <math|g> where <math|g<around*|(|y|)>=x> where
@@ -390,7 +390,7 @@
   <math|g<around*|(|f<around*|(|x|)>|)>=x>, and
   <math|f<around*|(|g<around*|(|y|)>|)>=y>. A function that has inverse must
   have unique <math|x> for each <math|y> on the range, such as strictly
-  monotonic continuous function. In other words the inverse funcion can be
+  monotonic continuous function. In other words the inverse function can be
   found by swapping the two elements in the ordered pairs.
 
   For function <math|f=x<rsup|n>> for <math|x\<geqslant\>0> we have inverse
@@ -399,9 +399,9 @@
   In the graph inversion can be seen as reflection of graph with respect to
   <math|x=y> line.
 
-  Let <math|f> is istrictly increasing and coninutous on
+  Let <math|f> is istrictly increasing and continuous on
   <math|<around*|[|a,b|]>> and <math|f<around*|(|a|)>=c> and
-  <math|f<around*|(|b|)>=d>,and let <math|gbe a function on
+  <math|f<around*|(|b|)>=d>,and let <math|g be a function on
   <around*|[|c,d|]>> such that <math|><math|g(y)=x> when
   <math|f<around*|(|x|)>=y>. Then <math|><math|g> is strictly increasing and
   continuous on <math|<around*|[|c,d|]>>.
@@ -415,13 +415,13 @@
   <around*|(|g<around*|(|y<rsub|0>|)>-\<epsilon\>,g<around*|(|y<rsub|0>|)>+\<epsilon\>|)>>
   we can choose <math|\<delta\>=min <around*|(|f<around*|(|g<around*|(|y<rsub|0>|)>|)>-f<around*|(|g<around*|(|y<rsub|0>|)>-\<epsilon\>|)>,f<around*|(|g<around*|(|y<rsub|0>|)>+\<epsilon\>|)>-f<around*|(|g<around*|(|y<rsub|0>|)>|)>|)>>.
 
-  We have the same theorem for the corresponding strinctly decreasing
+  We have the same theorem for the corresponding strictly decreasing
   function.
 
   Therefore the function <math|f<around*|(|x|)>=x<rsup|1/n>> is strictly
   increasing for interval subset of nonnegative numbers.
 
-  A piceweise monotinic function, such as <math|f<around*|(|x|)>=x<rsup|2>>
+  A piceweise monotonic function, such as <math|f<around*|(|x|)>=x<rsup|2>>
   may not have inverse, since two different <math|x>'s can have the same
   result. However, we can<space|1em>divde the function into two function each
   defined on different intervals. So if we define
@@ -432,8 +432,8 @@
 
   Let<math|f> be a continuous strictly monotonic function on
   <math|x\<gtr\>0>, andn <math|g> its inverse. If
-  <math|a<rsub|1>\<less\>a<rsub|2>\<less\>\<cdots\>\<less\>a<rsub|n>> psotive
-  numbers then we define mean value with respect to <math|f> as
+  <math|a<rsub|1>\<less\>a<rsub|2>\<less\>\<cdots\>\<less\>a<rsub|n>>
+  positive numbers then we define mean value with respect to <math|f> as
   <math|M<rsub|f>>.
 
   <\equation*>
@@ -447,7 +447,145 @@
 
   <section|Extreme Value Theorem>
 
-  /
+  Let <math|f> be a real valued function defined on <math|S>, then <math|f>
+  has absolute maximum on <math|S> if there is <math|c\<in\> S> such that
+  <math|f<around*|(|c|)>\<geqslant\>f<around*|(|x|)>> for all <math|x\<in\>
+  S>. Absolute minimum is the inverse. Absolute maximum and minimum can occur
+  inside or at the endpoints of closed interval.
+
+  For <math|f> continuous on <math|<around*|[|a,b|]>> then <math|f> is
+  bounded on <math|<around*|[|a,b|]>>. We prove it by contradiction. Say
+  <math|f> is unbounded, then it is unbounded in one of the half interval
+  <math|<around*|[|a,c|]>> and <math|<around*|[|c,b|]>>. Say it is unbounded
+  on <math|<around*|[|a,c|]>> define it to be
+  <math|<around*|[|a<rsub|1>,b<rsub|1>|]>>. Next we repeat the process until
+  we get to an interval <math|<around*|[|a<rsub|n>,b<rsub|n>|]>>with width
+  <math|<around*|(|b-a|)>/2<rsup|n>>. Let <math|\<alpha\>> be the supremum of
+  <math|<around*|{|a<rsub|>, a<rsub|1>,\<ldots\>,a<rsub|n,\<ldots\>>|}>> then
+  since <math|f> is continuous there is interval
+  <math|<around*|(|\<alpha\>-\<delta\>,\<alpha\>+\<delta\>|)>> so that
+  <math|<around*|\||f<around*|(|x|)>-f<around*|(|\<alpha\>|)>|\|>\<less\>1>.
+  If <math|\<alpha\>> is on the initial endpoints, then one of the
+  <math|\<delta\>> can be zero. But we can choose <math|n> such as
+  <math|<around*|[|a<rsub|n>,b<rsub|n>|]>> is inside
+  <math|\<alpha\>-\<delta\>,\<alpha\>+\<delta\>> so <math|f> is bounded by
+  <math|f<around*|(|\<alpha\>|)>+1> here. A contradiction. Since <math|f> is
+  bounded then it has supremum and infimum.
+
+  <math|sup f=sup<around*|{|f<around*|(|x|)>\|a\<leqslant\>x\<leqslant\>b|}>>,
+  <math|inf f=inf<around*|{|f<around*|(|x|)>\|a\<leqslant\>x\<leqslant\>b|}>>
+
+  If <math|f> is contiuous on <math|<around*|[|a,b|]> >there are
+  <math|c,d\<in\> <around*|[|a,b|]>> such that <math|f<around*|(|c|)>=sup f>
+  and <math|f<around*|(|d|)>=inf f>. Let <math|M=sup f> and there is no
+  <math|x> on the interval that <math|f<around*|(|x|)>=M>, therefore
+  <math|g<around*|(|x|)>=1/<around*|(|M-f<around*|(|x|)>|)>><space|1em>is
+  continuous on the interval hence bounded, say by <math|C-1>.\ 
+
+  <\eqnarray*>
+    <tformat|<table|<row|<cell|1/<around*|(|M-f<around*|(|x|)>|)>>|<cell|\<less\>>|<cell|C>>|<row|<cell|f<around*|(|x|)>>|<cell|\<less\>>|<cell|M-1/C>>>>
+  </eqnarray*>
+
+  But <math|M> is the supremum, hence a contradiction. Therefore the range of
+  <math|f> continuous on a closed interval is a closed interval
+  <math|<around*|[|inf f,sup f|]>>
+
+  <section|Small Span Theorem (uniform continuity)>
+
+  Span of a function <math|f> on <math|<around*|[|a,b|]>> is the diference
+  between maximum and minimum value. <math|M<around*|(|f|)>-m<around*|(|f|)>>.
+
+  Let <math|f> be continuous on <math|<around*|[|a,b|]>> then for every
+  <math|\<varepsilon\>\<gtr\>0> there is a partition of
+  <math|<around*|[|a,b|]>> into finite subintervals where the span on each
+  interval is less than <math|\<varepsilon\>>. Becuase let assume that there
+  is an interval with span greater than <math|\<varepsilon\>>. Then lets
+  bisect the interval <math|<around*|[|a,b|]>> by its midpoint that we call
+  <math|c>, then at least one of the interval <math|<around*|[|a,c|]>> or
+  <math|<around*|[|c,b|]>> the span is more than <math|\<varepsilon\>>,
+  choose it, call it <math|<around*|[|a<rsub|1>,b<rsub|1>|]>> and repeat the
+  process until we have interval <math|<around*|[|a<rsub|n>,b<rsub|n>|]>>
+  whose length is the initial interval divided by <math|2<rsup|n>>. now
+  consider the supremum of a set consisting of all the <math|a<rsub|i>>'s.
+  Let's call it <math|\<alpha\>>. Then <math|\<alpha\>> is in the interval
+  <math|<around*|[|a,b|]>> and since it is continue at <math|\<alpha\>> then
+  there exist interval <math|<around*|(|\<alpha\>-\<delta\>,\<alpha\>+\<delta\>|)>><space|1em>(take
+  half interval if the point is on the edge of <math|<around*|[|a,b|]>>)
+  where the span is less than <math|\<varepsilon\>>. However the interval
+  <math|<around*|[|a<rsub|n>,b<rsub|n>|]>> can be made is small as possible
+  that it is contain within <math|<around*|(|\<alpha\>-\<delta\>,\<alpha\>+\<delta\>|)>>.
+  So we have a contradiction.
+
+  <section|Integrability of continuous function>
+
+  If <math|f> is continue everywhere on <math|<around*|[|a,b|]>> then it is
+  integrable on <math|<around*|[|a,b|]>>. Sinve <math|f> is bounded then it
+  has upper and lower integral. So we only need to show that they are the
+  same. Take a number <math|N> and consider <math|\<varepsilon\>=1/N> then we
+  take a partition on <math|<around*|[|a,b|]>> such that the span is less
+  than <math|\<varepsilon\>>. Now let <math|m<rsub|k>> and <math|M<rsub|k>>
+  is the largest and smallest value of <math|f> on the interval <math|k>.
+  Then we have the upper and lower integral
+
+  <\equation*>
+    <wide*|I|\<bar\>><around*|(|f|)>\<geqslant\><big|sum><rsub|k=1><rsup|n>m<rsub|k><around*|(|x<rsub|k>-x<rsub|k-1>|)>
+  </equation*>
+
+  \;
+
+  <\equation*>
+    <wide|I|\<bar\>><around*|(|f|)>\<leqslant\><big|sum><rsub|k=1><rsup|n>M<rsub|k><around*|(|x<rsub|k>-x<rsub|k-1>|)>
+  </equation*>
+
+  <\equation*>
+    0\<less\><wide|I|\<bar\>><around*|(|f|)>-<wide*|I|\<bar\>><around*|(|f|)>\<leqslant\><big|sum><rsub|k=1><rsup|n><around*|(|M<rsub|k>-m<rsub|k>|)><around*|(|x<rsub|k>-x<rsub|k-1>|)>
+  </equation*>
+
+  <\equation*>
+    0\<less\><wide|I|\<bar\>><around*|(|f|)>-<wide*|I|\<bar\>><around*|(|f|)>\<leqslant\>\<varepsilon\><around*|(|b-a|)>
+  </equation*>
+
+  <\equation*>
+    0\<less\><wide|I|\<bar\>><around*|(|f|)>-<wide*|I|\<bar\>><around*|(|f|)>\<leqslant\><tfrac|b-a|N>
+  </equation*>
+
+  Fore every <math|N>, so the integrals are the same and the function is
+  integrable.
+
+  <section|Mean Value Theorem for Integral of continuous function>
+
+  If <math|f> is contiuous on <math|<around*|[|a,b|]>> then there is
+  <math|c\<in\> <around*|[|a,b|]>> such that
+  <math|<big|int><rsub|a><rsup|b>f<around*|(|x|)>d
+  x=f<around*|(|c|)><around*|(|b-a|)>>. The function <math|f> is continuous
+  so let <math|m> and <math|M> be the minimum and maximum value of <math|f>.
+  So
+
+  <\equation*>
+    m\<leqslant\>f<around*|(|x|)>\<leqslant\>M
+  </equation*>
+
+  <\equation*>
+    m<around*|(|b-a|)>\<leqslant\><big|int>f<around*|(|x|)>d
+    x\<leqslant\>M<around*|(|b-a|)>
+  </equation*>
+
+  <\equation*>
+    m\<leqslant\><dfrac|<big|int>f<around*|(|x|)>d
+    x|<around*|(|b-a|)>>\<leqslant\>M
+  </equation*>
+
+  So by intermediate avlue theorem there is
+  <math|f<around*|(|c|)>=<dfrac|<big|int>f<around*|(|x|)>d
+  x|<around*|(|b-a|)>>>.
+
+  We also have the above theorem for weighted function. For two functions
+  <math|f> and <math|g> where <math|g> never changes signs we have
+  <math|<big|int><rsub|a><rsup|b>f<around*|(|x|)>g<around*|(|x|)>d
+  x=f<around*|(|c|)><big|int><rsub|a><rsup|b>g<around*|(|x|)>d x>. The proof
+  is similar to the prove above.
+
+  \;
 
   \;
 </body>
@@ -461,6 +599,9 @@
 <\references>
   <\collection>
     <associate|auto-1|<tuple|1|1>>
+    <associate|auto-10|<tuple|9|6>>
+    <associate|auto-11|<tuple|10|?>>
+    <associate|auto-12|<tuple|11|?>>
     <associate|auto-2|<tuple|2|1>>
     <associate|auto-3|<tuple|3|2>>
     <associate|auto-4|<tuple|3.1|2>>
@@ -468,7 +609,7 @@
     <associate|auto-6|<tuple|5|3>>
     <associate|auto-7|<tuple|6|4>>
     <associate|auto-8|<tuple|7|5>>
-    <associate|auto-9|<tuple|8|?>>
+    <associate|auto-9|<tuple|8|5>>
   </collection>
 </references>
 
@@ -506,6 +647,14 @@
       <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|7<space|2spc>Inversion>
       <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-8><vspace|0.5fn>
+
+      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|8<space|2spc>Extreme
+      Value Theorem> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-9><vspace|0.5fn>
+
+      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|9<space|2spc>Small
+      Span Theorem (uniform continuity)> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-10><vspace|0.5fn>
     </associate>
   </collection>
 </auxiliary>
